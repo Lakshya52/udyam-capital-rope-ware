@@ -35,7 +35,7 @@ const App = () => {
     <div className="relative min-h-screen bg-white font-sans antialiased">
       <Navbar />
       {/* content layer — opaque, scrolls over the pinned footer */}
-      <div className="relative z-10 bg-white overflow-hidden rounded-b-[24px]">
+      <div className="relative z-10 bg-white overflow-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<CaseStudies />} />

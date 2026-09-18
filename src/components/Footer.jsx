@@ -123,8 +123,8 @@ export default function Footer() {
 					</p>
 				</div>
 
-				<div className="flex items-start justify-evenly w-2/5">
-					<div className="1/2">
+				<div className="flex items-start gap-18 w-2/5 ">
+					<div className="1/2 ml-auto">
 						<h4 className="font-heading fs-body-sm text-(--color-dark-blue)">
 							Explore
 						</h4>
