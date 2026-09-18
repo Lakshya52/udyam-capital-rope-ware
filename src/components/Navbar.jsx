@@ -1,64 +1,112 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { ChevronDown } from 'lucide-react'
 
 const navLinks = [
   { label: 'Case Studies', to: '/case-studies' },
   { label: 'Articles', to: '/articles' },
-  { label: 'Services', to: '/services' },
+  { label: 'Services', },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
+]
+
+const serviceLinks = [
+  { label: 'Business Loans', to: '/services/business-loans' },
+  { label: 'Debt Restructuring', to: '/services/debt-restructuring' },
+  { label: 'Corporate Finance', to: '/services/corporate-finance' },
+  { label: 'LAP', to: '/services/lap' },
+  { label: 'Working Capital', to: '/services/working-capital' },
+  { label: 'Fund Raising', to: '/services/fund-raising' },
+  { label: 'Project Finance', to: '/services/project-finance' },
+  { label: 'MSME Finance', to: '/services/msme-finance' },
+  { label: 'Financial Advisory', to: '/services/financial-advisory' },
 ]
 
 function Logo() {
   return (
     <Link to="/" className="flex shrink-0 items-center">
-      <img src="/Logo.png" alt="Udyam Capital" className="h-[44px] w-auto object-contain" />
+      <img src="/Logo.png" alt="Udyam Capital" className="h-13.75 w-30 object-contain" />
     </Link>
   )
 }
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [footerVisible, setFooterVisible] = useState(false)
+  const location = useLocation()
+  const isActive = (to) => location.pathname === to
+  const isServicesActive =
+    isActive('/services') || location.pathname.startsWith('/services/')
+  const linkClass = (to, forceActive = false) =>
+    `font-heading fs-body-sm transition-colors ${
+      isActive(to) || forceActive
+        ? 'text-[#0b4da2] underline underline-offset-8 decoration-2'
+        : 'text-neutral-800 hover:text-[#0b4da2]'
+    }`
+
+  // slide the navbar away while the footer reveal is on screen
+  useEffect(() => {
+    const spacer = document.getElementById('footer-reveal-spacer')
+    if (!spacer) return
+    const io = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting), {
+      threshold: 0,
+    })
+    io.observe(spacer)
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 h-[80px] max-h-[80px] bg-white/80 backdrop-blur-sm">
-      <nav className="mx-auto flex h-[80px] max-h-[80px] w-full max-w-[1166px] items-center justify-between px-5 md:px-8 xl:px-0">
+    <header className={`fixed top-0 inset-x-0 z-50 px-25 pt-10 pb-7.5 h-30 bg-(--blue-light)/5 backdrop-blur-md transition-transform duration-500 ${footerVisible ? '-translate-y-full' : 'translate-y-0'}`}>
+      <nav className="mx-auto flex w-full max-w-[1166px] items-center justify-between px-5 md:px-8 xl:px-0">
         <Logo />
 
         {/* Desktop links */}
         <div className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              className="text-[14px] font-extralight text-neutral-800 transition-colors hover:text-[#0b4da2]"
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <div className="ml-1 flex items-center gap-4 text-black">
-            <a href="mailto:hello@udyamcapital.com" aria-label="Email" className="hover:text-[#0b4da2]">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="5" width="18" height="14" rx="1.5" />
-                <path d="m3.5 7 8.5 6 8.5-6" />
-              </svg>
-            </a>
-            <a href="tel:+911234567890" aria-label="Phone" className="hover:text-[#0b4da2]">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2Z" />
-              </svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-[#0b4da2]">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
-              </svg>
-            </a>
-          </div>
+          {navLinks.map((link) =>
+            link.label === 'Services' ? (
+              <div key={link.label} className="group relative">
+                <Link
+                  to={link.to}
+                  style={{ fontWeight: "" }}
+                  className={`${linkClass(link.to, isServicesActive)} flex items-center gap-1`}
+                >
+                  {link.label}
+                  <ChevronDown
+                    size={15}
+                    className="transition-transform duration-300 group-hover:rotate-180"
+                  />
+                </Link>
+                {/* centered dropdown — left-1/2 + -translate-x-1/2 keeps it dead-center under the link */}
+                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 translate-y-2 pt-4 opacity-0 transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="grid w-[280px] grid-cols-1 gap-1 rounded-2xl bg-white p-3 shadow-[0_24px_60px_rgba(12,31,51,0.18)] ring-1 ring-black/5">
+                    {serviceLinks.map((service) => (
+                      <Link
+                        key={service.label}
+                        to={service.to}
+                        className="rounded-xl px-4 py-3 font-inter-reg text-[14px] text-[#101828] transition-colors hover:bg-[#EAF1FC] hover:text-[#0b4da2]"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                style={{ fontWeight: "" }}
+                className={linkClass(link.to)}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Mobile toggle */}
-        <button
+        {/* <button
           className="grid h-10 w-10 place-items-center lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
@@ -66,12 +114,12 @@ export default function Navbar() {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
-        </button>
+        </button> */}
       </nav>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="mx-auto w-full max-w-[1166px] border-t border-neutral-100 bg-white px-5 pb-6 pt-2 md:px-8 lg:hidden xl:px-0">
+      {/* {open && (
+        <div className="mx-auto w-full max-w-291.5 border-t border-neutral-100 bg-white px-5 pb-6 pt-2 md:px-8 lg:hidden xl:px-0">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
@@ -79,13 +127,14 @@ export default function Navbar() {
                 to={link.to}
                 onClick={() => setOpen(false)}
                 className="text-[15px] text-neutral-800"
+                style={{ fontWeight: "normal" }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </header>
   )
 }

@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
+import { useLineReveal } from '../lib/reveal.js'
 
-const SHAPE = 'h-9 w-9 shrink-0 md:h-[52px] md:w-[52px]'
-const SHAPE_BG = 'bg-[#cbd8f2]'
-
+// shapes
 function Diamond() {
-  return <div className={`${SHAPE} ${SHAPE_BG} rotate-45 rounded-[4px]`} />
+  return (
+    <svg viewBox="0 0 100 100" className="h-auto w-full" aria-hidden="true">
+      <polygon points="50,0 100,50 50,100 0,50" fill="#e5e7eb" />
+    </svg>
+  )
 }
 
 function Donut() {
   return (
-    <div className={`${SHAPE} ${SHAPE_BG} grid place-items-center rounded-full`}>
-      <div className="h-[38%] w-[38%] rounded-full bg-white" />
+    <div className="aspect-square w-full rounded-full bg-gray-200 flex items-center justify-center">
+      <div className="h-[36%] w-[36%] rounded-full bg-white"></div>
     </div>
   )
 }
 
 function Square() {
-  return <div className={`${SHAPE} ${SHAPE_BG} rounded-[8px]`} />
+  return <div className="aspect-square w-full  bg-gray-200"></div>
 }
 
 function Shape({ type }) {
@@ -25,63 +29,121 @@ function Shape({ type }) {
   return <Square />
 }
 
-const CYCLE = ['diamond', 'donut', 'square']
+const COLS = 15
+const ROWS = 8
+const TYPES = ['diamond', 'donut', 'square']
 
-function ShapeRow({ count = 12, offset = 0, visibleMobile = 6 }) {
-  return (
-    <div className="flex items-center justify-between">
-      {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className={i >= visibleMobile ? 'hidden md:block' : ''}>
-          <Shape type={CYCLE[(offset + i) % CYCLE.length]} />
-        </div>
-      ))}
-    </div>
-  )
+// deterministic pseudo-random fill so the grid looks random but is stable across renders.
+// Rule: side neighbours NEVER match; diagonal matches are minimized (zero is
+// mathematically impossible with 3 shapes, so the best of many attempts wins).
+function mulberry32(a) {
+  return function () {
+    a |= 0
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
 }
 
-function ShapeCol({ pattern }) {
-  return (
-    <div className="hidden flex-col justify-between self-stretch py-1 md:flex">
-      {pattern.map((type, i) => (
-        <Shape key={i} type={type} />
-      ))}
-    </div>
-  )
+function buildCells(attempts = 60) {
+  let best = null
+  let bestScore = Infinity
+  for (let a = 0; a < attempts; a++) {
+    const rand = mulberry32(20260918 + a * 1013904223)
+    const grid = new Array(COLS * ROWS)
+    let score = 0
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const left = c > 0 ? grid[r * COLS + c - 1] : null
+        const top = r > 0 ? grid[(r - 1) * COLS + c] : null
+        const topLeft = r > 0 && c > 0 ? grid[(r - 1) * COLS + c - 1] : null
+        const topRight = r > 0 && c < COLS - 1 ? grid[(r - 1) * COLS + c + 1] : null
+        // side neighbours must differ — always satisfiable with 3 shapes
+        const options = TYPES.filter((t) => t !== left && t !== top)
+        // prefer the option that also avoids diagonal matches (random tiebreak)
+        const order = [...options].sort(() => rand() - 0.5)
+        let pick = order[0]
+        let pickScore = Infinity
+        for (const t of order) {
+          const s = (t === topLeft ? 1 : 0) + (t === topRight ? 1 : 0)
+          if (s < pickScore) {
+            pickScore = s
+            pick = t
+          }
+        }
+        grid[r * COLS + c] = pick
+        score += pickScore
+      }
+    }
+    if (score < bestScore) {
+      bestScore = score
+      best = grid
+    }
+    if (bestScore === 0) break
+  }
+  return best
 }
+
+const CELLS = buildCells()
 
 export default function FooterCTA() {
+  const rootRef = useRef(null)
+  useLineReveal(rootRef)
+
   return (
-    <section className="mx-auto w-full max-w-[1166px] px-5 pb-[72px] pt-[32px] md:px-8 xl:px-0">
-      <ShapeRow offset={0} />
-
-      <div className="mt-4 flex items-stretch gap-4 md:mt-6 md:gap-6">
-        <ShapeCol pattern={['square', 'donut', 'diamond', 'square']} />
-
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-[860px] rounded-[16px] bg-[#144fd7] px-6 py-12 text-center md:py-14">
-            <h2 className="font-jakarta text-[26px] font-bold leading-[1.25] tracking-tight text-white md:text-[32px]">
-              Ready To Start Your
-              <br />
-              Growth Journey With Us ?
-            </h2>
-            <p className="mx-auto mt-3 max-w-[430px] font-inter text-[12.5px] font-extralight leading-relaxed text-white/85 md:text-[13px]">
-              Take the first step towards structured growth with the right
-              financial strategy and expert guidance.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-6 inline-block rounded-[8px] bg-white px-7 py-2.5 text-[13.5px] font-extralight text-[#144fd7] transition-colors hover:bg-blue-50"
-            >
-              Schedule a Consultation
-            </Link>
-          </div>
+    <section ref={rootRef} className=" section mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+      <div className="relative">
+        {/* backdrop graphics — halo + light streaks */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-10 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(21,91,212,0.28),transparent_70%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[8%] top-[-40px] h-[130%] w-px rotate-[16deg] bg-gradient-to-b from-transparent via-[#155bd4]/25 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-[10%] top-[-40px] h-[130%] w-px rotate-[16deg] bg-gradient-to-b from-transparent via-[#5495D8]/30 to-transparent"
+        />
+        {/* z-1 : 15 x 8 grid of random shapes */}
+        <div
+          aria-hidden="true"
+          className="grid aspect-[15/8] grid-cols-[repeat(15,minmax(0,1fr))] grid-rows-[repeat(8,minmax(0,1fr))] z-[1] opacity-50"
+        >
+          {CELLS.map((type, i) => (
+            <div key={i} className="min-h-0 min-w-0">
+              <Shape type={type} />
+            </div>
+          ))}
         </div>
 
-        <ShapeCol pattern={['diamond', 'square', 'donut', 'diamond']} />
-      </div>
-
-      <div className="mt-4 md:mt-6">
-        <ShapeRow offset={1} />
+        {/* z-2 : content box centered, leaving exactly one grid box visible on every outer edge */}
+        <div className="absolute inset-0 z-[2] p-[6.6667%]">
+          <div className="flex h-full w-full items-center justify-center rounded-[16px] bg-(--color-primary) px-6 py-8 text-center">
+            <div className="w-full max-w-[720px] flex flex-col gap-4">
+              <h2 className=" text-white font-heading fs-heading">
+                <span className="block overflow-hidden pb-1">
+                  <span className="rv-line block">Ready To Start Your</span>
+                </span>
+                <span className="block overflow-hidden pb-2">
+                  <span className="rv-line block">Growth Journey With Us ?</span>
+                </span>
+              </h2>
+              <p className="rv-fade font-inter-reg fs-body text-white ">
+                Take the first step towards structured growth with the right
+                financial strategy and expert guidance.
+              </p>
+              <Link
+                to="/contact"
+                className="rv-fade mt-6 inline-block rounded-lg w-fit mx-auto bg-white px-7 py-2.5 text-[13.5px] font-inter-reg fs-body transition-colors hover:bg-blue-50"
+              >
+                Schedule a Consultation
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
