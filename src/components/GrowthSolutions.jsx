@@ -47,7 +47,7 @@ export default function GrowthSolutions() {
       {/* Mobile: stacked (wheel card → map card). Desktop: side-by-side */}
       <div className="relative z-10 flex w-full flex-col gap-[18px] lg:h-[90dvh] lg:flex-row">
         {/* Left info card */}
-        <div className="relative flex min-h-[420px] w-full flex-col overflow-hidden rounded-[16px] bg-(--color-primary) p-6 sm:min-h-[480px] sm:p-8 lg:w-1/3 lg:min-h-[540px] lg:col-span-3">
+        <div className="relative flex min-h-[420px] w-full flex-col overflow-hidden rounded-[16px] bg-(--color-primary) p-6 sm:min-h-[480px] sm:p-8 lg:w-1/3 lg:min-h-[540px] lg:col-span-3 bg-(--color-primary)">
           {/* card backdrop graphics */}
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/15 blur-[80px]" />
@@ -60,7 +60,7 @@ export default function GrowthSolutions() {
             stage of your journey.
           </p>
           <Link
-            to="/services"
+            to="#homeservices"
             className="font-inter-reg mt-4 flex items-center gap-2 text-[1rem] text-white/90 hover:underline sm:text-[1.125rem] lg:text-[1.25rem] group"
           > 
             View All Services <ArrowRight size={16} className="mt-1 group-hover:-rotate-45 transition-transform duration-300" />

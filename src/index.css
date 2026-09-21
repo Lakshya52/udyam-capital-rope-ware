@@ -5,6 +5,8 @@
 /* inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,200;1,14..32,200&display=swap');
+/* manrope */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 /* tailwindcss */
 @import "tailwindcss";
 
@@ -34,7 +36,7 @@
   font-style: normal;
 }
 
-/* Inter regular 400 */
+/* Inter regular 400
 .font-inter-reg{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -42,13 +44,28 @@
   font-style: normal;
 }
 
-/* Inter ExtraLight 200 */
+/* Inter ExtraLight 200
 .font-inter-light{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
+} */
+/* Inter regular 400 */
+.font-inter-reg{
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
+
+/* Inter ExtraLight 200 */
+.font-inter-light{
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} 
 
 /* ============================ common colors ================================ */
 

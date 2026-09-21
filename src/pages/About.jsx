@@ -331,7 +331,7 @@ export default function About() {
 					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
 						Advisory across your whole business
 					</h2>
-					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-(color-mix(in_oklab,var(--color-white)_80%,transparent))">
+					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-(--color-white)">
 						Every business is unique — we craft custom solutions
 						that drive long-term success, improve efficiency,
 						mitigate risk, and maximize value.
