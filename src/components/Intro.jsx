@@ -67,7 +67,7 @@ const Intro = () => {
 	}, []);
 
 	return (
-		<div ref={rootRef} className="section flex flex-col gap-10 w-full max-w-[1166px] mx-auto">
+		<div ref={rootRef} className="section mx-auto flex w-full max-w-[1166px] flex-col gap-6 px-5 sm:gap-8 sm:px-8 lg:gap-10 xl:px-0">
 			{PARAS.map((segs, i) => {
 				const words = [];
 				segs.forEach((seg) => {
@@ -77,7 +77,7 @@ const Intro = () => {
 						.forEach((w) => words.push({ w, s: seg.s }));
 				});
 				return (
-					<p key={i} className="intro-para font-inter-reg fs-body text-justify">
+					<p key={i} className="intro-para font-inter-reg text-left text-[1rem] leading-relaxed sm:text-justify sm:text-[1.125rem] lg:text-[1.25rem]">
 						{words.map((obj, j) => (
 							<span key={j} className="intro-word">
 								{obj.w}{" "}

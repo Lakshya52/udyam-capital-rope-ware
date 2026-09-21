@@ -9,10 +9,10 @@ const exploreLinks = [
 ];
 
 function SocialIcons() {
-	const iconClass =
-		"grid place-items-center rounded-full p-2 text-(--color-dark-blue) transition-all duration-300 hover:-translate-y-1 hover:bg-[#0C1F33]/10 hover:text-[#155bd4]";
+		const iconClass =
+		"grid place-items-center rounded-full p-2 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:text-white";
 	return (
-		<div className="mt-5 flex items-center gap-4">
+		<div className="flex items-center gap-4">
 			<a
 				href="https://x.com"
 				target="_blank"
@@ -93,28 +93,33 @@ function SocialIcons() {
 
 export default function Footer() {
 	return (
-		<footer className="relative overflow-hidden bg-[#9cc7ff] h-[70dvh] flex flex-col justify-end">
-			{/* backdrop graphics */}
+		<footer className="relative flex h-fit w-full flex-col justify-end overflow-hidden bg-(--color-primary) pt-12">
+			{/* Cloth-waves backdrop image */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-				<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0C1F33]/30 to-transparent" />
-				<div className="absolute bottom-[-140px] left-1/2 h-[320px] w-[720px] -translate-x-1/2 rounded-[100%] bg-white/40 blur-[100px]" />
+				<img
+					src="/bgClotheWaves.png"
+					alt=""
+					loading="lazy"
+					decoding="async"
+					className="h-full w-full scale-105 object-cover opacity-80 blur-md"
+				/>
 			</div>
-			<div className="flex w-full max-w-[1166px] mx-auto gap-[18px]">
-				<div className="w-3/5">
-					<div className="flex gap-10">
-						<Link
+			<div className="relative z-10 mx-auto flex w-full max-w-[1166px] flex-col gap-10 px-5 md:px-8 lg:flex-row lg:gap-[18px] xl:px-0">
+				<div className="w-full lg:w-3/5">
+					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-10">
+						{/* <Link
 							to="/"
 							className="inline-flex shrink-0 items-center rounded-[12px]"
 						>
 							<img
-								src="/Logo.png"
+								src="/LogoWhite.png"
 								alt="Udyam Capital"
-								className="h-[60px] w-auto object-contain"
+								className="h-10 w-auto object-contain sm:h-12 lg:h-[60px]"
 							/>
-						</Link>
+						</Link> */}
 						<SocialIcons />
 					</div>
-					<p className="mt-5 font-inter-light fs-body-sm leading-relaxed text-(--color-dark-blue)">
+					<p className="mt-5 max-w-xl font-inter-reg text-[0.95rem] leading-relaxed text-white sm:text-[1rem]">
 						Trusted strategic partner, committed to empowering
 						businesses with tailored financial, operational, and
 						technological solutions. We combine deep expertise with
@@ -123,9 +128,9 @@ export default function Footer() {
 					</p>
 				</div>
 
-				<div className="flex items-start gap-18 w-2/5 ">
-					<div className="1/2 ml-auto">
-						<h4 className="font-heading fs-body-sm text-(--color-dark-blue)">
+				<div className="grid w-full grid-cols-2 items-start gap-0 sm:gap-10 lg:flex lg:w-2/5 lg:gap-10">
+					<div className="w-full min-w-0 lg:ml-auto lg:w-[45%]">
+						<h4 className="font-heading fs-body-sm text-white">
 							Explore
 						</h4>
 						<ul className="mt-4 space-y-2.5">
@@ -133,7 +138,7 @@ export default function Footer() {
 								<li key={link.label}>
 									<Link
 										to={link.to}
-										className="inline-block font-inter-light fs-body-sm text-(--color-dark-blue) transition-all duration-300 hover:translate-x-1 hover:text-[#155bd4]"
+										className="inline-block font-inter-reg fs-body-sm text-white transition-all duration-300 hover:translate-x-1 hover:text-white"
 									>
 										{link.label}
 									</Link>
@@ -142,48 +147,73 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					<div className="w-1/2">
-						<h4 className="font-heading fs-body-sm text-(--color-dark-blue)">
+					<div className="w-full min-w-0 lg:w-[55%]">
+						<h4 className="font-heading fs-body-sm text-white">
 							Contact
 						</h4>
-						<div className="mt-4 space-y-2.5 font-inter-light fs-body-sm text-(--color-dark-blue)">
+						<div className="mt-4 min-w-0 space-y-2.5 break-words font-inter-reg text-[0.85rem] leading-snug text-white sm:text-[1rem]">
 							<a
 								href="mailto:we.care@udyamcapital.com"
-								className="block w-fit transition-all duration-300 hover:text-[#155bd4] hover:underline hover:underline-offset-4"
+								className="block w-fit max-w-full whitespace-nowrap transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4 lg:text-[0.85rem] xl:text-[1rem]"
 							>
 								we.care@udyamcapital.com
 							</a>
 							<a
 								href="mailto:info@udyamcapital.com"
-								className="block w-fit transition-all duration-300 hover:text-[#155bd4] hover:underline hover:underline-offset-4"
+								className="block w-fit max-w-full whitespace-nowrap transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4 lg:text-[0.85rem] xl:text-[1rem]"
 							>
 								info@udyamcapital.com
 							</a>
 							{/* <p className="pt-1 font-inter-reg text-[#144fd7]">Phone</p> */}
 							<a
 								href="tel: 01204445816"
-								className="block w-fit transition-all duration-300 hover:text-[#155bd4] hover:underline hover:underline-offset-4"
+								className="block w-fit max-w-full transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4"
 							>
 								Landline : 0120 444 5816
 							</a>
 							<a
 								href="tel:+911234567890"
-								className="block w-fit transition-all duration-300 hover:text-[#155bd4] hover:underline hover:underline-offset-4"
+								className="block w-fit max-w-full transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4"
 							>
 								Mobile : +91 82875 98661
 							</a>
 						</div>
-					</div>  
+					</div>
 				</div>
 			</div>
 
-			{/* Giant watermark, cropped at the bottom */}
-			<div className="mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+			{/* Giant watermark — always spans the full viewport */}
+			<div className="pointer-events-none relative z-10 left-1/2 w-screen -translate-x-1/2 overflow-hidden">
 				<div
 					aria-hidden="true"
-					className="translate-y-[18%] select-none whitespace-nowrap font-heading text-[13dvw] text-center leading-[1] tracking-tight text-(--color-dark-blue)/15 "
+					className="select-none whitespace-nowrap text-center font-heading text-[14vw] leading-[0.8] tracking-[-0.04em] text-white/10 translate-y-[18%]
+					"
 				>
 					UdyamCapital
+				</div>
+			</div>
+
+			{/* legal bar */}
+			<div className="relative z-10 border-t border-white/15">
+				<div className="mx-auto flex w-full max-w-[1166px] flex-col items-start justify-between gap-2 px-5 py-5 sm:flex-row sm:items-center md:px-8 xl:px-0">
+					<p className="font-inter-reg text-[0.8rem] text-white/70">
+						© {new Date().getFullYear()} Udyam Capital. All rights
+						reserved.
+					</p>
+					<div className="flex items-center gap-5">
+						<Link
+							to="/privacy-policy"
+							className="font-inter-reg text-[0.8rem] text-white/70 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
+						>
+							Privacy Policy
+						</Link>
+						<Link
+							to="/terms-of-use"
+							className="font-inter-reg text-[0.8rem] text-white/70 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
+						>
+							Terms of Use
+						</Link>
+					</div>
 				</div>
 			</div>
 		</footer>

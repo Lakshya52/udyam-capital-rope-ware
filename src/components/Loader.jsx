@@ -157,7 +157,7 @@ export default function Loader({ onExitStart, onExited }) {
 	return (
 		<div
 			ref={overlayRef}
-			className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#CFE0F6] via-[#E7EFFB] to-white"
+			className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-linear-to-b from-[#CFE0F6] via-[#E7EFFB] to-white"
 			aria-hidden="true"
 		>
 			<div ref={contentRef} className="absolute bottom-8 left-6 md:bottom-12 md:left-12">

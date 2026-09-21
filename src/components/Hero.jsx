@@ -33,6 +33,7 @@ export default function Hero() {
 					animation: tl,
 				});
 			});
+			// (shape ambient animation removed — shapes stay static)
 		}, rootRef);
 		return () => {
 			if (off) off();
@@ -69,14 +70,15 @@ export default function Hero() {
 					}}
 				/>
 				{/* two faint diagonal lines near the top */}
-				<div className="absolute top-[-60px] left-[28%] h-[520px] w-px rotate-[18deg] bg-gradient-to-b from-transparent via-[#155bd4]/15 to-transparent" />
-				<div className="absolute top-[-60px] left-[33%] h-[520px] w-px rotate-[18deg] bg-gradient-to-b from-transparent via-[#155bd4]/10 to-transparent" />
+				{/* <div className="absolute top-[-60px] left-[28%] h-[520px] w-px rotate-[18deg] bg-linear-to-b from-transparent via-[#155bd4]/15 to-transparent" />
+				<div className="absolute top-[-60px] left-[33%] h-[520px] w-px rotate-[18deg] bg-linear-to-b from-transparent via-[#155bd4]/10 to-transparent" /> */}
 			</div>
 
 			{/* Text block — capped at 1166px, padded to clear the overlaid navbar */}
-			<div className="relative z-10 flex items-end justify-between max-w-[1166px] mx-auto pt-[160px] md:pt-[180px] pb-10 px-5 md:px-8 xl:px-0">
-				<div className="flex flex-col items-start justify-center">
-					<h1 className="font-heading fs-heading text-[#101828]">
+			{/* Mobile: stacked (texts → shapes & buttons). Desktop: side-by-side */}
+			<div className="relative z-10 mx-auto flex max-w-[1166px] flex-col gap-8 px-5 pt-[120px] pb-8 sm:pt-[140px] md:flex-row md:items-end md:justify-between md:gap-6 md:px-8 md:pt-[180px] md:pb-10 xl:px-0">
+				<div className="flex w-full flex-col items-start justify-center md:w-auto md:min-w-0 md:flex-1">
+					<h1 className="font-heading text-[#101828] text-[2.05rem] leading-[1.12] sm:text-[2.75rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-1">
 							<span className="hero-line block">Strategic Partner in your</span>
 						</span>
@@ -86,29 +88,29 @@ export default function Hero() {
 							</span>
 						</span>
 					</h1>
-					<p className="hero-fade font-inter-reg fs-body max-w-3xl mt-5">
+					<p className="hero-fade font-inter-reg mt-4 max-w-3xl text-[1rem] leading-relaxed text-[#344054] sm:mt-5 sm:text-[1.125rem] lg:text-[1.25rem]">
 						We are focused on solving Business Challenges with our
 						Expertise, Groundbreaking Solutions and a Collaborative
 						Mindset
 					</p>
 				</div>
 
-				{/* shapes — small dusty-blue, with soft glow behind */}
-				<div className="hero-fade flex flex-col items-end">
+				{/* shapes & buttons — stacked under text on mobile, right column on desktop */}
+				<div className="hero-fade flex w-full flex-col items-start gap-5 md:w-auto md:shrink-0 md:items-end md:gap-0">
 					<div
-						className="relative w-fit pointer-events-none hidden sm:flex items-center justify-center mt-4"
+						className="pointer-events-none relative mt-0 hidden w-fit origin-left items-center justify-center md:mt-4 md:flex"
 						aria-hidden="true"
 					>
 						<div className="absolute h-32 w-48 rounded-full bg-white/40 blur-2xl" />
-						<div className="relative h-10 w-10 rotate-45 bg-white/60 mr-2"></div>
-						<div className="relative h-14 w-14 rounded-full bg-white/60 flex items-center justify-center">
+						<div className="relative mr-2 h-10 w-10 rotate-45 bg-white/60"></div>
+						<div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white/60">
 							<div className="h-5 w-5 rounded-full bg-[#EAF1FB]"></div>
 						</div>
 						<div className="relative h-14 w-14 bg-white/60"></div>
 					</div>
 					<Link
 						to="/contact"
-						className="mt-6 inline-block rounded-lg w-fit bg-white px-7 py-2.5 text-[13.5px] font-inter-reg fs-body text-[#101828] shadow-lg shadow-[#155bd4]/15 transition-colors hover:bg-blue-50"
+						className="inline-block w-fit rounded-lg bg-white px-7 py-2.5 font-inter-reg text-[13.5px] text-[#101828] shadow-lg shadow-[#155bd4]/15 transition-colors hover:bg-blue-50 md:mt-6"
 					>
 						Schedule a Consultation
 					</Link>
@@ -116,11 +118,12 @@ export default function Hero() {
 			</div>
 
 			{/* Ropes — keyed canvas over the SAME continuous backdrop, so no edge */}
-			<div className="relative z-10 w-full overflow-hidden bg-transparent md:h-[44vh] lg:h-[48vh]">
+			{/* Mobile: stacked below buttons with its own height. Desktop: taller band */}
+			<div className="relative z-10 h-[240px] w-full overflow-hidden bg-transparent sm:h-[340px] md:h-[44vh] lg:h-[48vh]">
 				<HeroVideo />
 				{/* gentle melt into the page white at the very bottom */}
 				<div
-					className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-b from-transparent to-white"
+					className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-linear-to-b from-transparent to-white"
 					aria-hidden="true"
 				/>
 			</div>

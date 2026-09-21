@@ -11,7 +11,7 @@ export default function Home() {
 		<main>
 			<Hero />
 			<GrowthSolutions />
-			<Intro />
+			{/* <Intro /> */}
 			<ServicesGrid />
 			<WhyUs />
 			<StatsBelt />

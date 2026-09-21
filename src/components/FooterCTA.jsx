@@ -29,63 +29,46 @@ function Shape({ type }) {
   return <Square />
 }
 
-const COLS = 15
-const ROWS = 8
-const TYPES = ['diamond', 'donut', 'square']
+// Continuous shape border — full-bleed mosaic strips (no gaps), sized by grid.
+const BORDER = ['diamond', 'donut', 'square']
 
-// deterministic pseudo-random fill so the grid looks random but is stable across renders.
-// Rule: side neighbours NEVER match; diagonal matches are minimized (zero is
-// mathematically impossible with 3 shapes, so the best of many attempts wins).
-function mulberry32(a) {
-  return function () {
-    a |= 0
-    a = (a + 0x6d2b79f5) | 0
-    let t = Math.imul(a ^ (a >>> 15), 1 | a)
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-  }
+function BorderStrip({ className = "" }) {
+  const cell = "min-h-0 min-w-0 aspect-square opacity-40"
+  return (
+    <div aria-hidden="true" className={className}>
+      {/* mobile: 8 across */}
+      <div className="grid grid-cols-8 gap-0 lg:hidden">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className={cell}>
+            <Shape type={BORDER[i % BORDER.length]} />
+          </div>
+        ))}
+      </div>
+      {/* desktop: 16 across */}
+      <div className="hidden grid-cols-16 gap-0 lg:grid">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={i} className={cell}>
+            <Shape type={BORDER[i % BORDER.length]} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
-function buildCells(attempts = 60) {
-  let best = null
-  let bestScore = Infinity
-  for (let a = 0; a < attempts; a++) {
-    const rand = mulberry32(20260918 + a * 1013904223)
-    const grid = new Array(COLS * ROWS)
-    let score = 0
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        const left = c > 0 ? grid[r * COLS + c - 1] : null
-        const top = r > 0 ? grid[(r - 1) * COLS + c] : null
-        const topLeft = r > 0 && c > 0 ? grid[(r - 1) * COLS + c - 1] : null
-        const topRight = r > 0 && c < COLS - 1 ? grid[(r - 1) * COLS + c + 1] : null
-        // side neighbours must differ — always satisfiable with 3 shapes
-        const options = TYPES.filter((t) => t !== left && t !== top)
-        // prefer the option that also avoids diagonal matches (random tiebreak)
-        const order = [...options].sort(() => rand() - 0.5)
-        let pick = order[0]
-        let pickScore = Infinity
-        for (const t of order) {
-          const s = (t === topLeft ? 1 : 0) + (t === topRight ? 1 : 0)
-          if (s < pickScore) {
-            pickScore = s
-            pick = t
-          }
-        }
-        grid[r * COLS + c] = pick
-        score += pickScore
-      }
-    }
-    if (score < bestScore) {
-      bestScore = score
-      best = grid
-    }
-    if (bestScore === 0) break
-  }
-  return best
+function BorderRail({ length = 12, className = "" }) {
+  return (
+    <div aria-hidden="true" className={`hidden w-16 shrink-0 items-center overflow-hidden lg:flex ${className}`}>
+      <div className="grid w-full grid-cols-1 gap-0">
+        {Array.from({ length }).map((_, i) => (
+          <div key={i} className="aspect-square w-full opacity-40">
+            <Shape type={BORDER[(i + 1) % BORDER.length]} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
-
-const CELLS = buildCells()
 
 export default function FooterCTA() {
   const rootRef = useRef(null)
@@ -94,56 +77,48 @@ export default function FooterCTA() {
   return (
     <section ref={rootRef} className=" section mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
       <div className="relative">
-        {/* backdrop graphics — halo + light streaks */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -inset-10 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(21,91,212,0.28),transparent_70%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[8%] top-[-40px] h-[130%] w-px rotate-[16deg] bg-gradient-to-b from-transparent via-[#155bd4]/25 to-transparent"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-[10%] top-[-40px] h-[130%] w-px rotate-[16deg] bg-gradient-to-b from-transparent via-[#5495D8]/30 to-transparent"
-        />
-        {/* z-1 : 15 x 8 grid of random shapes */}
-        <div
-          aria-hidden="true"
-          className="grid aspect-[15/8] grid-cols-[repeat(15,minmax(0,1fr))] grid-rows-[repeat(8,minmax(0,1fr))] z-[1] opacity-50"
-        >
-          {CELLS.map((type, i) => (
-            <div key={i} className="min-h-0 min-w-0">
-              <Shape type={type} />
-            </div>
-          ))}
-        </div>
-
-        {/* z-2 : content box centered, leaving exactly one grid box visible on every outer edge */}
-        <div className="absolute inset-0 z-[2] p-[6.6667%]">
-          <div className="flex h-full w-full items-center justify-center rounded-[16px] bg-(--color-primary) px-6 py-8 text-center">
-            <div className="w-full max-w-[720px] flex flex-col gap-4">
-              <h2 className=" text-white font-heading fs-heading">
+        {/* shape border — top strip */}
+        <BorderStrip  />
+        <div className="flex items-stretch gap-4">
+          {/* left rail (desktop) */}
+          <BorderRail length={6}/>
+          {/* content card */}
+          <div className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-[16px] bg-white px-4 py-6 text-center my-auto sm:px-6 sm:py-8">
+              {/* soft sheen for depth */}
+              {/* <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-20 -top-32 h-72 w-72 rounded-full bg-white/15 blur-[80px]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-28 -right-16 h-64 w-64 rounded-full bg-[#5495D8]/30 blur-[80px]"
+              /> */}
+              <div className="relative z-10 w-full max-w-[720px] flex flex-col gap-3 sm:gap-4">
+              <h2 className=" font-heading text-[2rem] leading-[1.12] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
                 <span className="block overflow-hidden pb-1">
                   <span className="rv-line block">Ready To Start Your</span>
                 </span>
                 <span className="block overflow-hidden pb-2">
-                  <span className="rv-line block">Growth Journey With Us ?</span>
+                  <span className="rv-line block text-(--color-primary)">Growth Journey With Us ?</span>
                 </span>
               </h2>
-              <p className="rv-fade font-inter-reg fs-body text-white ">
+              <p className="rv-fade font-inter-reg text-[1rem] leading-relaxed text-(--color-dark-blue) sm:text-[1.125rem] lg:text-[1.25rem]">
                 Take the first step towards structured growth with the right
                 financial strategy and expert guidance.
               </p>
               <Link
                 to="/contact"
-                className="rv-fade mt-6 inline-block rounded-lg w-fit mx-auto bg-white px-7 py-2.5 text-[13.5px] font-inter-reg fs-body transition-colors hover:bg-blue-50"
+                className="rv-fade mt-4 sm:mt-6 inline-block rounded-lg w-fit text-white mx-auto bg-[var(--color-primary)] px-7 py-2.5 text-[13.5px] font-inter-reg transition-colors hover:bg-[#0b4da2]"
               >
                 Schedule a Consultation
               </Link>
             </div>
           </div>
+          {/* right rail (desktop) */}
+          <BorderRail length={6}/>
         </div>
+        {/* shape border — bottom strip */}
+        <BorderStrip  />
       </div>
     </section>
   )

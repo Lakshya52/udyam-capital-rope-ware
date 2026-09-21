@@ -75,6 +75,69 @@
 /* common partsh */
 
 .section { 
-  padding-top: 10dvh;
-  padding-bottom: 10dvh;
+  padding-top: 15dvh;
+  padding-bottom: 15dvh;
+}
+
+/* Stacked-deck service cards on mobile/small (< lg): each card sticks below
+   the previous one so incoming cards slide over while scrolling.
+   Desktop (lg+) keeps the static mosaic grid. */
+@media (max-width: 1023.5px) {
+  .services-stack-card {
+    position: sticky;
+    top: var(--stack-top, 88px);
+    will-change: transform;
+  }
+  /* Image cards: all text white, description always expanded */
+  .services-stack-card .card-title {
+    color: var(--color-white);
+  }
+  .services-stack-card .card-desc-wrap {
+    grid-template-rows: 1fr;
+  }
+  .services-stack-card .card-desc {
+    opacity: 1;
+    margin-top: 0.5rem;
+    color: color-mix(in oklab, var(--color-white) 78%, transparent);
+  }
+}
+/* Desktop scroll reveal: exact mirror of the card hover state, applied via
+   the ScrollTrigger-driven .is-revealed class as each card crosses the
+   viewport. Existing CSS transitions animate the change. */
+@media (min-width: 1024px) {
+  .services-stack-card.is-revealed {
+    background-color: var(--color-primary);
+  }
+  .services-stack-card.is-revealed .reveal-img {
+    opacity: 1;
+    filter: none;
+  }
+  .services-stack-card.is-revealed .reveal-img img {
+    scale: 1.05;
+  }
+  .services-stack-card.is-revealed .card-title {
+    color: var(--color-white);
+  }
+  /* description stays visible — only its color adapts to the image */
+  .services-stack-card.is-revealed .card-desc {
+    opacity: 1;
+    color: color-mix(in oklab, var(--color-white) 80%, transparent);
+  }
+  .services-stack-card.is-revealed .reveal-arrow {
+    rotate: -45deg;
+  }
+}
+/* Respect users who prefer reduced motion — navbar still toggles, just without animation */
+@media (prefers-reduced-motion: reduce) {
+  header nav + div,
+  header nav + div *,
+  header button span,
+  .mobile-nav-backdrop {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .services-stack-card {
+    position: static;
+  }
 }
