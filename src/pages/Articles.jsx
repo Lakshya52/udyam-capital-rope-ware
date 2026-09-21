@@ -62,14 +62,14 @@ export default function Articles() {
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				{/* heading */}
 				<div className="max-w-2xl">
-					<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Articles
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Insights for{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Growing Businesses
 								</span>
 							</span>
@@ -82,14 +82,14 @@ export default function Articles() {
 					<label className="group relative block">
 						<Search
 							size={16}
-							className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors duration-300 group-focus-within:text-[var(--color-primary)]"
+							className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors duration-300 group-focus-within:text-(--color-primary)"
 						/>
 						<input
 							type="search"
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							placeholder="Search articles…"
-							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-[var(--color-black)] placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20"
+							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-(--color-black) placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						/>
 					</label>
 					<label className="relative block">
@@ -97,7 +97,7 @@ export default function Articles() {
 							value={topic}
 							onChange={(e) => setTopic(e.target.value)}
 							aria-label="Filter by topic"
-							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-[var(--color-black)] outline-none transition-all duration-300 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20"
+							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						>
 							{topics.map((t) => (
 								<option key={t} value={t}>
@@ -125,7 +125,7 @@ export default function Articles() {
 								setQuery("");
 								setTopic("All topics");
 							}}
-							className="mt-3 font-inter-reg text-[0.95rem] text-[var(--color-primary)] hover:underline hover:underline-offset-4"
+							className="mt-3 font-inter-reg text-[0.95rem] text-(--color-primary) hover:underline hover:underline-offset-4"
 						>
 							Clear search and filters
 						</button>
@@ -138,12 +138,12 @@ export default function Articles() {
 								to={`/articles/${a.slug}`}
 								className="rv-fade group grid grid-cols-[auto_1fr_auto] items-baseline gap-4 border-b border-black/10 py-6 transition-colors duration-300 hover:bg-[#EAF1FC]/50 sm:gap-8 sm:py-8"
 							>
-								<span className="font-heading text-[0.95rem] text-neutral-400 transition-colors duration-300 group-hover:text-[var(--color-primary)]">
+								<span className="font-heading text-[0.95rem] text-neutral-400 transition-colors duration-300 group-hover:text-(--color-primary)">
 									{String(i + 1).padStart(2, "0")}
 								</span>
 								<div>
 									<p className="font-inter-reg text-[0.8rem] tracking-wide text-neutral-500">
-										<span className="font-heading text-[var(--color-primary)]">
+										<span className="font-heading text-(--color-primary)">
 											{a.category}
 										</span>
 										{"  ·  "}
@@ -156,14 +156,14 @@ export default function Articles() {
 											{formatViews(getViews(a.slug))}
 										</span>
 									</p>
-									<h2 className="mt-2 font-heading text-[1.25rem] leading-snug text-[var(--color-black)] transition-colors duration-300 group-hover:text-[var(--color-primary)] sm:text-[1.6rem]">
+									<h2 className="mt-2 font-heading text-[1.25rem] leading-snug text-(--color-black) transition-colors duration-300 group-hover:text-(--color-primary) sm:text-[1.6rem]">
 										{a.title}
 									</h2>
 									<p className="mt-2 hidden max-w-2xl font-inter-reg text-[0.95rem] leading-relaxed text-neutral-500 sm:block">
 										{a.excerpt}
 									</p>
 								</div>
-								<span className="grid h-11 w-11 shrink-0 place-items-center self-center rounded-full border border-black/15 text-[var(--color-black)] transition-all duration-300 group-hover:border-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white">
+								<span className="grid h-11 w-11 shrink-0 place-items-center self-center rounded-full border border-black/15 text-(--color-black) transition-all duration-300 group-hover:border-(--color-primary) group-hover:bg-(--color-primary) group-hover:text-white">
 									<ArrowUpRight size={16} />
 								</span>
 							</Link>

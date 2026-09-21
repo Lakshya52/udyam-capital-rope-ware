@@ -19,14 +19,14 @@ export default function Error() {
 			</div>
 
 			<section className="relative z-10 mx-auto flex w-full max-w-[1166px] flex-col items-center px-5 pb-[10dvh] pt-32 text-center md:px-8 lg:pt-48 xl:px-0">
-				<p className="rv-fade font-heading text-[5rem] leading-none text-[color-mix(in_oklab,var(--color-primary)_20%,transparent)] sm:text-[8rem]">
+				<p className="rv-fade font-heading text-[5rem] leading-none text-(color-mix(in_oklab,var(--color-primary)_20%,transparent)) sm:text-[8rem]">
 					404
 				</p>
-				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem]">
+				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 					<span className="block overflow-hidden pb-2">
 						<span className="rv-line block">
 							This page went{" "}
-							<span className="text-[var(--color-primary)]">
+							<span className="text-(--color-primary)">
 								off the books
 							</span>
 						</span>
@@ -39,7 +39,7 @@ export default function Error() {
 				<div className="rv-fade mt-8 flex flex-wrap items-center justify-center gap-3">
 					<Link
 						to="/"
-						className="group inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-7 py-3 font-inter-reg text-[0.95rem] text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 active:scale-[0.98]"
+						className="group inline-flex items-center gap-2 rounded-lg bg-(--color-primary) px-7 py-3 font-inter-reg text-[0.95rem] text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 active:scale-[0.98]"
 					>
 						<ArrowLeft
 							size={16}
@@ -49,7 +49,7 @@ export default function Error() {
 					</Link>
 					<Link
 						to="/contact"
-						className="group inline-flex items-center gap-2 rounded-lg border border-black/10 px-7 py-3 font-inter-reg text-[0.95rem] text-[var(--color-black)] transition-all duration-300 hover:gap-3 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] active:scale-[0.98]"
+						className="group inline-flex items-center gap-2 rounded-lg border border-black/10 px-7 py-3 font-inter-reg text-[0.95rem] text-(--color-black) transition-all duration-300 hover:gap-3 hover:border-(--color-primary) hover:text-(--color-primary) active:scale-[0.98]"
 					>
 						Talk to us
 						<ArrowRight

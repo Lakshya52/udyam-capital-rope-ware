@@ -74,7 +74,7 @@ const team = [
 		name: "Rahul",
 		role: "Accounts",
 		photo: "",
-		linkedin: "",
+		linkedin: "https://www.linkedin.com/",
 		bio: "Supports day-to-day accounting and client documentation.",
 	},
 ];
@@ -106,14 +106,14 @@ export default function About() {
 			{/* hero */}
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<div className="max-w-3xl">
-					<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						About Us
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								We Are{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Udyam Capital
 								</span>
 							</span>
@@ -160,21 +160,22 @@ export default function About() {
 
 				{/* vision + mission */}
 				<div id="vision-mission" className="mt-10 grid scroll-mt-24 grid-cols-1 gap-[18px] lg:mt-14 lg:grid-cols-2 lg:scroll-mt-36">
-					<div className="rv-fade rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 sm:p-8">
-						<p className="font-heading text-[2rem] leading-none text-[color-mix(in_oklab,var(--color-primary)_60%,transparent)]">
+					
+					<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-8 text-(--color-white)">
+						<p className="font-heading text-[2rem] leading-none ">
 							Vision
 						</p>
-						<p className="mt-4 font-inter-reg fs-body text-neutral-600">
+						<p className="mt-4 font-inter-reg fs-body text-(--color-white)">
 							To be the most trusted and reliable partner,
 							empowering businesses to grow and create enduring
 							value.
 						</p>
 					</div>
-					<div className="rv-fade rounded-[16px] bg-[var(--color-primary)] p-6 sm:p-8">
-						<p className="font-heading text-[2rem] leading-none text-[color-mix(in_oklab,var(--color-white)_60%,transparent)]">
+					<div className="rv-fade rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 sm:p-8">
+						<p className="font-heading text-[2rem] leading-none text-(color-mix(in_oklab,var(--color-primary)_60%,transparent))">
 							Mission
 						</p>
-						<p className="mt-4 font-inter-reg fs-body text-[color-mix(in_oklab,var(--color-white)_85%,transparent)]">
+						<p className="mt-4 font-inter-reg fs-body ">
 							To enable businesses to thrive and stay competitive
 							by delivering Innovative, Customized Solutions that
 							foster Transformation and Growth.
@@ -187,7 +188,7 @@ export default function About() {
 			<section id="what-sets-us-apart" className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 pb-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
 				<div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
 					<div>
-						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-primary)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-primary) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 							<span className="block overflow-hidden pb-2">
 								<span className="rv-line block">
 									What Set's Us Apart
@@ -217,7 +218,7 @@ export default function About() {
 									key={item.title}
 									className="rv-fade font-inter-reg fs-body leading-relaxed text-neutral-700"
 								>
-									<span className="font-heading text-[var(--color-black)]">
+									<span className="font-heading text-(--color-black)">
 										{i + 1}. {item.title}
 									</span>{" "}
 									{item.body}
@@ -246,11 +247,11 @@ export default function About() {
 			{/* team */}
 			<section id="meet-the-team" className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 py-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Meet The{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Team
 								</span>
 							</span>
@@ -287,8 +288,8 @@ export default function About() {
 										<div
 											className={`grid aspect-square w-full place-items-center font-heading text-[3rem] ${
 												i % 2 === 0
-													? "bg-[var(--color-primary)] text-[var(--color-white)]"
-													: "bg-[#9cc7ff] text-[var(--color-black)]"
+													? "bg-(--color-primary) text-(--color-white)"
+													: "bg-[#9cc7ff] text-(--color-black)"
 											}`}
 											aria-hidden="true"
 										>
@@ -301,17 +302,17 @@ export default function About() {
 											target="_blank"
 											rel="noreferrer"
 											aria-label={`${member.name} on LinkedIn`}
-											className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-white text-[var(--color-primary)] shadow-[0_12px_25px_rgba(12,31,51,0.25)] transition-all duration-300 hover:-translate-y-0.5"
+											className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-white text-(--color-primary) shadow-[0_12px_25px_rgba(12,31,51,0.25)] transition-all duration-300 hover:-translate-y-0.5"
 										>
 											<LinkedInIcon />
 										</a>
 									)}
 								</div>
 								<div className="p-5">
-									<h3 className="font-heading text-[1.1rem] text-[var(--color-black)]">
+									<h3 className="font-heading text-[1.1rem] text-(--color-black)">
 										{member.name}
 									</h3>
-									<p className="mt-0.5 font-inter-reg fs-body-sm text-[var(--color-primary)]">
+									<p className="mt-0.5 font-inter-reg fs-body-sm text-(--color-primary)">
 										{member.role}
 									</p>
 									<p className="mt-2 font-inter-reg text-[0.9rem] leading-relaxed text-neutral-500">
@@ -326,11 +327,11 @@ export default function About() {
 
 			{/* capabilities */}
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
-				<div className="rv-fade rounded-[16px] bg-[var(--color-primary)] p-6 sm:p-10">
-					<h2 className="font-heading text-[1.5rem] text-[var(--color-white)] sm:text-[2rem]">
+				<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
+					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
 						Advisory across your whole business
 					</h2>
-					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-[color-mix(in_oklab,var(--color-white)_80%,transparent)]">
+					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-(color-mix(in_oklab,var(--color-white)_80%,transparent))">
 						Every business is unique — we craft custom solutions
 						that drive long-term success, improve efficiency,
 						mitigate risk, and maximize value.
@@ -339,7 +340,7 @@ export default function About() {
 						{capabilities.map((c) => (
 							<span
 								key={c}
-								className="rounded-full border border-white/30 px-5 py-2.5 font-inter-reg fs-body text-[var(--color-white)] transition-colors duration-300 hover:bg-white hover:text-[var(--color-primary)]"
+								className="rounded-full border border-white/30 px-5 py-2.5 font-inter-reg fs-body text-(--color-white) transition-colors duration-300 hover:bg-white hover:text-(--color-primary)"
 							>
 								{c}
 							</span>

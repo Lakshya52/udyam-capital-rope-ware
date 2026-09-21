@@ -62,9 +62,9 @@ const steps = [
 ];
 
 const fieldInput =
-	"peer w-full rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-[var(--color-black)] outline-none transition-all duration-300 placeholder-transparent focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20";
+	"peer w-full rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-(--color-black) outline-none transition-all duration-300 placeholder-transparent focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20";
 const fieldLabel =
-	"pointer-events-none absolute left-3 top-0 -translate-y-1/2 bg-white px-1.5 font-inter-light text-[0.75rem] text-neutral-500 transition-all duration-300 peer-placeholder-shown:left-4 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-placeholder-shown:px-0 peer-placeholder-shown:text-[1.25rem] peer-placeholder-shown:text-neutral-400 peer-focus:left-3 peer-focus:top-0 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[0.75rem] peer-focus:text-[var(--color-primary)]";
+	"pointer-events-none absolute left-3 top-0 -translate-y-1/2 bg-white px-1.5 font-inter-light text-[0.75rem] text-neutral-500 transition-all duration-300 peer-placeholder-shown:left-4 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-placeholder-shown:px-0 peer-placeholder-shown:text-[1.25rem] peer-placeholder-shown:text-neutral-400 peer-focus:left-3 peer-focus:top-0 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[0.75rem] peer-focus:text-(--color-primary)";
 
 export default function Contact() {
 	const rootRef = useRef(null);
@@ -119,14 +119,14 @@ export default function Contact() {
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				{/* heading */}
 				<div className="">
-					<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Contact Us
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Let&apos;s Talk About{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Your Growth
 								</span>
 							</span>
@@ -166,7 +166,7 @@ export default function Contact() {
 														rel: "noreferrer",
 													}
 												: {})}
-											className="block w-fit font-inter-reg fs-body-sm text-[var(--color-primary)] transition-all duration-300 hover:translate-x-1 hover:underline hover:underline-offset-4"
+											className="block w-fit font-inter-reg fs-body-sm text-(--color-primary) transition-all duration-300 hover:translate-x-1 hover:underline hover:underline-offset-4"
 										>
 											{line}
 										</a>
@@ -178,7 +178,7 @@ export default function Contact() {
 
 					{/* form column */}
 					<div className="rv-fade rounded-[16px] border border-black/5 bg-white p-5 shadow-[0_24px_60px_rgba(12,31,51,0.12)] sm:p-8 lg:col-span-7">
-						{/* <h2 className="font-heading text-[1.25rem] text-[var(--color-black)] sm:text-[1.5rem]">
+						{/* <h2 className="font-heading text-[1.25rem] text-(--color-black) sm:text-[1.5rem]">
 							Request a Consultation
 						</h2> */}
 						{/* <p className="mt-1 font-inter-reg fs-body text-neutral-500">
@@ -228,7 +228,7 @@ export default function Contact() {
 								<select
 									value={form.service}
 									onChange={set("service")}
-									className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-[var(--color-black)] outline-none transition-all duration-300 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20"
+									className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 								>
 									<option value="" hidden></option>
 									{services.map((s) => (
@@ -238,7 +238,7 @@ export default function Contact() {
 									))}
 								</select>
 								<span
-									className={`font-inter-light pointer-events-none absolute -translate-y-1/2 font-inter-reg transition-all duration-300 group-focus-within:left-3 group-focus-within:top-0 group-focus-within:bg-white group-focus-within:px-1.5 group-focus-within:text-[0.75rem] group-focus-within:text-[var(--color-primary)] ${
+									className={`font-inter-light pointer-events-none absolute -translate-y-1/2 font-inter-reg transition-all duration-300 group-focus-within:left-3 group-focus-within:top-0 group-focus-within:bg-white group-focus-within:px-1.5 group-focus-within:text-[0.75rem] group-focus-within:text-(--color-primary) ${
 										form.service
 											? "left-3 top-0 bg-white px-1.5 text-[0.75rem] text-neutral-500"
 											: "left-4 top-1/2 bg-transparent text-[1.25rem] text-neutral-400"
@@ -272,7 +272,7 @@ export default function Contact() {
 								</p>
 								<button
 									type="submit"
-									className="group mt-6 sm:mt-2 sm:ml-auto inline-flex w-fit items-center gap-2 rounded-lg bg-[var(--color-primary)] px-7 py-3 font-inter-reg fs-body text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 hover:bg-[#0b4da2] active:scale-[0.98]"
+									className="group mt-6 sm:mt-2 sm:ml-auto inline-flex w-fit items-center gap-2 rounded-lg bg-(--color-primary) px-7 py-3 font-inter-reg fs-body text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 hover:bg-[#0b4da2] active:scale-[0.98]"
 								>
 									Submit
 									<ArrowRight
@@ -282,7 +282,7 @@ export default function Contact() {
 								</button>
 							</div>
 							{sent && (
-								<p className="flex items-center gap-2 font-inter-reg fs-body text-[var(--color-primary)]">
+								<p className="flex items-center gap-2 font-inter-reg fs-body text-(--color-primary)">
 									<CheckCircle2 size={16} />
 									Your mail app should have opened — just hit
 									send and we&apos;ll take it from there.
@@ -295,13 +295,13 @@ export default function Contact() {
 
 
 			{/* find us */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
 				{/* <div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="block">
 								Find Us{" "}
-								<span className="text-[var(--color-primary)]">Here</span>
+								<span className="text-(--color-primary)">Here</span>
 							</span>
 						</span>
 					</h2>
@@ -322,13 +322,13 @@ export default function Contact() {
 			</section>
 
 			{/* not sure where to start */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Not Sure{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Where to Start?
 								</span>
 							</span>
@@ -344,12 +344,12 @@ export default function Contact() {
 						<Link
 							key={s.id}
 							to={`/services/${s.id}`}
-							className="group flex items-center justify-between gap-4 rounded-[16px] border border-black/5 bg-[#EAF1FC] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--color-primary)] hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)]"
+							className="group flex items-center justify-between gap-4 rounded-[16px] border border-black/5 bg-[#EAF1FC] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)]"
 						>
-							<span className="font-heading text-[1.05rem] text-[var(--color-black)] transition-colors duration-300 group-hover:text-[var(--color-white)]">
+							<span className="font-heading text-[1.05rem] text-(--color-black) transition-colors duration-300 group-hover:text-(--color-white)">
 								{s.title}
 							</span>
-							<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--color-primary)] text-white transition-transform duration-300 group-hover:-rotate-45 group-hover:bg-white group-hover:text-[var(--color-primary)]">
+							<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-(--color-primary) text-white transition-transform duration-300 group-hover:-rotate-45 group-hover:bg-white group-hover:text-(--color-primary)">
 								<ArrowRight size={16} />
 							</span>
 						</Link>
@@ -358,13 +358,13 @@ export default function Contact() {
 			</section>
 
 			{/* what happens next */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="block">
 								What Happens{" "}
-								<span className="text-[var(--color-primary)]">
+								<span className="text-(--color-primary)">
 									Next
 								</span>
 							</span>
@@ -381,15 +381,15 @@ export default function Contact() {
 							key={step.n}
 							className={`rounded-[16px] p-6 sm:p-7 ${
 								step.dark
-									? "bg-[var(--color-primary)]"
+									? "bg-(--color-primary) text-(--color-white)"
 									: "border border-black/5 bg-[#9cc7ff]"
 							}`}
 						>
 							<p
 								className={`font-heading text-[2.5rem] leading-none ${
 									step.dark
-										? "text-[color-mix(in_oklab,var(--color-white)_35%,transparent)]"
-										: "text-[color-mix(in_oklab,var(--color-black)_25%,transparent)]"
+										? "text-(color-mix(in_oklab,var(--color-white)_35%,transparent))"
+										: "text-(color-mix(in_oklab,var(--color-black)_25%,transparent))"
 								}`}
 							>
 								{step.n}
@@ -397,8 +397,8 @@ export default function Contact() {
 							<h3
 								className={`mt-4 font-heading text-[1.25rem] ${
 									step.dark
-										? "text-[var(--color-white)]"
-										: "text-[var(--color-black)]"
+										? "text-(--color-white)"
+										: "text-(--color-black)"
 								}`}
 							>
 								{step.title}
@@ -406,8 +406,8 @@ export default function Contact() {
 							<p
 								className={`mt-2 font-inter-reg fs-body ${
 									step.dark
-										? "text-[color-mix(in_oklab,var(--color-white)_80%,transparent)]"
-										: "text-[color-mix(in_oklab,var(--color-black)_65%,transparent)]"
+										? "text-(color-mix(in_oklab,var(--color-white)_80%,transparent))"
+										: "text-(color-mix(in_oklab,var(--color-black)_65%,transparent))"
 								}`}
 							>
 								{step.desc}

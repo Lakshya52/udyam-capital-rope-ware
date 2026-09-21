@@ -97,7 +97,7 @@ export default function Hero() {
 
 				{/* shapes & buttons — stacked under text on mobile, right column on desktop */}
 				<div className="hero-fade flex w-full flex-col items-start gap-5 md:w-auto md:shrink-0 md:items-end md:gap-0">
-					<div
+					{/* <div
 						className="pointer-events-none relative mt-0 hidden w-fit origin-left items-center justify-center md:mt-4 md:flex"
 						aria-hidden="true"
 					>
@@ -107,7 +107,7 @@ export default function Hero() {
 							<div className="h-5 w-5 rounded-full bg-[#EAF1FB]"></div>
 						</div>
 						<div className="relative h-14 w-14 bg-white/60"></div>
-					</div>
+					</div> */}
 					<Link
 						to="/contact"
 						className="inline-block w-fit rounded-lg bg-white px-7 py-2.5 font-inter-reg text-[13.5px] text-[#101828] shadow-lg shadow-[#155bd4]/15 transition-colors hover:bg-blue-50 md:mt-6"

@@ -64,10 +64,10 @@ export default function TermsOfUse() {
 			</div>
 
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
-				<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+				<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 					Legal
 				</p>
-				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 					<span className="block overflow-hidden pb-2">
 						<span className="rv-line block">Terms of Use</span>
 					</span>
@@ -75,7 +75,7 @@ export default function TermsOfUse() {
 				<div className="mt-8 flex flex-col gap-8">
 					{sections.map((s) => (
 						<div key={s.h} className="rv-fade">
-							<h2 className="font-heading text-[1.25rem] text-[var(--color-black)]">
+							<h2 className="font-heading text-[1.25rem] text-(--color-black)">
 								{s.h}
 							</h2>
 							<p className="mt-2 font-inter-reg fs-body leading-relaxed text-neutral-600">

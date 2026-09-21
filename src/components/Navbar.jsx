@@ -44,7 +44,6 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [dropOpen, setDropOpen] = useState(null) // 'services' | 'about' | null (desktop)
-  const [footerVisible, setFooterVisible] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const isActive = (to) => location.pathname === to
@@ -56,20 +55,6 @@ export default function Navbar() {
         ? 'text-[#0b4da2] underline underline-offset-8 decoration-2'
         : 'text-neutral-800 hover:text-[#0b4da2]'
     }`
-
-  // slide the navbar away while the footer reveal is on screen
-  useEffect(() => {
-    const spacer = document.getElementById('footer-reveal-spacer')
-    if (!spacer) return
-    // hide the navbar only once the footer is substantially revealed —
-    // threshold 0 fired ~500px too early (first spacer pixel, footer invisible)
-    const io = new IntersectionObserver(
-      ([entry]) => setFooterVisible(entry.intersectionRatio >= 0.4),
-      { threshold: [0, 0.4, 1] }
-    )
-    io.observe(spacer)
-    return () => io.disconnect()
-  }, [])
 
   const pendingHash = useRef(null)
 
@@ -163,7 +148,7 @@ export default function Navbar() {
             : 'invisible pointer-events-none opacity-0 [transition:opacity_.5s_ease,visibility_0s_.5s]'
         }`}
       />
-      <header className={`fixed top-0 inset-x-0 z-50 px-5 sm:px-8 lg:px-25 pt-4 sm:pt-6 lg:pt-10 pb-4 sm:pb-5 lg:pb-7.5 transition-all duration-500 ${footerVisible ? '-translate-y-full' : 'translate-y-0'} ${open ? 'bg-transparent [backdrop-filter:none]' : 'bg-(--blue-light)/5 backdrop-blur-md'}`}>
+      <header className={`fixed top-0 inset-x-0 z-50 px-5 sm:px-8 lg:px-25 pt-4 sm:pt-6 lg:pt-10 pb-4 sm:pb-5 lg:pb-7.5 transition-all duration-500 ${open ? 'bg-transparent [backdrop-filter:none]' : 'bg-(--blue-light)/5 backdrop-blur-md'}`}>
       <nav className="mx-auto flex w-full max-w-[1166px] items-center justify-between">
         <Logo />
 

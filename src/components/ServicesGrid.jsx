@@ -65,7 +65,7 @@ function ArrowRight() {
 				<div className="absolute right-0 top-[-40px] z-50 h-[40px] w-[40px] rounded-br-[16px] bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
 			</div>
 			{/* Arrow overlapping the corner */}
-			<span className="reveal-arrow absolute bottom-[5px] right-[4px] z-20 grid h-10 w-10 place-items-center rounded-full bg-[var(--color-primary)] text-[var(--color-white)] transition-transform duration-300 lg:group-hover:-rotate-45">
+			<span className="reveal-arrow absolute bottom-[5px] right-[4px] z-20 grid h-10 w-10 place-items-center rounded-full bg-(--color-primary) text-(--color-white) transition-transform duration-300 lg:group-hover:-rotate-45">
 				<Arrow size={16} />
 			</span>
 		</>
@@ -88,7 +88,7 @@ function Card({
 	return (
 		<article
 			style={style}
-			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-[16px] rounded-tl-[16px] rounded-tr-[16px] transition-colors duration-500 lg:hover:bg-[var(--color-primary)] ${bg} ${className}`}
+			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-[16px] rounded-tl-[16px] rounded-tr-[16px] transition-colors duration-500 lg:hover:bg-(--color-primary) ${bg} ${className}`}
 		>
 			{/* Card image — always visible on mobile/small, hover/scroll-revealed on lg+ */}
 			<div className="reveal-img absolute inset-0 opacity-100 blur-none transition-all duration-500 lg:opacity-5 lg:blur-2xl lg:group-hover:opacity-100 lg:group-hover:blur-none">
@@ -106,18 +106,18 @@ function Card({
 						className="absolute inset-0 h-full w-full scale-100 object-cover transition-transform duration-700 lg:group-hover:scale-105"
 					/>
 				)}
-				<div className="absolute inset-0 bg-linear-to-t from-[color-mix(in_oklab,var(--color-black)_70%,transparent)] via-[color-mix(in_oklab,var(--color-black)_25%,transparent)] to-transparent" />
+				<div className="absolute inset-0 bg-linear-to-t from-(color-mix(in_oklab,var(--color-black)_70%,transparent)) via-(color-mix(in_oklab,var(--color-black)_25%,transparent)) to-transparent" />
 				{/* Slight black overlay so white text stays readable on mobile/small */}
 				<div className="absolute inset-0 bg-black/60 lg:hidden" aria-hidden="true" />
 			</div>
 
 			{/* Text — pinned 40px above the card bottom in every card */}
 			<div className="relative z-10 flex h-full flex-1 flex-col justify-end pb-[40px] pl-[14px] pr-16 pt-7">
-				{/* <span className={`${titleClass} mb-4 opacity-20 transition-colors duration-500 group-hover:text-[var(--color-white)] [&>svg]:h-10 [&>svg]:w-10`}>
+				{/* <span className={`${titleClass} mb-4 opacity-20 transition-colors duration-500 group-hover:text-(--color-white) [&>svg]:h-10 [&>svg]:w-10`}>
           {icon}
         </span> */}
 				<h3
-					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 ${titleClass} group-hover:text-[var(--color-white)]`}
+					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 ${titleClass} group-hover:text-(--color-white)`}
 				>
 					{title}
 				</h3>
@@ -159,21 +159,21 @@ export default function ServicesGrid() {
 			{/* Section heading */}
 			<div className="relative z-10 mb-10 flex flex-wrap items-end justify-between gap-4 px-5 md:mb-20 md:px-8 xl:px-0">
 				<div>
-					<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Our Services
 					</p>
-					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Financial Solutions For{" "}
-								<span className="text-[var(--color-primary)]">Every Stage</span>
+								<span className="text-(--color-primary)">Every Stage</span>
 							</span>
 						</span>
 					</h2>
 				</div>
 				{/* <Link
 					to="/services"
-					className="rv-fade font-inter-reg fs-body-sm text-[var(--color-black)] transition-colors hover:text-[var(--color-primary)] hover:underline hover:underline-offset-4"
+					className="rv-fade font-inter-reg fs-body-sm text-(--color-black) transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
 				>
 					View all services
 				</Link> */}

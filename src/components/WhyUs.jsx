@@ -38,11 +38,11 @@ function AccordionItem({ item, open, onToggle }) {
         aria-expanded={open}
         className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
       >
-        <span className="font-heading text-[1.05rem] text-[var(--color-white)] sm:text-[1.25rem]">
+        <span className="font-heading text-[1.05rem] text-(--color-white) sm:text-[1.25rem]">
           {item.title}
         </span>
         <span
-          className={`grid h-6 w-6 shrink-0 place-items-center text-[22px] font-light leading-none text-[var(--color-white)] transition-transform duration-300 ${
+          className={`grid h-6 w-6 shrink-0 place-items-center text-[22px] font-light leading-none text-(--color-white) transition-transform duration-300 ${
             open ? 'rotate-45' : ''
           }`}
         >
@@ -55,7 +55,7 @@ function AccordionItem({ item, open, onToggle }) {
         }`}
       >
         <div className="min-h-0 overflow-hidden">
-          <p className="px-5 pb-5 font-inter-reg text-[0.95rem] leading-relaxed text-[var(--color-white)] sm:px-6 sm:pb-6 sm:text-[1rem]">
+          <p className="px-5 pb-5 font-inter-reg text-[0.95rem] leading-relaxed text-(--color-white) sm:px-6 sm:pb-6 sm:text-[1rem]">
             {item.body}
           </p>
         </div>
@@ -113,9 +113,9 @@ export default function WhyUs() {
       </div>
       {/* Left copy */}
       <div className='relative z-10 flex flex-col' > 
-        <h2 className="font-heading text-[1.9rem] leading-[1.15] text-[var(--color-black)] sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+        <h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
           <span className="block overflow-hidden pb-2">
-					<p className="rv-fade font-inter-reg fs-body-sm text-[var(--color-primary)]">
+					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Why Us
 					</p>
             <span className="rv-line block">Where Business Ambition Meets the <span className='text-(--color-primary)' >Right Capital</span></span>

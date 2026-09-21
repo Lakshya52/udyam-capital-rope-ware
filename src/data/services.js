@@ -7,12 +7,12 @@ export const services = [
 		desc: "Funding structured around your business and growth plans.",
 		span: "lg:col-span-3",
 		image: "/services/business-loans.jpg",
-		bg: "bg-[var(--color-primary)]",
+		bg: "bg-(--color-primary)",
 		hoverBg:
-			"bg-linear-to-br from-[var(--color-primary)] via-[var(--color-dark-blue)] to-[var(--color-black)]",
-		titleClass: "text-[var(--color-white)]",
+			"bg-linear-to-br from-(--color-primary) via-(--color-dark-blue) to-(--color-black)",
+		titleClass: "text-(--color-white)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-white)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-white)_55%,transparent))",
 	},
 	{
 		id: "debt-restructuring",
@@ -21,12 +21,12 @@ export const services = [
 		span: "lg:col-span-3 lg:row-span-2",
 		tall: true,
 		image: "/services/debt-restructuring.jpg",
-		bg: "bg-[var(--color-primary)]",
+		bg: "bg-(--color-primary)",
 		hoverBg:
-			"bg-linear-to-br from-[var(--blue-sky)] via-[var(--color-primary)] to-[var(--color-primary)]",
-		titleClass: "text-[var(--color-white)]",
+			"bg-linear-to-br from-(--blue-sky) via-(--color-primary) to-(--color-primary)",
+		titleClass: "text-(--color-white)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-white)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-white)_55%,transparent))",
 	},
 	{
 		id: "corporate-finance",
@@ -36,10 +36,10 @@ export const services = [
 		image: "/services/corporate-finance.jpg",
 		bg: "bg-[#9cc7ff]",
 		hoverBg:
-			"bg-linear-to-br from-[var(--blue-light)] via-[var(--blue-sky)] to-[var(--color-primary)]",
-		titleClass: "text-[var(--color-black)]",
+			"bg-linear-to-br from-(--blue-light) via-(--blue-sky) to-(--color-primary)",
+		titleClass: "text-(--color-black)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-black)_55%,transparent))",
 	},
 	{
 		id: "lap",
@@ -49,10 +49,10 @@ export const services = [
 		image: "/services/lap-property.jpg",
 		bg: "bg-[#9cc7ff]",
 		hoverBg:
-			"bg-linear-to-br from-[var(--color-primary-dull)] via-[var(--blue-sky)] to-[var(--color-primary)]",
-		titleClass: "text-[var(--color-black)]",
+			"bg-linear-to-br from-(--color-primary-dull) via-(--blue-sky) to-(--color-primary)",
+		titleClass: "text-(--color-black)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-black)_55%,transparent))",
 	},
 	{
 		id: "working-capital",
@@ -62,10 +62,10 @@ export const services = [
 		image: "/services/working-capital.jpg",
 		bg: "bg-[#9cc7ff]",
 		hoverBg:
-			"bg-linear-to-br from-[var(--blue-light)] via-[var(--blue-sky)] to-[var(--color-primary)]",
-		titleClass: "text-[var(--color-black)]",
+			"bg-linear-to-br from-(--blue-light) via-(--blue-sky) to-(--color-primary)",
+		titleClass: "text-(--color-black)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-black)_55%,transparent))",
 	},
 	{
 		id: "fund-raising",
@@ -73,12 +73,12 @@ export const services = [
 		desc: "Structure the right financing mix for your next stage of growth.",
 		span: "lg:col-span-6",
 		image: "/services/fund-raising.jpg",
-		bg: "bg-[var(--color-primary)]",
+		bg: "bg-(--color-primary)",
 		hoverBg:
-			"bg-linear-to-br from-[var(--color-primary)] via-[var(--color-dark-blue)] to-[var(--color-black)]",
-		titleClass: "text-[var(--color-white)]",
+			"bg-linear-to-br from-(--color-primary) via-(--color-dark-blue) to-(--color-black)",
+		titleClass: "text-(--color-white)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-white)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-white)_55%,transparent))",
 	},
 	{
 		id: "project-finance",
@@ -88,10 +88,10 @@ export const services = [
 		image: "/services/project-finance.jpg",
 		bg: "bg-[#9cc7ff]",
 		hoverBg:
-			"bg-linear-to-br from-[var(--color-primary-dull)] via-[var(--blue-sky)] to-[var(--color-primary)]",
-		titleClass: "text-[var(--color-black)]",
+			"bg-linear-to-br from-(--color-primary-dull) via-(--blue-sky) to-(--color-primary)",
+		titleClass: "text-(--color-black)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-black)_55%,transparent))",
 	},
 	{
 		id: "msme-finance",
@@ -99,12 +99,12 @@ export const services = [
 		desc: "Funding solutions designed for the realities of growing businesses.",
 		span: "lg:col-span-4",
 		image: "/services/msme-finance.jpg",
-		bg: "bg-[var(--color-primary)]",
+		bg: "bg-(--color-primary)",
 		hoverBg:
-			"bg-linear-to-br from-[var(--color-primary)] via-[var(--color-dark-blue)] to-[var(--color-black)]",
-		titleClass: "text-[var(--color-white)]",
+			"bg-linear-to-br from-(--color-primary) via-(--color-dark-blue) to-(--color-black)",
+		titleClass: "text-(--color-white)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-white)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-white)_55%,transparent))",
 	},
 	{
 		id: "financial-advisory",
@@ -114,10 +114,10 @@ export const services = [
 		image: "/services/financial-advisory.jpg",
 		bg: "bg-[#9cc7ff]",
 		hoverBg:
-			"bg-linear-to-br from-[var(--blue-light)] via-[var(--blue-sky)] to-[var(--color-black)]",
-		titleClass: "text-[var(--color-black)]",
+			"bg-linear-to-br from-(--blue-light) via-(--blue-sky) to-(--color-black)",
+		titleClass: "text-(--color-black)",
 		descClass:
-			"text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]",
+			"text-(color-mix(in_oklab,var(--color-black)_55%,transparent))",
 	},
 ];
 
@@ -136,6 +136,21 @@ export const serviceDetails = {
 			"Term loans and working capital structures",
 			"Repayments aligned to your business cycle",
 			"Documentation and lender coordination handled",
+		],
+		story: {
+			heading: "Why the structure matters as much as the sanction",
+			paras: [
+				"Two businesses can borrow the same amount and end up in completely different places. The difference is rarely the interest rate alone — it is tenure matched to asset life, moratorium aligned to cash ramp-up, and security kept proportionate instead of pledged wholesale.",
+				"Lenders are risk managers to be satisfied, not adversaries to convince. A file that anticipates their questions moves faster and prices better.",
+			],
+		},
+		documents: [
+			"KYC documents of promoters and the business",
+			"Last 3 years' financial statements",
+			"12-month bank statements",
+			"GST returns and tax filings",
+			"Details of existing loans and repayments",
+			"Business proof (Udyam / shop license)",
 		],
 		benefits: [
 			{
@@ -186,6 +201,14 @@ export const serviceDetails = {
 				q: "How long does the process take?",
 				a: "A complete, well-packaged file typically moves from application to disbursal in 2–6 weeks, depending on the lender and complexity.",
 			},
+			{
+				q: "Can I top up an existing business loan?",
+				a: "Usually yes — through enhancement of the current limit or a parallel facility, subject to repayment track record and current cash flows.",
+			},
+			{
+				q: "What hurts approval chances most?",
+				a: "Over-leveraging, cheque bounces, and inconsistent banking conduct. Six months of clean banking before applying matters enormously.",
+			},
 		],
 	},
 	"debt-restructuring": {
@@ -197,6 +220,21 @@ export const serviceDetails = {
 			"Consolidation of multiple facilities",
 			"Moratorium and tenure structuring",
 			"Negotiation support with lenders",
+		],
+		story: {
+			heading: "Timing is everything in a reset",
+			paras: [
+				"The single biggest predictor of a successful restructuring is how early it starts. A business approaching lenders with a plan — before the first default — negotiates from credibility. The same request after months of missed payments becomes a recovery discussion with far fewer options.",
+				"What lenders need is viability, not apologies: honest numbers and a believable forward plan turn a difficult conversation into a commercial one.",
+			],
+		},
+		documents: [
+			"Sanction letters of all existing loans",
+			"12-month statements of every facility",
+			"Last 3 years' financial statements",
+			"Cash-flow projections for 2 years",
+			"KYC documents of promoters and the business",
+			"Details of securities already pledged",
 		],
 		benefits: [
 			{
@@ -247,6 +285,14 @@ export const serviceDetails = {
 				q: "How long does it take?",
 				a: "From diagnosis to approval, most mandates close in 6–12 weeks depending on the number of lenders involved.",
 			},
+			{
+				q: "Can stressed or NPA accounts be restructured?",
+				a: "Once classified NPA, options narrow — but negotiated settlements and revival packages remain possible. Earlier is always better; reach out at the first missed payment, not the last.",
+			},
+			{
+				q: "Will my existing lender even agree?",
+				a: "Lenders generally prefer a viable reset to lengthy recovery. A well-presented viability case and honest engagement carry real weight in those conversations.",
+			},
 		],
 	},
 	"corporate-finance": {
@@ -258,6 +304,21 @@ export const serviceDetails = {
 			"Expansion funding structures",
 			"Capital strategy and planning",
 			"Investor- and lender-ready documentation",
+		],
+		story: {
+			heading: "Capital strategy is a habit, not an event",
+			paras: [
+				"Most companies think about capital only when they need it — which is precisely when negotiating power is lowest. Businesses that review their facilities annually refinance before rates bite, retire expensive debt on schedule, and keep dry powder for opportunities.",
+				"Each well-negotiated facility improves the ratios and track record that price the next one — the gap compounds over the years.",
+			],
+		},
+		documents: [
+			"Last 3 years' financial statements + projections",
+			"Details of all existing facilities and rates",
+			"12-month bank statements",
+			"Board resolution for the borrowing",
+			"KYC documents of promoters and the business",
+			"Business profile and growth plan",
 		],
 		benefits: [
 			{
@@ -308,6 +369,14 @@ export const serviceDetails = {
 				q: "How do engagements work?",
 				a: "Every engagement starts with a discovery conversation. Scope and commercials are agreed in writing before any work begins.",
 			},
+			{
+				q: "We already have a CA — why an advisor?",
+				a: "CAs ensure compliance and accounting accuracy; capital strategy and lender negotiation is a different craft. The two roles complement, not replace, each other.",
+			},
+			{
+				q: "Do you work with early-stage startups?",
+				a: "Startups with operating cash flows, yes. Pre-revenue ventures usually need an equity-first path — which we will point you toward honestly.",
+			},
 		],
 	},
 	lap: {
@@ -319,6 +388,21 @@ export const serviceDetails = {
 			"Longer tenures for comfortable EMIs",
 			"Balance transfer options from existing loans",
 			"Transparent valuation process",
+		],
+		story: {
+			heading: "Your property is already working — put it to work",
+			paras: [
+				"Indian business owners hold enormous wealth in property that earns nothing while the business starves for capital. LAP simply corrects that mismatch: the same asset continues to house or host the business while also backing its growth.",
+				"Title issues surface late and kill files. Front-loading title checks is the difference between a 3-week and a 3-month process.",
+			],
+		},
+		documents: [
+			"Complete property paper chain (sale deeds, title)",
+			"Approved building plan and occupancy proof",
+			"Latest property tax receipts",
+			"Income proof and 12-month bank statements",
+			"KYC documents of all owners",
+			"Existing loan details (for balance transfer)",
 		],
 		benefits: [
 			{
@@ -369,6 +453,14 @@ export const serviceDetails = {
 				q: "Can I prepay without penalty?",
 				a: "Most lenders allow part-prepayment; foreclosure norms vary between fixed and floating rates. We flag the exact clauses before you sign.",
 			},
+			{
+				q: "Can I get LAP on a property with an existing home loan?",
+				a: "Yes — through a balance-transfer top-up or a second charge, subject to margins and repayment capacity.",
+			},
+			{
+				q: "Residential or commercial — which is better?",
+				a: "Both work. Commercial property typically allows higher loan-to-value; residential is valued more conservatively but processes smoothly.",
+			},
 		],
 	},
 	"working-capital": {
@@ -380,6 +472,21 @@ export const serviceDetails = {
 			"Receivables-backed limits",
 			"Seasonal enhancements for peak cycles",
 			"Vendor-payment support lines",
+		],
+		story: {
+			heading: "Measure the cycle, master the business",
+			paras: [
+				"Ask most promoters their working capital gap and you'll hear a round number that is really a feeling. The truth lives in three counts: how many days stock sits, how many days customers take, and how many days suppliers give. Subtract the third from the first two and you have your cycle — and your real requirement.",
+				"Businesses that measure their cycle monthly spot trouble quarters early — and borrow exactly what the cycle demands.",
+			],
+		},
+		documents: [
+			"Stock statements and receivables ageing",
+			"Last 2 years' financial statements",
+			"12-month bank statements (all operating accounts)",
+			"GST returns and tax filings",
+			"KYC documents of promoters and the business",
+			"Details of existing working capital limits",
 		],
 		benefits: [
 			{
@@ -430,6 +537,14 @@ export const serviceDetails = {
 				q: "What happens at annual renewal?",
 				a: "Limits are reviewed yearly against fresh financials and stock audits. Clean operations and documentation make renewals — and enhancements — straightforward.",
 			},
+			{
+				q: "My sales are growing but cash is always short — why?",
+				a: "Growth consumes working capital: stock and receivables swell faster than collections refill them. It is the classic growing-business paradox, and fixable with right-sized limits.",
+			},
+			{
+				q: "Can limits be increased later?",
+				a: "Yes — annual reviews and interim enhancements track your turnover growth. We initiate them before you feel the squeeze.",
+			},
 		],
 	},
 	"fund-raising": {
@@ -441,6 +556,21 @@ export const serviceDetails = {
 			"Investor-ready documentation and narrative",
 			"Milestone-linked disbursement structures",
 			"Negotiation support till closure",
+		],
+		story: {
+			heading: "Preparation is the real fundraising",
+			paras: [
+				"By the time a promoter meets a lender, experienced advisors believe the outcome is 80% decided — by the quality of the file, not the charm of the meeting. Clean books, coherent projections, and documented end-use do the persuading before anyone speaks.",
+				"One application to one lender is a request; the same case presented to four lenders in parallel is a negotiation.",
+			],
+		},
+		documents: [
+			"Business plan with fund requirement and end-use",
+			"Last 3 years' financial statements + projections",
+			"12-month bank statements",
+			"Details of existing debt and obligations",
+			"KYC documents of promoters and the business",
+			"Valuation or project reports (if available)",
 		],
 		benefits: [
 			{
@@ -491,6 +621,14 @@ export const serviceDetails = {
 				q: "What documents will I need?",
 				a: "Financials, bank statements, GST returns, existing loan details, KYC, and a business plan or projections. Our documents checklist covers it exhaustively.",
 			},
+			{
+				q: "How much dilution should I expect?",
+				a: "For debt-led raises: zero. The structures here prioritize non-dilutive capital so promoters keep control while funding growth.",
+			},
+			{
+				q: "What if lenders have already rejected us?",
+				a: "Rejections usually signal packaging problems, not profile problems. We diagnose the objection — documents, structure, or lender fit — and re-approach correctly.",
+			},
 		],
 	},
 	"project-finance": {
@@ -502,6 +640,21 @@ export const serviceDetails = {
 			"Phased disbursement against milestones",
 			"Moratorium aligned to commissioning",
 			"Security and documentation support",
+		],
+		story: {
+			heading: "Viability on paper before concrete on ground",
+			paras: [
+				"The most expensive words in project finance are 'we'll figure out the funding as we build.' Stalled half-built structures across industrial estates testify to raises attempted backwards — construction first, financing later.",
+				"Prove demand, lock costs, secure contribution — then break ground. Lenders fund discipline as much as they fund projects.",
+			],
+		},
+		documents: [
+			"Detailed project report (DPR) with cost break-up",
+			"Quotations for plant, machinery, and civil work",
+			"Land papers and project approvals/licenses",
+			"Promoter KYC and net-worth statements",
+			"Means-of-finance plan with contribution proof",
+			"Existing business financials (for brownfield)",
 		],
 		benefits: [
 			{
@@ -552,6 +705,14 @@ export const serviceDetails = {
 				q: "How long do project loans take to close?",
 				a: "Greenfield mandates typically take 3–6 months including diligence. Brownfield expansions with existing cash flows move faster.",
 			},
+			{
+				q: "Do I need land and title cleared first?",
+				a: "Largely yes — clear title and basic approvals are preconditions most lenders insist on before appraising the project.",
+			},
+			{
+				q: "Can existing businesses use project finance?",
+				a: "Yes — expansion projects with ring-fenced cash flows qualify even from established companies, often on better terms than greenfield ones.",
+			},
 		],
 	},
 	"msme-finance": {
@@ -563,6 +724,21 @@ export const serviceDetails = {
 			"Working capital + term-loan combinations",
 			"Scheme and subsidy guidance",
 			"Quick, assisted processing",
+		],
+		story: {
+			heading: "Small business, full attention",
+			paras: [
+				"Large lenders are built for large borrowers: thick files, long committees, standardized products. Small enterprises need the opposite — flexible assessment, patient explanation, and someone who picks up the phone. That service gap is exactly what dedicated MSME facilitation exists to fill.",
+				"Guarantee-backed lending, priority mandates, and subsidies genuinely reduce cost — the challenge is knowing which window fits your profile.",
+			],
+		},
+		documents: [
+			"Udyam registration certificate",
+			"KYC documents of promoters and the business",
+			"12-month bank statements",
+			"GST returns and tax filings",
+			"Last 2 years' financial statements",
+			"Business address and vintage proof",
 		],
 		benefits: [
 			{
@@ -613,6 +789,14 @@ export const serviceDetails = {
 				q: "What documents will I need?",
 				a: "Udyam registration, KYC, bank statements, GST returns, and financials. Our checklist keeps it to exactly what's needed — nothing more.",
 			},
+			{
+				q: "Is Udyam registration mandatory?",
+				a: "For scheme benefits, effectively yes — and registration itself is quick. We help you check eligibility and register.",
+			},
+			{
+				q: "New business, no vintage — any options?",
+				a: "Promoter profile, collateral, and plan-backed products exist for new ventures. Expectations need calibration, but doors are not closed.",
+			},
 		],
 	},
 	"financial-advisory": {
@@ -624,6 +808,21 @@ export const serviceDetails = {
 			"Lender presentations and documentation",
 			"Capital and debt planning",
 			"End-to-end fundraising strategy",
+		],
+		story: {
+			heading: "Decisions compound — so does advice",
+			paras: [
+				"A single financing decision echoes for years: the rate you accept, the security you pledge, the covenants you sign. Each one quietly shapes what you can borrow next and at what price. Getting the big ones right matters more than getting many small ones right.",
+				"The real product is a second pair of experienced eyes on irreversible choices — best engaged before term sheets arrive.",
+			],
+		},
+		documents: [
+			"Summary of existing facilities and rates",
+			"Last 3 years' financial statements",
+			"12-month bank statements",
+			"Business plan or projections (if any)",
+			"KYC documents of promoters and the business",
+			"A note on what decision you need help with",
 		],
 		benefits: [
 			{
@@ -673,6 +872,14 @@ export const serviceDetails = {
 			{
 				q: "How do engagements work?",
 				a: "A discovery conversation first, then scope and commercials agreed in writing. No surprises, no open-ended meters.",
+			},
+			{
+				q: "Is advisory worth it for small requirements?",
+				a: "If the amount is small and the structure simple, going direct may be fine — we will tell you honestly in the discovery call itself.",
+			},
+			{
+				q: "Do you guarantee sanctions?",
+				a: "No honest advisor can. What we guarantee is thorough preparation, correct lender fit, and persistent execution.",
 			},
 		],
 	},
