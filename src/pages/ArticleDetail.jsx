@@ -19,6 +19,7 @@ import {
 } from "../data/articles.js";
 import Error from "./Error.jsx";
 import WhyUs from "../components/WhyUs.jsx";
+import FooterCTA from "../components/FooterCTA.jsx";
 // import FooterCTA from "../components/FooterCTA.jsx";
 
 function ShareRow({ title }) {
@@ -332,7 +333,7 @@ export default function ArticleDetail() {
 				</div>
 
 				{/* cta */}
-				<div className="mt-[18px] flex flex-col items-start justify-between gap-5 rounded-[16px] bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-6 sm:flex-row sm:items-center sm:p-10">
+				{/* <div className="mt-[18px] flex flex-col items-start justify-between gap-5 rounded-[16px] bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-6 sm:flex-row sm:items-center sm:p-10">
 					<div>
 						<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
 							Need this structured for your business?
@@ -351,7 +352,8 @@ export default function ArticleDetail() {
 							className="transition-transform duration-300 group-hover:translate-x-0.5"
 						/>
 					</Link>
-				</div>
+				</div> */}
+				<FooterCTA />
 
 				{/* related */}
 				{related.length > 0 && (

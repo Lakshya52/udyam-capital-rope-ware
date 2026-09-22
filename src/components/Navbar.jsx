@@ -164,15 +164,15 @@ export default function Navbar() {
         <nav
           className={`pointer-events-auto relative mx-auto w-full max-w-[1166px] overflow-visible rounded-full transition-all duration-500 ${
             scrolled || open || dropOpen
-              ? 'bg-white/60 backdrop-blur-2xl ring-1 ring-white/50 backdrop-saturate-150'
-              : 'bg-white/40 ring-1 ring-white/50 backdrop-blur-2xl backdrop-saturate-150'
+              ? 'bg-white/75 backdrop-blur-2xl ring-1 ring-white/60'
+              : 'bg-white/65 ring-1 ring-white/60 backdrop-blur-2xl'
           }`}
         >
           <div className="flex items-center justify-between gap-3 px-5 py-3 sm:px-7">
             <Logo onClick={() => { setOpen(false); setDropOpen(null) }} />
 
             {/* Center pill — desktop */}
-            <div className="hidden items-center gap-1 rounded-full bg-[#0C1F33]/[0.05] p-1 pl-3 ring-1 ring-black/5 lg:flex">
+            <div className="hidden items-center gap-1 rounded-full bg-[var(--color-primary)]/[0.05] p-1 pl-3 ring-1 ring-black/5 lg:flex">
               <Link to="/case-studies" className={pillLink(isActive('/case-studies'))}>
                 Case Studies
               </Link>
