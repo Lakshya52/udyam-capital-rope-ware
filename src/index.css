@@ -140,8 +140,20 @@
     opacity: 1;
     color: color-mix(in oklab, var(--color-white) 80%, transparent);
   }
+  .services-stack-card.is-revealed .reveal-overlay {
+    opacity: 1;
+  }
   .services-stack-card.is-revealed .reveal-arrow {
     rotate: -45deg;
+  }
+  /* hover: same as scroll-reveal — description stays visible,
+     only its color adapts; dark overlay appears with the image */
+  .services-stack-card:hover .card-desc {
+    opacity: 1;
+    color: color-mix(in oklab, var(--color-white) 80%, transparent);
+  }
+  .services-stack-card:hover .reveal-overlay {
+    opacity: 1;
   }
 }
 /* Respect users who prefer reduced motion — navbar still toggles, just without animation */
@@ -156,5 +168,23 @@
   }
   .services-stack-card {
     position: static;
+  }
+}
+/* Slow float for the hero cards — gentle, offset phases; motion-safe only */
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-float-a {
+    animation: hero-float 7s ease-in-out infinite;
+  }
+  .hero-float-b {
+    animation: hero-float 8.5s ease-in-out -4s infinite;
   }
 }

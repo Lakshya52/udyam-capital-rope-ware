@@ -73,10 +73,11 @@ function ArrowRight() {
 }
 
 function Card({
+	id,
 	icon,
 	title,
 	desc,
-	bg,
+	// bg,
 	hoverBg,
 	titleClass,
 	descClass,
@@ -86,12 +87,13 @@ function Card({
 	style,
 }) {
 	return (
-		<article
+		<Link
+			to={`/services/${id}`}
 			style={style}
-			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-[16px] rounded-tl-[16px] rounded-tr-[16px] transition-colors duration-500 lg:hover:bg-(--color-primary) ${bg} ${className}`}
+			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-[16px] rounded-tl-[16px] rounded-tr-[16px] transition-colors duration-500 bg-[#a9ceff] ${className}`}
 		>
 			{/* Card image — always visible on mobile/small, hover/scroll-revealed on lg+ */}
-			<div className="reveal-img absolute inset-0 opacity-100 blur-none transition-all duration-500 lg:opacity-5 lg:blur-2xl lg:group-hover:opacity-100 lg:group-hover:blur-none">
+			<div className="reveal-img absolute inset-0 opacity-100 blur-none transition-all duration-500 lg:opacity-5 lg:blur-2xl lg:group-hover:opacity-100 lg:group-hover:blur-none overflow-hidden">
 				<div className={`absolute inset-0 ${hoverBg}`} />
 				{image && (
 					<img
@@ -107,8 +109,11 @@ function Card({
 					/>
 				)}
 				<div className="absolute inset-0 bg-linear-to-t from-(color-mix(in_oklab,var(--color-black)_70%,transparent)) via-(color-mix(in_oklab,var(--color-black)_25%,transparent)) to-transparent" />
-				{/* Slight black overlay so white text stays readable on mobile/small */}
-				<div className="absolute inset-0 bg-black/60 lg:hidden" aria-hidden="true" />
+				{/* Dark overlay over the image — always on mobile/small, appears with the image on lg+ hover/scroll-reveal */}
+				<div
+					className="reveal-overlay absolute inset-0 bg-black/60 opacity-100 transition-opacity duration-500 lg:opacity-0 lg:group-hover:opacity-100"
+					aria-hidden="true"
+				/>
 			</div>
 
 			{/* Text — pinned 40px above the card bottom in every card */}
@@ -117,13 +122,13 @@ function Card({
           {icon}
         </span> */}
 				<h3
-					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 ${titleClass} group-hover:text-(--color-white)`}
+					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 group-hover:text-(--color-white)`}
 				>
 					{title}
 				</h3>
-				<div className="card-desc-wrap grid grid-rows-[1fr] transition-all duration-500 lg:group-hover:grid-rows-[0fr]">
+				<div className="card-desc-wrap grid grid-rows-[1fr] transition-all duration-500">
 					<p
-						className={`card-desc mt-2 min-h-0 max-w-[300px] overflow-hidden font-inter-light fs-body-sm transition-all duration-500 lg:group-hover:mt-0 lg:group-hover:opacity-0 ${descClass} ${tall ? "lg:max-w-[90%]" : ""}`}
+						className={`card-desc mt-2 min-h-0 max-w-[300px] overflow-hidden font-inter-light fs-body-sm transition-all duration-500 ${descClass} ${tall ? "lg:max-w-[90%]" : ""}`}
 					>
 						{desc}
 					</p>
@@ -131,7 +136,7 @@ function Card({
 			</div>
 
 			<ArrowRight size={16} />
-		</article>
+		</Link>
 	);
 }
 
@@ -144,10 +149,11 @@ export default function ServicesGrid() {
 
 	return (
 		<section ref={rootRef} className="section relative mx-auto max-w-[1166px] ">
-			{/* backdrop graphics behind the heading */}
-			<div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[380px] overflow-hidden" aria-hidden="true">
+			{/* backdrop graphics full-bleed across the viewport */}
+			<div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden" aria-hidden="true">
 				<div className="absolute left-[8%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
+				{/* <div className="absolute bottom-0 left-[12%] h-64 w-[420px] rounded-full bg-[#9cc7ff]/40 blur-[110px]" /> */}
 				<div
 					className="absolute right-[2%] top-4 h-28 w-64 [mask-image:radial-gradient(closest-side,black,transparent)]"
 					style={{
@@ -183,10 +189,11 @@ export default function ServicesGrid() {
 			{cards.map((card, i) => (
 				<Card
 					key={card.title}
+					id={card.id}
 					icon={card.icon}
 					title={card.title}
 					desc={card.desc}
-					bg={card.bg}
+					// bg={card.bg}
 					hoverBg={card.hoverBg}
 					titleClass={card.titleClass}
 					descClass={card.descClass}

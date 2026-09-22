@@ -79,7 +79,7 @@ export default function FooterCTA() {
       <div className="relative">
         {/* shape border — top strip */}
         <BorderStrip  />
-        <div className="flex items-stretch gap-4">
+        <div className="flex items-stretch">
           {/* left rail (desktop) */}
           <BorderRail length={6}/>
           {/* content card */}
@@ -108,7 +108,7 @@ export default function FooterCTA() {
               </p>
               <Link
                 to="/contact"
-                className="rv-fade mt-4 sm:mt-6 inline-block rounded-lg w-fit text-white mx-auto bg-(--color-primary) px-7 py-2.5 text-[13.5px] font-inter-reg transition-colors hover:bg-[#0b4da2]"
+                className="rv-fade mt-4 sm:mt-6 inline-block rounded-lg w-fit text-white mx-auto bg-(--color-primary) px-7 py-2.5 fs-body-sm font-inter-reg transition-colors hover:bg-[#0b4da2]"
               >
                 Schedule a Consultation
               </Link>

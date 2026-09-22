@@ -9,7 +9,12 @@ import {
 	ChevronDown,
 } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import { services } from "../data/services.js";
+import { services, getSubServices } from "../data/services.js";
+
+const allServiceTitles = services.flatMap((m) => [
+	m.title,
+	...getSubServices(m.id).map((s) => s.title),
+]);
 
 const infoCards = [
 	{
@@ -82,7 +87,7 @@ export default function Contact() {
 	// pre-select service when arriving from a service page (?service=...)
 	useEffect(() => {
 		const s = searchParams.get("service");
-		if (s && services.some((x) => x.title === s)) {
+		if (s && allServiceTitles.includes(s)) {
 			setForm((f) => ({ ...f, service: s }));
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -231,10 +236,17 @@ export default function Contact() {
 									className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 								>
 									<option value="" hidden></option>
-									{services.map((s) => (
-										<option key={s.id} value={s.title}>
-											{s.title}
-										</option>
+									{services.map((m) => (
+										<optgroup key={m.id} label={m.title}>
+											<option value={m.title}>
+												{m.title} — full practice
+											</option>
+											{getSubServices(m.id).map((s) => (
+												<option key={s.id} value={s.title}>
+													{s.title}
+												</option>
+											))}
+										</optgroup>
 									))}
 								</select>
 								<span
@@ -272,12 +284,12 @@ export default function Contact() {
 								</p>
 								<button
 									type="submit"
-									className="group mt-6 sm:mt-2 sm:ml-auto inline-flex w-fit items-center gap-2 rounded-lg bg-(--color-primary) px-7 py-3 font-inter-reg fs-body text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 hover:bg-[#0b4da2] active:scale-[0.98]"
+									className="group cursor-pointer mt-6 sm:mt-2 sm:ml-auto inline-flex w-fit items-center gap-2 rounded-lg bg-(--color-primary) px-7 py-3 font-inter-reg fs-body text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 hover:bg-[#0b4da2] active:scale-[0.98] group"
 								>
 									Submit
 									<ArrowRight
 										size={16}
-										className="transition-transform duration-300 group-hover:translate-x-0.5"
+										className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-rotate-45 "
 									/>
 								</button>
 							</div>
@@ -322,7 +334,7 @@ export default function Contact() {
 			</section>
 
 			{/* not sure where to start */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
+			{/* <section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
 					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
@@ -355,7 +367,7 @@ export default function Contact() {
 						</Link>
 					))}
 				</div>
-			</section>
+			</section> */}
 
 			{/* what happens next */}
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">

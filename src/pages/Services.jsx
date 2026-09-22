@@ -12,31 +12,19 @@ import {
 	services,
 	getService,
 	getServiceDetails,
+	getSubServices,
+	getParentService,
+	isMainService,
 	documentChecklist,
 } from "../data/services.js";
 import Error from "./Error.jsx";
-
-const steps = [
-	{
-		n: "01",
-		title: "Share your requirement",
-		desc: "Tell us the amount, purpose, and timelines — a call or the contact form works.",
-	},
-	{
-		n: "02",
-		title: "Get the right structure",
-		desc: "We compare lenders and shape the facility around your cash flows.",
-	},
-	{
-		n: "03",
-		title: "Close and disburse",
-		desc: "Documentation, sanction, and disbursement — tracked till credit.",
-	},
-];
+import ServicesMain from "./ServicesMain.jsx";
+import WhyUs from "../components/WhyUs.jsx";
+import FooterCTA from "../components/FooterCTA.jsx";
 
 function FaqItem({ item, open, onToggle }) {
 	return (
-		<div className="overflow-hidden rounded-[10px] bg-[#a9ceff]">
+		<div className="overflow-hidden rounded-[10px] bg-[#f8f8f8]">
 			<button
 				type="button"
 				onClick={onToggle}
@@ -71,6 +59,24 @@ function FaqItem({ item, open, onToggle }) {
 	);
 }
 
+const steps = [
+	{
+		n: "01",
+		title: "Share your requirement",
+		desc: "Tell us the amount, purpose, and timelines — a call or the contact form works.",
+	},
+	{
+		n: "02",
+		title: "Get the right structure",
+		desc: "We compare lenders and shape the facility around your cash flows.",
+	},
+	{
+		n: "03",
+		title: "Close and disburse",
+		desc: "Documentation, sanction, and disbursement — tracked till credit.",
+	},
+];
+
 export default function Services() {
 	const { id } = useParams();
 	const rootRef = useRef(null);
@@ -97,7 +103,22 @@ export default function Services() {
 
 	const process = details?.process ?? steps;
 
-	const others = services.filter((s) => s.id !== service.id).slice(0, 3);
+	const main = isMainService(service.id);
+	const parent = getParentService(service.id);
+	const included = main ? getSubServices(service.id) : [];
+	const siblings = parent
+		? getSubServices(parent.id).filter((s) => s.id !== service.id)
+		: [];
+	const others = main
+		? services.filter((s) => s.id !== service.id).slice(0, 3)
+		: [...siblings, ...services.filter((s) => s.id !== parent?.id)].slice(
+				0,
+				3,
+			);
+
+	// the 4 practices render in ServicesMain — everything below
+	// is the shared detail UI for sub-services (with documents checklist)
+	if (main) return <ServicesMain />;
 
 	return (
 		<main ref={rootRef} className="relative overflow-hidden bg-white">
@@ -122,12 +143,23 @@ export default function Services() {
 						Home
 					</Link>
 					<span aria-hidden="true">/</span>
-					<span className="text-(--color-black)">Services</span>
+					{parent ? (
+						<Link
+							to={`/services/${parent.id}`}
+							className="transition-colors duration-300 hover:text-(--color-primary)"
+						>
+							{parent.title}
+						</Link>
+					) : (
+						<span className="text-(--color-black)">Services</span>
+					)}
 					<span aria-hidden="true">/</span>
-					<span className="text-(--color-primary)">{service.title}</span>
+					<span className="text-(--color-primary)">
+						{service.title}
+					</span>
 				</nav>
 				<h1 className="mt-4 max-w-3xl font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
-					<span className="block overflow-hidden pb-2">
+					<span className="block overflow-hidden pb-6">
 						<span className="rv-line block">{service.title}</span>
 					</span>
 				</h1>
@@ -140,18 +172,28 @@ export default function Services() {
 					</p>
 				)}
 				<div className="rv-fade mt-6 flex flex-wrap gap-3">
+					{!main && (
 						<button
 							type="button"
 							onClick={() => {
 								const el = document.getElementById("documents");
 								if (!el) return;
 								const lenis = window.__lenis;
-								if (lenis && typeof lenis.scrollTo === "function") {
+								if (
+									lenis &&
+									typeof lenis.scrollTo === "function"
+								) {
 									lenis.scrollTo(el, {
-										offset: window.innerWidth >= 1024 ? -140 : -90,
+										offset:
+											window.innerWidth >= 1024
+												? -140
+												: -90,
 									});
 								} else {
-									el.scrollIntoView({ behavior: "smooth", block: "start" });
+									el.scrollIntoView({
+										behavior: "smooth",
+										block: "start",
+									});
 								}
 							}}
 							className="group inline-flex cursor-pointer items-center gap-2 rounded-lg bg-(--color-primary) px-7 py-3 font-inter-reg fs-body-sm text-white shadow-[0_16px_40px_rgba(8,83,160,0.3)] transition-all duration-300 hover:gap-3 hover:bg-[#0b4da2] active:scale-[0.98]"
@@ -162,12 +204,13 @@ export default function Services() {
 								className="transition-transform duration-300 group-hover:translate-x-0.5"
 							/>
 						</button>
-						<Link
-							to={`/contact?service=${encodeURIComponent(service.title)}`}
-							className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-7 py-3 font-inter-reg fs-body-sm text-(--color-black) transition-all duration-300 hover:border-(--color-primary) hover:text-(--color-primary) active:scale-[0.98]"
-						>
-							Contact us
-						</Link>
+					)}
+					<Link
+						to={`/contact?service=${encodeURIComponent(service.title)}`}
+						className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-7 py-3 font-inter-reg fs-body-sm text-(--color-black) transition-all duration-300 hover:border-(--color-primary) hover:text-(--color-primary) active:scale-[0.98]"
+					>
+						Contact us
+					</Link>
 				</div>
 			</section>
 
@@ -190,7 +233,9 @@ export default function Services() {
 							<div className="">
 								<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
 									<span className="block overflow-hidden pb-2">
-										<span className="rv-line block">{details.story.heading}</span>
+										<span className="rv-line block">
+											{details.story.heading}
+										</span>
 									</span>
 								</h2>
 								{details.story.paras.map((para, i) => (
@@ -206,127 +251,184 @@ export default function Services() {
 					</div>
 				</div>
 			</section>
-			{/* documents you'll need */}
-			<section id="documents" className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 pb-[5dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
-				{/* <h2 className=" font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
-					<span className="block overflow-hidden pb-2 ">
-						<span className="rv-line block">
-							Documents You&apos;ll{" "}
-							<span className="text-(--color-primary)">
-								Need
-							</span>
-						</span>
-					</span>
-				</h2>
-				<div className="bg-gray-400 h-[0.5px] rounded-full" /> */}
-				<div className="grid grid-cols-1 gap-[18px] lg:grid-cols-2 mt-8">
-					<div>
-						{/* progress readout */}
-						<div className="rv-fade mt-8 flex items-start gap-5 flex-col">
-							<p className="font-heading text-[4.5rem] leading-none text-(--color-primary) sm:text-[5.5rem]">
-								{donePct}
-								<span className="text-[2rem] sm:text-[2.5rem]">
-									%
+			{/* what's included — sub-services of this practice */}
+			{included.length > 0 && (
+				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[5dvh] md:px-8 xl:px-0">
+					<div className="max-w-2xl">
+						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+							<span className="block overflow-hidden pb-2">
+								<span className="rv-line block">
+									What&apos;s{" "}
+									<span className="text-(--color-primary)">
+										Included
+									</span>
 								</span>
-							</p>
-							<div className="pb-2 flex items-center gap-2">
-								<p className="font-heading text-[1.1rem] text-(--color-black)">
-									{doneCount === docs.length
-										? "All set — nice!"
-										: `${doneCount} of ${docs.length} ready`}
-								</p>
-								{doneCount > 0 ? (
-									<button
-										type="button"
-										onClick={() =>
-											setChecked(
-												docs.map(
-													() => false,
-												),
-											)
-										}
-										className="mt-1 font-inter-reg fs-body-sm text-neutral-500 transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
-									>
-										Start over
-									</button>
-								) : (
-									<p className="mt-1 font-inter-reg fs-body-sm text-neutral-500">
-										Tap a document to mark it done.
-									</p>
-								)}
-							</div>
-						</div>
-						<div
-							role="progressbar"
-							aria-valuenow={donePct}
-							aria-valuemin={0}
-							aria-valuemax={100}
-							aria-label="Documents checklist progress"
-							className="rv-fade mt-4 h-2 max-w-md overflow-hidden rounded-full bg-black/10"
-						>
-							<div
-								className="h-full rounded-full bg-(--color-primary) transition-all duration-500 ease-out"
-								style={{ width: `${donePct}%` }}
-							/>
-						</div>
-						<Link
-							to="/contact"
-							className="rv-fade group mt-6 inline-flex items-center gap-2 font-inter-reg fs-body text-(--color-primary)"
-						>
-							Missing something? Ask us
-							<ArrowRight
-								size={16}
-								className="transition-transform duration-300 group-hover:translate-x-1"
-							/>
-						</Link>
+							</span>
+						</h2>
 						<p className="rv-fade mt-2 font-inter-reg fs-body text-neutral-500">
-							Keep these handy — it speeds up sanction
-							dramatically. Tick off what you already have.
+							Every engagement is scoped around these — pick one
+							to see details, documents and FAQs.
 						</p>
 					</div>
-					<div className="rv-fade overflow-hidden rounded-[16px] bg-(--color-primary) p-2 sm:p-3">
-						<ul className="flex flex-col">
-							{docs.map((doc, i) => {
-								const done = checked[i];
-								return (
-									<li key={doc}>
+					<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+						{included.map((s) => (
+							<Link
+								key={s.id}
+								to={`/services/${s.id}`}
+								className="group flex flex-col justify-between gap-6 rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)] sm:p-7"
+							>
+								<span>
+									<span className="block font-heading text-[1.25rem] text-(--color-black) transition-colors duration-300 group-hover:text-(--color-white)">
+										{s.title}
+									</span>
+									<span className="mt-2 block font-inter-reg fs-body text-neutral-600 transition-colors duration-300 group-hover:text-white/75">
+										{s.desc}
+									</span>
+								</span>
+								<span className="grid h-10 w-10 place-items-center rounded-full bg-white text-(--color-primary) transition-transform duration-300 group-hover:-rotate-45">
+									<ArrowUpRight size={16} />
+								</span>
+							</Link>
+						))}
+					</div>
+				</section>
+			)}
+			{/* documents checklist — sub-service pages only */}
+			{!main && (
+				<section
+					id="documents"
+					className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 pb-[5dvh] md:px-8 lg:scroll-mt-36 xl:px-0"
+				>
+					{/* <div className="max-w-2xl">
+					<p className="rv-fade font-inter-reg fs-body-sm uppercase tracking-[0.22em] text-(--color-primary)">
+						Checklist
+					</p>
+					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+						<span className="block overflow-hidden pb-2">
+							<span className="rv-line block">
+								Documents You&apos;ll{" "}
+								<span className="text-(--color-primary)">
+									Need
+								</span>
+							</span>
+						</span>
+					</h2>
+					<p className="rv-fade mt-2 font-inter-reg fs-body text-neutral-500">
+						A complete file moves twice as fast — here&apos;s
+						exactly what we&apos;ll ask for.
+					</p>
+				</div> */}
+					<div className="grid grid-cols-1 gap-[18px] lg:grid-cols-2 mt-8">
+						<div>
+							{/* progress readout */}
+							<div className="rv-fade mt-8 flex items-start gap-5 flex-col">
+								<p className="font-heading text-[4.5rem] leading-none text-(--color-primary) sm:text-[5.5rem]">
+									{donePct}
+									<span className="text-[2rem] sm:text-[2.5rem]">
+										%
+									</span>
+								</p>
+								<div className="pb-2 flex items-center gap-2">
+									<p className="font-heading text-[1.1rem] text-(--color-black)">
+										{doneCount === docs.length
+											? "All set — nice!"
+											: `${doneCount} of ${docs.length} ready`}
+									</p>
+									{doneCount > 0 ? (
 										<button
 											type="button"
-											onClick={() => toggleDoc(i)}
-											aria-pressed={done}
-											className={`group flex w-full cursor-pointer items-center gap-4 rounded-xl px-4 py-4 text-left transition-all duration-300 active:scale-[0.99] ${
-												done ? "" : "hover:bg-white/10"
-											}`}
+											onClick={() =>
+												setChecked(
+													docs.map(() => false),
+												)
+											}
+											className="mt-1 font-inter-reg fs-body-sm text-neutral-500 transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
 										>
-											<span
-												className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 transition-all duration-300 ${
+											Start over
+										</button>
+									) : (
+										<p className="mt-1 font-inter-reg fs-body-sm text-neutral-500">
+											Tap a document to mark it done.
+										</p>
+									)}
+								</div>
+							</div>
+							<div
+								role="progressbar"
+								aria-valuenow={donePct}
+								aria-valuemin={0}
+								aria-valuemax={100}
+								aria-label="Documents checklist progress"
+								className="rv-fade mt-4 h-2 max-w-md overflow-hidden rounded-full bg-black/10"
+							>
+								<div
+									className="h-full rounded-full bg-(--color-primary) transition-all duration-500 ease-out"
+									style={{ width: `${donePct}%` }}
+								/>
+							</div>
+							<Link
+								to="/contact"
+								className="rv-fade group mt-6 inline-flex items-center gap-2 font-inter-reg fs-body text-(--color-primary)"
+							>
+								Missing something? Ask us
+								<ArrowRight
+									size={16}
+									className="transition-transform duration-300 group-hover:translate-x-1"
+								/>
+							</Link>
+							<p className="rv-fade mt-2 font-inter-reg fs-body text-neutral-500">
+								Keep these handy — it speeds up sanction
+								dramatically. Tick off what you already have.
+							</p>
+						</div>
+						<div className="rv-fade overflow-hidden rounded-[20px] bg-(--color-primary) p-2 shadow-[0_24px_60px_rgba(12,31,51,0.18)] ring-1 ring-white/15 sm:p-3">
+							<ul className="flex flex-col divide-y divide-white/10">
+								{docs.map((doc, i) => {
+									const done = checked[i];
+									return (
+										<li key={doc}>
+											<button
+												type="button"
+												onClick={() => toggleDoc(i)}
+												aria-pressed={done}
+												className={`group flex w-full cursor-pointer items-center gap-3.5 rounded-xl px-4 py-4 text-left transition-all duration-300 active:scale-[0.99] ${
 													done
-														? "scale-110 border-white bg-white text-(--color-primary)"
-														: "border-white/40 bg-transparent text-transparent group-hover:border-white"
+														? ""
+														: "hover:bg-white/10"
 												}`}
 											>
-												<svg
-													width="13"
-													height="13"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													strokeWidth="3.5"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													aria-hidden="true"
+												{/* <span className="w-6 shrink-0 font-heading text-[12px] tabular-nums text-white/35">
+												{String(i + 1).padStart(2, "0")}
+											</span> */}
+												<span
+													className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 transition-all duration-300 ${
+														done
+															? "scale-110 border-white bg-white text-(--color-primary)"
+															: "border-white/40 bg-transparent text-transparent group-hover:border-white"
+													}`}
 												>
-													<path d="M4 12.5l5 5L20 6.5" />
-												</svg>
-											</span>
-											<span
-												className={`flex items-start gap-2.5 font-inter-reg fs-body transition-all duration-300 ${
-													done
-														? "text-white/50 line-through decoration-white/40"
-														: "text-(--color-white)"
-												}`}
-											>
-												{/* <FileText
+													<svg
+														width="13"
+														height="13"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														strokeWidth="3.5"
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														aria-hidden="true"
+													>
+														<path d="M4 12.5l5 5L20 6.5" />
+													</svg>
+												</span>
+												<span
+													className={`flex items-start gap-2.5 font-inter-reg fs-body transition-all duration-300 ${
+														done
+															? "text-white/50 line-through decoration-white/40"
+															: "text-(--color-white)"
+													}`}
+												>
+													{/* <FileText
 													size={16}
 													className={`mt-1.5 shrink-0 transition-colors duration-300 ${
 														done
@@ -334,72 +436,77 @@ export default function Services() {
 															: "text-white/75"
 													}`}
 												/> */}
-												{doc}
-											</span>
-										</button>
-									</li>
-								);
-							})}
-						</ul>
-						{/* appears when every document is ticked */}
-						<div
-							className={`grid transition-all duration-500 ease-out ${
-								doneCount === docs.length
-									? "mt-3 grid-rows-[1fr] opacity-100"
-									: "grid-rows-[0fr] opacity-0"
-							}`}
-						>
-							<div className="min-h-0 overflow-hidden">
-								<Link
-									to={`/contact?service=${encodeURIComponent(service.title)}`}
-									className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 font-inter-reg fs-body-sm text-(--color-primary) transition-all duration-300 hover:gap-3 active:scale-[0.99]"
-								>
-									Continue to consultation
-									<ArrowRight
-										size={16}
-										className="transition-transform duration-300 group-hover:translate-x-1"
-									/>
-								</Link>
+													{doc}
+												</span>
+											</button>
+										</li>
+									);
+								})}
+							</ul>
+							{/* appears when every document is ticked */}
+							<div
+								className={`grid transition-all duration-500 ease-out ${
+									doneCount === docs.length
+										? "mt-3 grid-rows-[1fr] opacity-100"
+										: "grid-rows-[0fr] opacity-0"
+								}`}
+							>
+								<div className="min-h-0 overflow-hidden">
+									<Link
+										to={`/contact?service=${encodeURIComponent(service.title)}`}
+										className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 font-inter-reg fs-body-sm text-(--color-primary) transition-all duration-300 hover:gap-3 active:scale-[0.99]"
+									>
+										Continue to consultation
+										<ArrowRight
+											size={16}
+											className="transition-transform duration-300 group-hover:translate-x-1"
+										/>
+									</Link>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 
 			{/* who it's for + what's included */}
 			{details && (
 				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pt-[5dvh] md:px-8 xl:px-0">
-					<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
+					{/* <div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
 						<p className="font-inter-reg fs-body-sm uppercase tracking-widest text-white/70">
 							Who it&apos;s for
 						</p>
 						<p className="mt-2 max-w-3xl font-heading text-[1.5rem] leading-snug text-(--color-white) sm:text-[2rem]">
 							{details.audience}
 						</p>
-					</div>
-					<div className="mt-[10dvh] grid grid-cols-1 gap-[18px] sm:grid-cols-2">
-						{(details.benefits ?? []).map((b, i) => (
-							<div
-								key={b.title}
-								className="rv-fade rounded-[16px] border  border-black/5 bg-[#a9ceff] p-6 shadow-[0_24px_60px_rgba(12,31,51,0.08)] sm:p-7"
-							>
-								<div className="flex items-center gap-3">
-									<CheckCircle2
+					</div> */}
+					<div className="flex flex-col">
+						<h1 className="mb-[5dvh] font-heading  fs-heading  text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]" >Key  <span className="text-(--color-primary)" >
+							Benefits</span> </h1>
+						<div className=" grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+							{(details.benefits ?? []).map((b, i) => (
+								<div
+									key={b.title}
+									className="rv-fade rounded-[16px] border  border-black/5 bg-[#f8f8f8] p-6 shadow-[0_24px_60px_rgba(12,31,51,0.08)] sm:p-7"
+								>
+									<div className="flex items-center gap-3">
+										{/* <CheckCircle2
 										size={16}
 										className="shrink-0 text-(--color-primary)"
-									/>
-									<p className="font-heading fs-body-sm text-(color-mix(in_oklab,var(--color-primary)_60%,transparent))">
-										0{i + 1}
+										/> */}
+										{/* <p className="font-heading fs-heading text-neutral-400">
+											0{i + 1}
+										</p> */}
+									</div>
+									<h3 className="mt-3 font-heading text-[1.25rem] text-(--color-black)">
+										{b.title}
+									</h3>
+									<p className="mt-2 font-inter-reg fs-body text-neutral-600">
+										{b.desc}
 									</p>
 								</div>
-								<h3 className="mt-3 font-heading text-[1.25rem] text-(--color-black)">
-									{b.title}
-								</h3>
-								<p className="mt-2 font-inter-reg fs-body text-neutral-600">
-									{b.desc}
-								</p>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</section>
 			)}
@@ -437,8 +544,6 @@ export default function Services() {
 					))}
 				</div>
 			</section>
-
-			
 
 			{/* other services */}
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
@@ -512,6 +617,9 @@ export default function Services() {
 					</div>
 				</section>
 			)}
+
+			<WhyUs />
+			<FooterCTA />
 		</main>
 	);
 }

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useLineReveal } from "../lib/reveal.js";
 import WhyUs from "../components/WhyUs.jsx";
 import StatsBelt from "../components/StatsBelt.jsx";
@@ -80,12 +81,16 @@ const team = [
 ];
 
 const capabilities = [
-	"IT & Infrastructure",
-	"Sales & Marketing",
-	"HR & Administration",
-	"Supply Chain",
-	"Logistics",
-	"Fundraising Strategy",
+	{ label: "Transaction Advisory", to: "/services/transaction-advisory" },
+	{
+		label: "Credit Ratings Advisory",
+		to: "/services/credit-ratings-advisory",
+	},
+	{ label: "CFO Services", to: "/services/cfo-services" },
+	{
+		label: "Debt & Capital Advisory",
+		to: "/services/debt-capital-advisory",
+	},
 ];
 
 export default function About() {
@@ -127,34 +132,34 @@ export default function About() {
 				</div>
 
 				{/* intro */}
-				<div id="overview" className="rv-fade mt-10 w-full scroll-mt-24 lg:mt-14 lg:scroll-mt-36 text-justify " >
+				<div id="overview" className="rv-fade mt-10 w-full scroll-mt-24 lg:mt-14 lg:scroll-mt-36 sm:text-justify " >
 					<p className="font-inter-reg fs-body leading-relaxed text-neutral-600">
-						Udyam Capital is a forward-thinking Strategic Management
-						consulting firm focused on solving most pressing
-						business challenges. We specialize in helping companies
-						raise the capital they need to drive growth and
-						implement transformative strategies, whether looking to
-						Expand, Diversify, or Strengthen financial liquidity. We
-						offer Innovative, Tailored Solutions designed to meet
-						the unique needs.
+						Udyam Capital is a financial advisory firm focused on
+						one thing: getting the right capital into growing
+						businesses on the right terms. We work across four
+						practices — Transaction Advisory for deals and
+						structures, Credit Ratings Advisory for stronger
+						borrowing profiles, CFO Services for a disciplined
+						finance function, and Debt &amp; Capital Advisory for
+						term loans, working capital, LAP, project finance and
+						syndications.
 					</p>
 					<p className="mt-5 font-inter-reg fs-body leading-relaxed text-neutral-600">
-						Beyond capital raising, Udyam Capital provides
-						cutting-edge advisory services to build and optimize key
-						business functions such as IT &amp; Infrastructure,
-						Sales &amp; Marketing, HR &amp; Administration, Supply
-						Chain, and Logistics, etc. We combine deep Industry
-						Expertise with creative strategies and financial
-						insights to guide through the complexities of
-						fundraising and business evolution.
+						Every engagement runs the same way: an honest
+						assessment first, lender-grade preparation next, and
+						parallel approaches so lenders compete for your mandate
+						— tracked from first conversation to final disbursal.
+						No generic playbooks and no open-ended meters; scope
+						and commercials are agreed in writing before work
+						begins.
 					</p>
 					<p className="mt-5 font-inter-reg fs-body leading-relaxed text-neutral-600">
-						With decades of experience, our team brings a wealth of
-						knowledge, actionable insights, and a results-driven
-						mindset to every engagement. We recognize that every
-						business is unique, and we craft custom solutions that
-						drive long-term success, improve operational efficiency,
-						mitigate risk, and maximize value.
+						Our team blends credit, structuring and operating
+						experience, and we craft custom solutions for every
+						business we serve — measured in sanctions won, pricing
+						improved and ratings repaired. Lower borrowing costs,
+						steadier cash flows and funded growth: that is what we
+						mean by a successful business journey.
 					</p>
 				</div>
 
@@ -329,21 +334,23 @@ export default function About() {
 			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
 				<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
 					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
-						Advisory across your whole business
+						Four practices, one mandate
 					</h2>
 					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-(--color-white)">
-						Every business is unique — we craft custom solutions
-						that drive long-term success, improve efficiency,
-						mitigate risk, and maximize value.
+						A deal structured, a rating repaired, a finance
+						function run, or funds disbursed — whatever your
+						capital need, it lives in one of our practices. Tap
+						one to explore it.
 					</p>
 					<div className="mt-6 flex flex-wrap gap-3">
 						{capabilities.map((c) => (
-							<span
-								key={c}
+							<Link
+								key={c.label}
+								to={c.to}
 								className="rounded-full border border-white/30 px-5 py-2.5 font-inter-reg fs-body text-(--color-white) transition-colors duration-300 hover:bg-white hover:text-(--color-primary)"
 							>
-								{c}
-							</span>
+								{c.label}
+							</Link>
 						))}
 					</div>
 				</div>
