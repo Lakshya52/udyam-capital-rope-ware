@@ -5,7 +5,7 @@ import { Wallet } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLineReveal } from "../lib/reveal.js";
-import { services } from "../data/services.js";
+import { useServices } from "../lib/content.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,12 +140,12 @@ function Card({
 	);
 }
 
-const cards = services.map((service) => ({ ...service, icon: <Wallet size={16} /> }));
-
 export default function ServicesGrid() {
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
 	useStackOnScroll(rootRef);
+	const { services } = useServices();
+	const cards = services.map((service) => ({ ...service, icon: <Wallet size={16} /> }));
 
 	return (
 		<section ref={rootRef} className="section relative mx-auto max-w-[1166px] ">

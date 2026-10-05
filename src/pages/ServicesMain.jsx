@@ -2,15 +2,12 @@ import { useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, Plus } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import {
-	getService,
-	getServiceDetails,
-	getSubServices,
-	isMainService,
-} from "../data/services.js";
+import { useServices } from "../lib/content.jsx";
 import Error from "./Error.jsx";
-import FooterCTA from "../components/FooterCTA.jsx";
-import WhyUs from "../components/WhyUs.jsx";
+import FooterCTAnew from "../components/FooterCTAnew.jsx";
+// import FooterCTA from "../components/FooterCTA.jsx";
+// import WhyUs from "../components/WhyUs.jsx";
+import WhyUsNew from "../components/WhyUsNew.jsx";
 
 // Presentation copy per practice — everything else (intro, tracks,
 // benefits, process, FAQs) comes straight from services.js.
@@ -155,6 +152,8 @@ export default function ServicesMain() {
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
 	const [openFaq, setOpenFaq] = useState(0);
+	const { getService, getServiceDetails, getSubServices, isMainService } =
+		useServices();
 
 	const service = id ? getService(id) : undefined;
 	if (!service || !isMainService(service.id)) return <Error />;
@@ -167,7 +166,7 @@ export default function ServicesMain() {
 	const faqs = details?.faqs ?? [];
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -397,8 +396,10 @@ export default function ServicesMain() {
 				</section>
 			)}
 
-			<WhyUs />
-			<FooterCTA />
+			{/* <WhyUs /> */}
+			<WhyUsNew />
+			{/* <FooterCTA /> */}
+			<FooterCTAnew />
 		</main>
 	);
 }

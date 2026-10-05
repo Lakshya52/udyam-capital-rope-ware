@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Confirm the domain before submitting to Search Console -->
+<!-- Static snapshot. The live sitemap is /sitemap.php (reads the database). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://udyamcapital.com/</loc><priority>1.0</priority></url>
   <url><loc>https://udyamcapital.com/about</loc><priority>0.9</priority></url>
   <url><loc>https://udyamcapital.com/contact</loc><priority>0.9</priority></url>
   <url><loc>https://udyamcapital.com/case-studies</loc><priority>0.8</priority></url>
   <url><loc>https://udyamcapital.com/articles</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/business-loans</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/debt-restructuring</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/corporate-finance</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/lap</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/working-capital</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/fund-raising</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/project-finance</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/msme-finance</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/services/financial-advisory</loc><priority>0.8</priority></url>
-  <url><loc>https://udyamcapital.com/privacy-policy</loc><priority>0.3</priority></url>
-  <url><loc>https://udyamcapital.com/terms-of-use</loc><priority>0.3</priority></url>
+  <url><loc>https://udyamcapital.com/services/transaction-advisory</loc><priority>0.8</priority></url>
+  <url><loc>https://udyamcapital.com/services/credit-ratings-advisory</loc><priority>0.8</priority></url>
+  <url><loc>https://udyamcapital.com/services/cfo-services</loc><priority>0.8</priority></url>
+  <url><loc>https://udyamcapital.com/services/debt-capital-advisory</loc><priority>0.8</priority></url>
+  <url><loc>https://udyamcapital.com/services/corporate-finance</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/fund-raising</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/debt-restructuring</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/credit-rating-advisory</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/rating-enhancement</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/credit-profile-advisory</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/fpa</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/mis-reporting</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/cash-flow-management</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/business-loans</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/working-capital</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/lap</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/project-finance</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/services/debt-syndication</loc><priority>0.7</priority></url>
+  <url><loc>https://udyamcapital.com/articles/understanding-business-loans</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/debt-restructuring-explained</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/working-capital-mistakes</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/msme-finance-options-2026</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/project-finance-basics</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/fund-raising-readiness</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/loan-against-property-guide</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/cibil-score-business-loans</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/term-loan-vs-overdraft</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/nbfc-vs-banks-borrowing</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/cash-flow-forecasting-small-business</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/why-business-loans-get-rejected</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/collateral-free-lending</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/gst-returns-borrowing-power</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/balance-sheet-cleanup-fundraising</loc><priority>0.6</priority></url>
+  <url><loc>https://udyamcapital.com/articles/co-lending-explained-borrowers</loc><priority>0.6</priority></url>
 </urlset>

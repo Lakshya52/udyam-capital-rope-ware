@@ -9,41 +9,48 @@ import {
 	ChevronDown,
 } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import { services, getSubServices } from "../data/services.js";
+import { useServices, useSettings, submitLead } from "../lib/content.jsx";
 
-const allServiceTitles = services.flatMap((m) => [
-	m.title,
-	...getSubServices(m.id).map((s) => s.title),
-]);
+// Static fallback if the API is unreachable — mirrors site_settings seed.
+const FALLBACK_SETTINGS = {
+	landline_label: "Landline : 0120 444 5816",
+	landline_href: "tel:01204445816",
+	mobile_label: "Mobile : +91 82875 98661",
+	mobile_href: "tel:+918287598661",
+	email1: "we.care@udyamcapital.com",
+	email2: "info@udyamcapital.com",
+	address:
+		"214, 2nd floor, Vishal Chambers, Noida Sector 18, Uttar Pradesh - 201301",
+	map_query: "Vishal Chambers Noida Sector 18",
+	map_embed:
+		"https://www.google.com/maps?q=Vishal+Chambers,+Sector+18,+Noida,+Uttar+Pradesh+201301&output=embed",
+};
 
-const infoCards = [
-	{
-		icon: <Phone size={16} />,
-		label: "Contact",
-		lines: ["Landline : 0120 444 5816", "Mobile : +91 82875 98661"],
-		hrefs: ["tel:01204445816", "tel:+918287598661"],
-	},
-	{
-		icon: <Mail size={16} />,
-		label: "Email us",
-		lines: ["we.care@udyamcapital.com", "info@udyamcapital.com"],
-		hrefs: [
-			"mailto:we.care@udyamcapital.com",
-			"mailto:info@udyamcapital.com",
-		],
-	},
-	{
-		icon: <MapPin size={16} />,
-		label: "Address",
-		lines: [
-			"214, 2nd floor, Vishal Chambers, Noida Sector 18, Uttar Pradesh - 201301",
-		],
-		hrefs: [
-			"https://www.google.com/maps/search/?api=1&query=Vishal+Chambers+Noida+Sector+18",
-		],
-		external: true,
-	},
-];
+function buildInfoCards(st) {
+	return [
+		{
+			icon: <Phone size={16} />,
+			label: "Contact",
+			lines: [st.landline_label, st.mobile_label],
+			hrefs: [st.landline_href, st.mobile_href],
+		},
+		{
+			icon: <Mail size={16} />,
+			label: "Email us",
+			lines: [st.email1, st.email2],
+			hrefs: [`mailto:${st.email1}`, `mailto:${st.email2}`],
+		},
+		{
+			icon: <MapPin size={16} />,
+			label: "Address",
+			lines: [st.address],
+			hrefs: [
+				`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.map_query)}`,
+			],
+			external: true,
+		},
+	];
+}
 
 const steps = [
 	{
@@ -75,6 +82,13 @@ export default function Contact() {
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
 	const [searchParams] = useSearchParams();
+	const { services, getSubServices } = useServices();
+	const settings = { ...FALLBACK_SETTINGS, ...(useSettings() ?? {}) };
+	const allServiceTitles = services.flatMap((m) => [
+		m.title,
+		...getSubServices(m.id).map((s) => s.title),
+	]);
+	const infoCards = buildInfoCards(settings);
 	const [form, setForm] = useState({
 		name: "",
 		email: "",
@@ -83,6 +97,8 @@ export default function Contact() {
 		message: "",
 	});
 	const [sent, setSent] = useState(false);
+	const [sentViaApi, setSentViaApi] = useState(false);
+	const [sending, setSending] = useState(false);
 
 	// pre-select service when arriving from a service page (?service=...)
 	useEffect(() => {
@@ -98,20 +114,31 @@ export default function Contact() {
 		setSent(false);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (sending) return;
+		setSending(true);
+		const res = await submitLead(form);
+		setSending(false);
+		if (res?.ok) {
+			setSentViaApi(true);
+			setSent(true);
+			return;
+		}
+		// API unreachable — fall back to the visitor's mail app.
 		const subject = encodeURIComponent(
 			`Consultation request — ${form.name || "New enquiry"}${form.service ? ` (${form.service})` : ""}`,
 		);
 		const body = encodeURIComponent(
 			`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service || "—"}\n\nMessage:\n${form.message}`,
 		);
-		window.location.href = `mailto:we.care@udyamcapital.com?subject=${subject}&body=${body}`;
+		window.location.href = `mailto:${settings.email1}?subject=${subject}&body=${body}`;
+		setSentViaApi(false);
 		setSent(true);
 	};
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -296,8 +323,9 @@ export default function Contact() {
 							{sent && (
 								<p className="flex items-center gap-2 font-inter-reg fs-body text-(--color-primary)">
 									<CheckCircle2 size={16} />
-									Your mail app should have opened — just hit
-									send and we&apos;ll take it from there.
+									{sentViaApi
+										? "Received — we'll call you back within one business day."
+										: "Your mail app should have opened — just hit send and we'll take it from there."}
 								</p>
 							)}
 						</form>
@@ -325,7 +353,7 @@ export default function Contact() {
 				<div className="rv-fade mt-8 overflow-hidden rounded-[16px] border border-black/5 shadow-[0_24px_60px_rgba(12,31,51,0.12)]">
 					<iframe
 						title="Udyam Capital office location map"
-						src="https://www.google.com/maps?q=Vishal+Chambers,+Sector+18,+Noida,+Uttar+Pradesh+201301&output=embed"
+						src={settings.map_embed}
 						loading="lazy"
 						referrerPolicy="no-referrer-when-downgrade"
 						className="h-[320px] w-full border-0 lg:h-[420px]"

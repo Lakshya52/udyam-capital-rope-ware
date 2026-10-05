@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { asset } from "../lib/content.jsx";
 
 const IMAGE_ASSETS = [
 	"/Logo.png",
@@ -16,7 +17,6 @@ const IMAGE_ASSETS = [
 	"/services/msme-finance.jpg",
 	"/services/financial-advisory.jpg",
 ];
-const VIDEO_SRC = "/UCHeroFinal.mp4";
 const MIN_DISPLAY_MS = 1400;
 const HARD_CAP_MS = 10000;
 
@@ -34,22 +34,6 @@ function loadImage(src) {
 			img.onload = () => resolve(true);
 			img.onerror = () => resolve(false);
 			img.src = src;
-		}),
-		8000,
-		false
-	);
-}
-
-function loadVideo(src) {
-	return withTimeout(
-		new Promise((resolve) => {
-			const vid = document.createElement("video");
-			vid.muted = true;
-			vid.preload = "auto";
-			vid.oncanplaythrough = () => resolve(true);
-			vid.onerror = () => resolve(false);
-			vid.src = src;
-			vid.load();
 		}),
 		8000,
 		false
@@ -79,7 +63,7 @@ export default function Loader({ onExitStart, onExited }) {
 	useEffect(() => {
 		let cancelled = false;
 		const startedAt = Date.now();
-		const total = IMAGE_ASSETS.length + 2; // images + video + fonts
+		const total = IMAGE_ASSETS.length + 1; // images + fonts
 		let settled = 0;
 
 		// lock scroll while loading
@@ -132,8 +116,7 @@ export default function Loader({ onExitStart, onExited }) {
 
 		withTimeout(
 			Promise.all([
-				...IMAGE_ASSETS.map((src) => loadImage(src).then(bump)),
-				loadVideo(VIDEO_SRC).then(bump),
+				...IMAGE_ASSETS.map((src) => loadImage(asset(src)).then(bump)),
 				loadFonts().then(bump),
 			]),
 			HARD_CAP_MS,

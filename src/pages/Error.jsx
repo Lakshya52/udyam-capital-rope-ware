@@ -8,7 +8,7 @@ export default function Error() {
 	useLineReveal(rootRef);
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"

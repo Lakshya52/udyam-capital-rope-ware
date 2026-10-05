@@ -1,0 +1,18 @@
+# Udyam Capital — deploy this folder's PARENT as the domain root:
+#   /            <- built Vite site (copy of dist/*)
+#   /api         <- PHP JSON endpoints
+#   /admin       <- PHP dashboard (phase 2)
+#   /uploads     <- dashboard image uploads
+# If serving from a subfolder (XAMPP: http://localhost/udyam),
+# set RewriteBase to that folder, e.g. RewriteBase /udyam/
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # RewriteBase /udyam/
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  # Match anywhere in the path so this works at a domain root AND in a
+  # subfolder (/udyam): never rewrite the API, dashboard or uploads.
+  RewriteCond %{REQUEST_URI} !/(api|admin|uploads)/ [NC]
+  RewriteRule . index.html [L]
+</IfModule>

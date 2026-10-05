@@ -3,11 +3,12 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLineReveal } from '../lib/reveal.js'
+import { asset } from '../lib/content.jsx'
 
 function IndiaMap() {
   return (
     <img
-      src="/IndiaMap.svg"
+      src={asset("/IndiaMap.svg")}
       alt="India sector map"
       className="block h-auto max-h-[320px] w-auto max-w-[88%] object-contain object-right-bottom sm:max-h-[440px] sm:max-w-full lg:h-fit lg:max-h-full lg:max-w-none"
       loading="lazy"
@@ -67,7 +68,7 @@ export default function GrowthSolutions() {
           </Link>
 
               {/* <RupeeWheel /> */}
-              <img src="/RupeesWheel.svg" alt="" className="absolute -bottom-[40px] -left-[40px] h-[220px] w-[220px] object-contain sm:-bottom-[50px] sm:-left-[50px] sm:h-[280px] sm:w-[280px] lg:-bottom-[60px] lg:-left-[60px] lg:h-[340px] lg:w-[340px]" />
+              <img src={asset("/RupeesWheel.svg")} alt="" className="absolute -bottom-[40px] -left-[40px] h-[220px] w-[220px] object-contain sm:-bottom-[50px] sm:-left-[50px] sm:h-[280px] sm:w-[280px] lg:-bottom-[60px] lg:-left-[60px] lg:h-[340px] lg:w-[340px]" />
 
         </div>
 

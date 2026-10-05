@@ -8,19 +8,13 @@ import {
 	Plus,
 } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import {
-	services,
-	getService,
-	getServiceDetails,
-	getSubServices,
-	getParentService,
-	isMainService,
-	documentChecklist,
-} from "../data/services.js";
+import { useServices } from "../lib/content.jsx";
 import Error from "./Error.jsx";
 import ServicesMain from "./ServicesMain.jsx";
-import WhyUs from "../components/WhyUs.jsx";
-import FooterCTA from "../components/FooterCTA.jsx";
+// import WhyUs from "../components/WhyUs.jsx";
+import WhyUsNew from "../components/WhyUsNew.jsx";
+import FooterCTAnew from "../components/FooterCTAnew.jsx";
+// import FooterCTA from "../components/FooterCTA.jsx";
 
 function FaqItem({ item, open, onToggle }) {
 	return (
@@ -82,6 +76,15 @@ export default function Services() {
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
 	const [openFaq, setOpenFaq] = useState(0);
+	const {
+		services,
+		getService,
+		getServiceDetails,
+		getSubServices,
+		getParentService,
+		isMainService,
+		documentChecklist,
+	} = useServices();
 
 	const service = id ? getService(id) : undefined;
 	const details = id ? getServiceDetails(id) : undefined;
@@ -121,7 +124,7 @@ export default function Services() {
 	if (main) return <ServicesMain />;
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -618,8 +621,10 @@ export default function Services() {
 				</section>
 			)}
 
-			<WhyUs />
-			<FooterCTA />
+			{/* <WhyUs /> */}
+			<WhyUsNew />
+			{/* <FooterCTA /> */}
+			<FooterCTAnew />
 		</main>
 	);
 }

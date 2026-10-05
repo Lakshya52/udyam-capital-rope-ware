@@ -1,0 +1,2 @@
+# Never serve config files directly (protects the access key + DB password).
+Require all denied

@@ -16,6 +16,26 @@ declare global {
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Router basename that works both at a domain root and in a subfolder
+// (e.g. XAMPP's /udyam): if the first URL segment isn't a known route,
+// it's treated as the deploy subfolder.
+function getBasename(): string {
+  const routes = [
+    'case-studies',
+    'articles',
+    'services',
+    'about',
+    'contact',
+    'privacy-policy',
+    'terms-of-use',
+  ];
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  if (parts.length === 0 || routes.includes(parts[0])) return '/';
+  const rest = parts.slice(1);
+  if (rest.length === 0 || routes.includes(rest[0])) return '/' + parts[0];
+  return '/';
+}
+
 // Re-measure scroll triggers once late assets (images, webfonts) settle,
 // so below-the-fold triggers can't fire off-screen on shifted layout.
 window.addEventListener('load', () => ScrollTrigger.refresh())
@@ -37,7 +57,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={getBasename()}>
       <App />
     </BrowserRouter>
   </StrictMode>,
