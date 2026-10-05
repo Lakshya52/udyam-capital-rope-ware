@@ -140,7 +140,7 @@ function GiantWatermark() {
 	}, []);
 
 	return (
-		<div className="relative z-10 mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+		<div className="relative z-10 mx-auto w-full max-w-291.5 px-5 md:px-8 xl:px-0">
 			<div ref={wrapRef} className="w-full">
 				<div
 					ref={textRef}
@@ -168,7 +168,7 @@ export default function Footer() {
 					className="h-full w-full scale-105 object-cover opacity-80 blur-md"
 				/>
 			</div>
-			<div className="relative z-10 mx-auto flex w-full max-w-[1166px] flex-col gap-10 px-5 md:px-8 lg:flex-row lg:gap-[18px] xl:px-0">
+			<div className="relative z-10 mx-auto flex w-full max-w-291.5 flex-col gap-10 px-5 md:px-8 lg:flex-row lg:gap-4.5 xl:px-0">
 				<div className="w-full lg:w-3/5">
 					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-10">
 						{/* <Link
@@ -215,7 +215,7 @@ export default function Footer() {
 						<h4 className="font-heading fs-body-sm text-white">
 							Contact
 						</h4>
-						<div className="mt-4 min-w-0 space-y-2.5 break-words font-inter-reg text-[0.85rem] leading-snug text-white sm:text-[1rem]">
+						<div className="mt-4 min-w-0 space-y-2.5 wrap-break-word font-inter-reg text-[0.85rem] leading-snug text-white sm:text-[1rem]">
 							<a
 								href={`mailto:${ct.email1}`}
 								className="block w-fit max-w-full whitespace-nowrap transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4 lg:text-[0.85rem] xl:text-[1rem]"
@@ -251,7 +251,7 @@ export default function Footer() {
 
 			{/* legal bar */}
 			<div className="relative z-10 ">
-				<div className="mx-auto flex w-full max-w-[1166px] flex-col items-start justify-between gap-2 px-5 py-5 sm:flex-row sm:items-center md:px-8 xl:px-0">
+				<div className="mx-auto flex w-full max-w-291.5 flex-col items-start justify-between gap-2 px-5 py-5 sm:flex-row sm:items-center md:px-8 xl:px-0">
 					<p>
 						{/* empty to create space */}
 					</p>

@@ -163,7 +163,7 @@ export default function Navbar() {
       {/* ── Desktop + mobile top floating bar ── */}
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-8 sm:pt-4">
         <nav
-          className={`pointer-events-auto relative mx-auto w-full max-w-[1166px] overflow-visible rounded-full transition-all duration-500 ${
+          className={`pointer-events-auto relative mx-auto w-full max-w-291.5 overflow-visible rounded-full transition-all duration-500 ${
             scrolled || open || dropOpen
               ? 'bg-white/75 backdrop-blur-2xl ring-1 ring-white/60'
               : 'bg-white/65 ring-1 ring-white/60 backdrop-blur-2xl'
@@ -321,6 +321,8 @@ export default function Navbar() {
               {navLinks.map((link, i) => {
                 const delay = open ? `${120 + i * 70}ms` : '0ms'
                 const anim = open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                // Contact already lives in the fixed bottom CTA — skip the duplicate row
+                if (link.label === 'Contact') return null
                 if (link.label === 'Services') {
                   const expanded = mobileSection === 'services'
                   return (

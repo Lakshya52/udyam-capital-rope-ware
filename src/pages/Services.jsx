@@ -25,7 +25,7 @@ function FaqItem({ item, open, onToggle }) {
 				aria-expanded={open}
 				className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
 			>
-				<span className="font-heading text-[1.05rem] text-(--color-black) sm:text-[1.25rem]">
+				<span className="font-heading text-[1.05rem] text-black sm:text-[1.25rem]">
 					{item.q}
 				</span>
 				<span
@@ -127,14 +127,14 @@ export default function Services() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 			{/* header */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<nav
 					aria-label="Breadcrumb"
 					className="rv-fade flex flex-wrap items-center gap-2 font-inter-reg fs-body-sm text-neutral-500"
@@ -154,14 +154,14 @@ export default function Services() {
 							{parent.title}
 						</Link>
 					) : (
-						<span className="text-(--color-black)">Services</span>
+						<span className="text-black">Services</span>
 					)}
 					<span aria-hidden="true">/</span>
 					<span className="text-(--color-primary)">
 						{service.title}
 					</span>
 				</nav>
-				<h1 className="mt-4 max-w-3xl font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+				<h1 className="mt-4 max-w-3xl font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 					<span className="block overflow-hidden pb-6">
 						<span className="rv-line block">{service.title}</span>
 					</span>
@@ -210,7 +210,7 @@ export default function Services() {
 					)}
 					<Link
 						to={`/contact?service=${encodeURIComponent(service.title)}`}
-						className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-7 py-3 font-inter-reg fs-body-sm text-(--color-black) transition-all duration-300 hover:border-(--color-primary) hover:text-(--color-primary) active:scale-[0.98]"
+						className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-7 py-3 font-inter-reg fs-body-sm text-black transition-all duration-300 hover:border-(--color-primary) hover:text-(--color-primary) active:scale-[0.98]"
 					>
 						Contact us
 					</Link>
@@ -218,10 +218,10 @@ export default function Services() {
 			</section>
 
 			{/* image left, intro + story right */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[5dvh] md:px-8 xl:px-0">
-				<div className="grid grid-cols-1 items-start gap-[18px] lg:grid-cols-2 lg:gap-10">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[5dvh] md:px-8 xl:px-0">
+				<div className="grid grid-cols-1 items-start gap-4.5 lg:grid-cols-2 lg:gap-10">
 					{service.image && (
-						<div className="rv-fade overflow-hidden rounded-[16px] shadow-[0_24px_60px_rgba(12,31,51,0.15)] lg:sticky lg:top-32">
+						<div className="rv-fade overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(12,31,51,0.15)] lg:sticky lg:top-32">
 							<img
 								src={service.image}
 								alt={service.title}
@@ -234,7 +234,7 @@ export default function Services() {
 					<div>
 						{details?.story && (
 							<div className="">
-								<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+								<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 									<span className="block overflow-hidden pb-2">
 										<span className="rv-line block">
 											{details.story.heading}
@@ -256,9 +256,9 @@ export default function Services() {
 			</section>
 			{/* what's included — sub-services of this practice */}
 			{included.length > 0 && (
-				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[5dvh] md:px-8 xl:px-0">
+				<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[5dvh] md:px-8 xl:px-0">
 					<div className="max-w-2xl">
-						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 							<span className="block overflow-hidden pb-2">
 								<span className="rv-line block">
 									What&apos;s{" "}
@@ -273,15 +273,15 @@ export default function Services() {
 							to see details, documents and FAQs.
 						</p>
 					</div>
-					<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+					<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-3">
 						{included.map((s) => (
 							<Link
 								key={s.id}
 								to={`/services/${s.id}`}
-								className="group flex flex-col justify-between gap-6 rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)] sm:p-7"
+								className="group flex flex-col justify-between gap-6 rounded-2xl border border-black/5 bg-[#EAF1FC] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)] sm:p-7"
 							>
 								<span>
-									<span className="block font-heading text-[1.25rem] text-(--color-black) transition-colors duration-300 group-hover:text-(--color-white)">
+									<span className="block font-heading text-[1.25rem] text-black transition-colors duration-300 group-hover:text-white">
 										{s.title}
 									</span>
 									<span className="mt-2 block font-inter-reg fs-body text-neutral-600 transition-colors duration-300 group-hover:text-white/75">
@@ -300,13 +300,13 @@ export default function Services() {
 			{!main && (
 				<section
 					id="documents"
-					className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 pb-[5dvh] md:px-8 lg:scroll-mt-36 xl:px-0"
+					className="relative z-10 mx-auto w-full max-w-291.5 scroll-mt-24 px-5 pb-[5dvh] md:px-8 lg:scroll-mt-36 xl:px-0"
 				>
 					{/* <div className="max-w-2xl">
 					<p className="rv-fade font-inter-reg fs-body-sm uppercase tracking-[0.22em] text-(--color-primary)">
 						Checklist
 					</p>
-					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Documents You&apos;ll{" "}
@@ -321,7 +321,7 @@ export default function Services() {
 						exactly what we&apos;ll ask for.
 					</p>
 				</div> */}
-					<div className="grid grid-cols-1 gap-[18px] lg:grid-cols-2 mt-8">
+					<div className="grid grid-cols-1 gap-4.5 lg:grid-cols-2 mt-8">
 						<div>
 							{/* progress readout */}
 							<div className="rv-fade mt-8 flex items-start gap-5 flex-col">
@@ -332,7 +332,7 @@ export default function Services() {
 									</span>
 								</p>
 								<div className="pb-2 flex items-center gap-2">
-									<p className="font-heading text-[1.1rem] text-(--color-black)">
+									<p className="font-heading text-[1.1rem] text-black">
 										{doneCount === docs.length
 											? "All set — nice!"
 											: `${doneCount} of ${docs.length} ready`}
@@ -428,7 +428,7 @@ export default function Services() {
 													className={`flex items-start gap-2.5 font-inter-reg fs-body transition-all duration-300 ${
 														done
 															? "text-white/50 line-through decoration-white/40"
-															: "text-(--color-white)"
+															: "text-white"
 													}`}
 												>
 													{/* <FileText
@@ -474,23 +474,23 @@ export default function Services() {
 
 			{/* who it's for + what's included */}
 			{details && (
-				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pt-[5dvh] md:px-8 xl:px-0">
-					{/* <div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
+				<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pt-[5dvh] md:px-8 xl:px-0">
+					{/* <div className="rv-fade rounded-2xl bg-(--color-primary) p-6 sm:p-10">
 						<p className="font-inter-reg fs-body-sm uppercase tracking-widest text-white/70">
 							Who it&apos;s for
 						</p>
-						<p className="mt-2 max-w-3xl font-heading text-[1.5rem] leading-snug text-(--color-white) sm:text-[2rem]">
+						<p className="mt-2 max-w-3xl font-heading text-[1.5rem] leading-snug text-white sm:text-[2rem]">
 							{details.audience}
 						</p>
 					</div> */}
 					<div className="flex flex-col">
-						<h1 className="mb-[5dvh] font-heading  fs-heading  text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]" >Key  <span className="text-(--color-primary)" >
+						<h1 className="mb-[5dvh] font-heading  fs-heading  text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]" >Key  <span className="text-(--color-primary)" >
 							Benefits</span> </h1>
-						<div className=" grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+						<div className=" grid grid-cols-1 gap-4.5 sm:grid-cols-2">
 							{(details.benefits ?? []).map((b, i) => (
 								<div
 									key={b.title}
-									className="rv-fade rounded-[16px] border  border-black/5 bg-[#f8f8f8] p-6 shadow-[0_24px_60px_rgba(12,31,51,0.08)] sm:p-7"
+									className="rv-fade rounded-2xl border  border-black/5 bg-[#f8f8f8] p-6 shadow-[0_24px_60px_rgba(12,31,51,0.08)] sm:p-7"
 								>
 									<div className="flex items-center gap-3">
 										{/* <CheckCircle2
@@ -501,7 +501,7 @@ export default function Services() {
 											0{i + 1}
 										</p> */}
 									</div>
-									<h3 className="mt-3 font-heading text-[1.25rem] text-(--color-black)">
+									<h3 className="mt-3 font-heading text-[1.25rem] text-black">
 										{b.title}
 									</h3>
 									<p className="mt-2 font-inter-reg fs-body text-neutral-600">
@@ -515,9 +515,9 @@ export default function Services() {
 			)}
 
 			{/* how it works */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 py-[10dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 py-[10dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								How It{" "}
@@ -528,16 +528,16 @@ export default function Services() {
 						</span>
 					</h2>
 				</div>
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
 					{process.map((s) => (
 						<div
 							key={s.n}
-							className="rv-fade rounded-[16px] border border-black/5 bg-[#a9ceff] p-6 sm:p-7"
+							className="rv-fade rounded-2xl border border-black/5 bg-[#a9ceff] p-6 sm:p-7"
 						>
 							<p className="font-heading text-[2rem] leading-none text-(color-mix(in_oklab,var(--color-primary)_45%,transparent))">
 								{s.n}
 							</p>
-							<h3 className="mt-4 font-heading text-[1.25rem] text-(--color-black)">
+							<h3 className="mt-4 font-heading text-[1.25rem] text-black">
 								{s.title}
 							</h3>
 							<p className="mt-2 font-inter-reg fs-body text-neutral-600">
@@ -549,9 +549,9 @@ export default function Services() {
 			</section>
 
 			{/* other services */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] md:px-8 xl:px-0">
 				<div className="flex flex-wrap items-end justify-between gap-4">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="block">
 								Explore{" "}
@@ -563,20 +563,20 @@ export default function Services() {
 					</h2>
 					<Link
 						to="/contact"
-						className="font-inter-reg fs-body-sm text-(--color-black) transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
+						className="font-inter-reg fs-body-sm text-black transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
 					>
 						Not sure which fits? Contact Us.
 					</Link>
 				</div>
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-3">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-3">
 					{others.map((s) => (
 						<Link
 							key={s.id}
 							to={`/services/${s.id}`}
-							className="group flex items-center justify-between gap-4 rounded-[16px] bg-[#a9ceff] px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)] sm:px-6 sm:py-6"
+							className="group flex items-center justify-between gap-4 rounded-2xl bg-[#a9ceff] px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)] sm:px-6 sm:py-6"
 						>
 							<span>
-								<span className="block font-heading text-[1.15rem] text-(--color-black)">
+								<span className="block font-heading text-[1.15rem] text-black">
 									{s.title}
 								</span>
 								<span className="mt-1 block font-inter-reg fs-body-sm text-neutral-600">
@@ -593,9 +593,9 @@ export default function Services() {
 
 			{/* faqs */}
 			{(details?.faqs ?? []).length > 0 && (
-				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+				<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] md:px-8 xl:px-0">
 					<div className="text-center">
-						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 							<span className="block overflow-hidden pb-2">
 								<span className="rv-line block">
 									Common{" "}

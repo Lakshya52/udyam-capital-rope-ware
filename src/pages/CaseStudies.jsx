@@ -249,20 +249,20 @@ export default function CaseStudies() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				{/* heading */}
 				<div className="max-w-2xl">
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Case Studies
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Work That{" "}
@@ -290,7 +290,7 @@ export default function CaseStudies() {
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							placeholder="Search case studies…"
-							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-(--color-black) placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
+							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-black placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						/>
 					</label>
 					<label className="relative block">
@@ -298,7 +298,7 @@ export default function CaseStudies() {
 							value={industry}
 							onChange={(e) => setIndustry(e.target.value)}
 							aria-label="Filter by industry"
-							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
+							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-black outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						>
 							{industries.map((t) => (
 								<option key={t} value={t}>
@@ -333,13 +333,13 @@ export default function CaseStudies() {
 					</div>
 				) : (
 				/* expandable stories */
-				<div className="mt-10 flex flex-col gap-[18px] lg:mt-14">
+				<div className="mt-10 flex flex-col gap-4.5 lg:mt-14">
 					{visible.map((c, i) => {
 						const open = openIndex === i;
 						return (
 							<div
 								key={c.title}
-								className={`rv-fade overflow-hidden rounded-[16px] transition-colors duration-500 ${
+								className={`rv-fade overflow-hidden rounded-2xl transition-colors duration-500 ${
 									open
 										? "bg-(--color-primary)"
 										: "border border-black/5 bg-[#EAF1FC] hover:bg-[#d8e7fb]"
@@ -371,14 +371,14 @@ export default function CaseStudies() {
 									)}
 									<span>
 										<span
-											className={`break-words font-inter-reg text-[0.75rem] tracking-wide transition-colors duration-500 sm:text-[0.8rem] ${
+											className={`wrap-break-word font-inter-reg text-[0.75rem] tracking-wide transition-colors duration-500 sm:text-[0.8rem] ${
 												open ? "text-white/70" : "text-neutral-500"
 											}`}
 										>
 											<span
 												className={`font-heading ${
 													open
-														? "text-(--color-white)"
+														? "text-white"
 														: "text-(--color-primary)"
 												}`}
 											>
@@ -390,17 +390,17 @@ export default function CaseStudies() {
 											{c.stats[0].value} {c.stats[0].label.toLowerCase()}
 										</span>
 										<span
-											className={`mt-2 block break-words font-heading text-[1.1rem] leading-snug transition-colors duration-500 sm:text-[1.75rem] ${
+											className={`mt-2 block wrap-break-word font-heading text-[1.1rem] leading-snug transition-colors duration-500 sm:text-[1.75rem] ${
 												open
-													? "text-(--color-white)"
-													: "text-(--color-black)"
+													? "text-white"
+													: "text-black"
 											}`}
 										>
 											{c.title}
 										</span>
 									</span>
 									{!open && (
-										<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-black/15 text-(--color-black) transition-all duration-500 sm:h-11 sm:w-11">
+										<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-black/15 text-black transition-all duration-500 sm:h-11 sm:w-11">
 											<Plus size={16} />
 										</span>
 									)}
@@ -428,7 +428,7 @@ export default function CaseStudies() {
 																: "translate-x-6 opacity-0"
 														}`}
 													>
-														<span className="min-w-0 break-words font-heading text-[1.5rem] text-(--color-white) sm:text-[2.25rem]">
+														<span className="min-w-0 wrap-break-word font-heading text-[1.5rem] text-white sm:text-[2.25rem]">
 															{s.value}
 														</span>
 														<span className="shrink-0 text-right font-inter-reg text-[0.8rem] text-white/70 sm:text-[0.9rem]">
@@ -446,14 +446,14 @@ export default function CaseStudies() {
 														: "translate-y-4 opacity-0"
 												}`}
 											>
-												<p className="text-(--color-white)/80" >
-													<span className="font-heading text-(--color-white)">
+												<p className="text-white/80" >
+													<span className="font-heading text-white">
 														Challenge —{" "}
 													</span>
 													{c.challenge}
 												</p>
-												<p className="text-(--color-white)/80" >
-													<span className="font-heading text-(--color-white)">
+												<p className="text-white/80" >
+													<span className="font-heading text-white">
 														What we did —{" "}
 													</span>
 													{c.solution}
@@ -475,13 +475,13 @@ export default function CaseStudies() {
 				{/* <WhyUs /> */}
 				<WhyUsNew />
 				{/* cta */}
-				{/* <div className="rv-fade mt-[18px] flex flex-col items-start justify-between gap-5 rounded-[16px] bg-(--color-primary) p-6 sm:flex-row sm:items-center sm:p-10">
-					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
+				{/* <div className="rv-fade mt-[18px] flex flex-col items-start justify-between gap-5 rounded-2xl bg-(--color-primary) p-6 sm:flex-row sm:items-center sm:p-10">
+					<h2 className="font-heading text-[1.5rem] text-white sm:text-[2rem]">
 						Your business could be next.
 					</h2>
 					<Link
 						to="/contact"
-						className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-white px-7 py-3 font-inter-reg text-[0.95rem] text-(--color-black) transition-all duration-300 hover:gap-3 active:scale-[0.98]"
+						className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-white px-7 py-3 font-inter-reg text-[0.95rem] text-black transition-all duration-300 hover:gap-3 active:scale-[0.98]"
 					>
 						Talk to us
 						<ArrowRight

@@ -38,11 +38,11 @@ function AccordionItem({ item, open, onToggle }) {
         aria-expanded={open}
         className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
       >
-        <span className="font-heading text-[1.05rem] text-(--color-white) sm:text-[1.25rem]">
+        <span className="font-heading text-[1.05rem] text-white sm:text-[1.25rem]">
           {item.title}
         </span>
         <span
-          className={`grid h-6 w-6 shrink-0 place-items-center text-[22px] font-light leading-none text-(--color-white) transition-transform duration-300 ${
+          className={`grid h-6 w-6 shrink-0 place-items-center text-[22px] font-light leading-none text-white transition-transform duration-300 ${
             open ? 'rotate-45' : ''
           }`}
         >
@@ -55,7 +55,7 @@ function AccordionItem({ item, open, onToggle }) {
         }`}
       >
         <div className="min-h-0 overflow-hidden">
-          <p className="px-5 pb-5 font-inter-reg text-[0.95rem] leading-relaxed text-(--color-white) sm:px-6 sm:pb-6 sm:text-[1rem]">
+          <p className="px-5 pb-5 font-inter-reg text-[0.95rem] leading-relaxed text-white sm:px-6 sm:pb-6 sm:text-[1rem]">
             {item.body}
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function WhyUs() {
   // (scroll-driven tour removed — accordion is tap-to-open only)
 
   return (
-    <section ref={rootRef} className="section relative mx-auto grid w-full max-w-[1166px] grid-cols-1 items-start gap-8 px-5 pb-12 sm:gap-10 lg:grid-cols-2 lg:gap-14 lg:pb-[72px] md:px-8 xl:px-0">
+    <section ref={rootRef} className="section relative mx-auto grid w-full max-w-291.5 grid-cols-1 items-start gap-8 px-5 pb-12 sm:gap-10 lg:grid-cols-2 lg:gap-14 lg:pb-18 md:px-8 xl:px-0">
       {/* backdrop graphics */}
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[#5495D8]/40 blur-[100px]" />
@@ -113,7 +113,7 @@ export default function WhyUs() {
       </div>
       {/* Left copy */}
       <div className='relative z-10 flex flex-col' > 
-        <h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+        <h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
           <span className="block overflow-hidden pb-2">
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Why Us

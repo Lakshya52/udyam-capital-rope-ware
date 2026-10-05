@@ -75,7 +75,7 @@ export default function FooterCTA() {
   useLineReveal(rootRef)
 
   return (
-    <section ref={rootRef} className=" section mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+    <section ref={rootRef} className=" section mx-auto w-full max-w-291.5 px-5 md:px-8 xl:px-0">
       <div className="relative">
         {/* shape border — top strip */}
         <BorderStrip  />
@@ -83,7 +83,7 @@ export default function FooterCTA() {
           {/* left rail (desktop) */}
           <BorderRail length={6}/>
           {/* content card */}
-          <div className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-[16px] bg-white px-4 py-6 text-center my-auto sm:px-6 sm:py-8">
+          <div className="relative flex w-full h-full items-center justify-center overflow-hidden rounded-2xl bg-white px-4 py-6 text-center my-auto sm:px-6 sm:py-8">
               {/* soft sheen for depth */}
               {/* <div
                 aria-hidden="true"

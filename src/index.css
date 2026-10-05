@@ -89,6 +89,12 @@
   --blue-light : #B3C8DD;
 }
 
+/* branded text selection — orange instead of browser-default blue */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
 /* common partsh */
 
 .section { 

@@ -49,20 +49,20 @@ export default function StatsBelt() {
         <div className="absolute inset-0 bg-linear-to-r from-[#0C1F33]/70 via-transparent to-[#0C1F33]/70" />
         <div className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-[#5495D8]/50 blur-[100px]" />
         <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[#155bd4]/50 blur-[100px]" />
-        <div className="absolute -right-40 -top-40 h-[420px] w-[420px] rounded-full border-[2px] border-white/15" />
-        <div className="absolute -right-24 -top-24 h-[260px] w-[260px] rounded-full border-[2px] border-white/15" />
-        <div className="absolute -left-40 -bottom-40 h-[420px] w-[420px] rounded-full border-[2px] border-white/15" />
+        <div className="absolute -right-40 -top-40 h-105 w-105 rounded-full border-2 border-white/15" />
+        <div className="absolute -right-24 -top-24 h-65 w-65 rounded-full border-2 border-white/15" />
+        <div className="absolute -left-40 -bottom-40 h-105 w-105 rounded-full border-2 border-white/15" />
         <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1166px] grid-cols-1 gap-10 px-5 py-10 text-center sm:gap-8 sm:py-12 md:grid-cols-3 md:px-8 md:py-14 xl:px-0">
+      <div className="relative z-10 mx-auto grid w-full max-w-291.5 grid-cols-1 gap-10 px-5 py-10 text-center sm:gap-8 sm:py-12 md:grid-cols-3 md:px-8 md:py-14 xl:px-0">
         {stats.map((stat) => (
           <div key={stat.label}>
-            <p className="font-heading text-[2.25rem] leading-none text-(--color-white) sm:text-[2.75rem] lg:text-[3.5rem]">
+            <p className="font-heading text-[2.25rem] leading-none text-white sm:text-[2.75rem] lg:text-[3.5rem]">
               <CountUp target={stat.target} suffix={stat.suffix} />
             </p>
-            <p className="font-inter-reg mt-2 text-[1rem] text-(--color-white) sm:text-[1.125rem] lg:text-[1.25rem]">
+            <p className="font-inter-reg mt-2 text-[1rem] text-white sm:text-[1.125rem] lg:text-[1.25rem]">
               {stat.label}
             </p>
           </div>

@@ -151,14 +151,14 @@ export default function ArticleDetail() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<article className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<article className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<Link
 					to="/articles"
 					className="rv-fade inline-flex items-center gap-2 font-inter-reg text-[0.95rem] text-neutral-500 transition-colors duration-300 hover:text-(--color-primary)"
@@ -184,7 +184,7 @@ export default function ArticleDetail() {
 						{formatViews(views)} views
 					</span>
 				</p>
-				<h1 className="mt-3 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.25rem]">
+				<h1 className="mt-3 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.25rem]">
 					<span className="block overflow-hidden pb-2">
 						<span className="rv-line block">{article.title}</span>
 					</span>
@@ -200,7 +200,7 @@ export default function ArticleDetail() {
 							{initials}
 						</span>
 						<div>
-							<p className="font-heading text-[0.95rem] text-(--color-black)">
+							<p className="font-heading text-[0.95rem] text-black">
 								{article.author.name}
 							</p>
 							<p className="font-inter-reg text-[0.8rem] text-neutral-500">
@@ -223,12 +223,12 @@ export default function ArticleDetail() {
 						aria-hidden="true"
 						loading="lazy"
 						decoding="async"
-						className="rv-fade mt-8 aspect-[16/9] w-full rounded-[16px] object-cover"
+						className="rv-fade mt-8 aspect-[16/9] w-full rounded-2xl object-cover"
 					/>
 				) : (
 					<div
 						aria-hidden="true"
-						className="rv-fade mt-8 flex aspect-[16/9] w-full items-end justify-start rounded-[16px] bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-8 sm:p-12"
+						className="rv-fade mt-8 flex aspect-[16/9] w-full items-end justify-start rounded-2xl bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-8 sm:p-12"
 					>
 						<span className="font-heading text-[4rem] leading-none text-white/90 sm:text-[6rem]">
 							{article.title.charAt(0)}
@@ -241,9 +241,9 @@ export default function ArticleDetail() {
 				{article.sections.length > 1 && (
 					<nav
 						aria-label="On this page"
-						className="rv-fade mt-8 rounded-[16px] border border-black/10 bg-[#EAF1FC] p-5 sm:p-6"
+						className="rv-fade mt-8 rounded-2xl border border-black/10 bg-[#EAF1FC] p-5 sm:p-6"
 					>
-						<p className="font-heading text-[0.95rem] text-(--color-black)">
+						<p className="font-heading text-[0.95rem] text-black">
 							On this page
 						</p>
 						<ol className="mt-3 space-y-2.5">
@@ -270,7 +270,7 @@ export default function ArticleDetail() {
 				<div className="mt-8 flex flex-col gap-8">
 					{article.sections.map((s, i) => (
 						<section key={s.heading} id={`section-${i}`} className="scroll-mt-28">
-							<h2 className="font-heading text-[1.5rem] text-(--color-black) sm:text-[1.75rem]">
+							<h2 className="font-heading text-[1.5rem] text-black sm:text-[1.75rem]">
 								{s.heading}
 							</h2>
 							<div className="mt-4 flex flex-col gap-5">
@@ -303,11 +303,11 @@ export default function ArticleDetail() {
 				)}
 
 				{/* prev / next */}
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-2">
 					{prev ? (
 						<Link
 							to={`/articles/${prev.slug}`}
-							className="group rounded-[16px] border border-black/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) sm:p-6"
+							className="group rounded-2xl border border-black/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) sm:p-6"
 						>
 							<span className="inline-flex items-center gap-2 font-inter-reg text-[0.85rem] text-neutral-500">
 								<ArrowLeft
@@ -316,7 +316,7 @@ export default function ArticleDetail() {
 								/>
 								Previous
 							</span>
-							<p className="mt-2 font-heading text-[1.1rem] leading-snug text-(--color-black) transition-colors duration-300 group-hover:text-(--color-primary)">
+							<p className="mt-2 font-heading text-[1.1rem] leading-snug text-black transition-colors duration-300 group-hover:text-(--color-primary)">
 								{prev.title}
 							</p>
 						</Link>
@@ -326,7 +326,7 @@ export default function ArticleDetail() {
 					{next && (
 						<Link
 							to={`/articles/${next.slug}`}
-							className="group rounded-[16px] border border-black/10 p-5 text-right transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) sm:p-6"
+							className="group rounded-2xl border border-black/10 p-5 text-right transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) sm:p-6"
 						>
 							<span className="inline-flex items-center gap-2 font-inter-reg text-[0.85rem] text-neutral-500">
 								Next
@@ -335,7 +335,7 @@ export default function ArticleDetail() {
 									className="transition-transform duration-300 group-hover:translate-x-1"
 								/>
 							</span>
-							<p className="mt-2 font-heading text-[1.1rem] leading-snug text-(--color-black) transition-colors duration-300 group-hover:text-(--color-primary)">
+							<p className="mt-2 font-heading text-[1.1rem] leading-snug text-black transition-colors duration-300 group-hover:text-(--color-primary)">
 								{next.title}
 							</p>
 						</Link>
@@ -343,9 +343,9 @@ export default function ArticleDetail() {
 				</div>
 
 				{/* cta */}
-				{/* <div className="mt-[18px] flex flex-col items-start justify-between gap-5 rounded-[16px] bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-6 sm:flex-row sm:items-center sm:p-10">
+				{/* <div className="mt-[18px] flex flex-col items-start justify-between gap-5 rounded-2xl bg-linear-to-br from-[#0A5CB8] via-(--color-primary) to-[#0C1F33] p-6 sm:flex-row sm:items-center sm:p-10">
 					<div>
-						<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
+						<h2 className="font-heading text-[1.5rem] text-white sm:text-[2rem]">
 							Need this structured for your business?
 						</h2>
 						<p className="mt-2 font-inter-reg text-[0.95rem] text-white/80">
@@ -354,7 +354,7 @@ export default function ArticleDetail() {
 					</div>
 					<Link
 						to="/contact"
-						className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-white px-7 py-3 font-inter-reg text-[0.95rem] text-(--color-black) transition-all duration-300 hover:gap-3 active:scale-[0.98]"
+						className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-white px-7 py-3 font-inter-reg text-[0.95rem] text-black transition-all duration-300 hover:gap-3 active:scale-[0.98]"
 					>
 						Talk to us
 						<ArrowRight
@@ -369,7 +369,7 @@ export default function ArticleDetail() {
 				{/* related */}
 				{related.length > 0 && (
 					<div className="mt-14 border-t border-black/10 pt-8">
-						<h2 className="font-heading text-[1.5rem] text-(--color-black)">
+						<h2 className="font-heading text-[1.5rem] text-black">
 							Keep reading
 						</h2>
 						<div className="mt-4 border-t border-black/10">
@@ -390,11 +390,11 @@ export default function ArticleDetail() {
 											{"  ·  "}
 											{a.date}
 										</p>
-										<h3 className="mt-1.5 font-heading text-[1.1rem] leading-snug text-(--color-black) transition-colors duration-300 group-hover:text-(--color-primary) sm:text-[1.3rem]">
+										<h3 className="mt-1.5 font-heading text-[1.1rem] leading-snug text-black transition-colors duration-300 group-hover:text-(--color-primary) sm:text-[1.3rem]">
 											{a.title}
 										</h3>
 									</div>
-									<span className="grid h-10 w-10 shrink-0 place-items-center self-center rounded-full border border-black/15 text-(--color-black) transition-all duration-300 group-hover:border-(--color-primary) group-hover:bg-(--color-primary) group-hover:text-white">
+									<span className="grid h-10 w-10 shrink-0 place-items-center self-center rounded-full border border-black/15 text-black transition-all duration-300 group-hover:border-(--color-primary) group-hover:bg-(--color-primary) group-hover:text-white">
 										<ArrowUpRight size={16} />
 									</span>
 								</Link>

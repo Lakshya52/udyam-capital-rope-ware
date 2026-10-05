@@ -10,7 +10,7 @@ function IndiaMap() {
     <img
       src={asset("/IndiaMap.svg")}
       alt="India sector map"
-      className="block h-auto max-h-[320px] w-auto max-w-[88%] object-contain object-right-bottom sm:max-h-[440px] sm:max-w-full lg:h-fit lg:max-h-full lg:max-w-none"
+      className="block h-auto max-h-80 w-auto max-w-[88%] object-contain object-right-bottom sm:max-h-110 sm:max-w-full lg:h-fit lg:max-h-full lg:max-w-none"
       loading="lazy"
       onLoad={() => ScrollTrigger.refresh()}
     />
@@ -22,12 +22,12 @@ export default function GrowthSolutions() {
   useLineReveal(rootRef)
 
   return (
-    <section ref={rootRef} className="section relative mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0 h-fit flex flex-col items-center justify-center ">
+    <section ref={rootRef} className="section relative mx-auto w-full max-w-291.5 px-5 md:px-8 xl:px-0 h-fit flex flex-col items-center justify-center ">
       {/* backdrop graphics */}
       {/* <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-[100%] bg-[#9cc7ff]/40 blur-[110px]" />
+        <div className="absolute left-1/2 top-0 h-105 w-[820px] -translate-x-1/2 rounded-[100%] bg-[#9cc7ff]/40 blur-[110px]" />
         <div
-          className="absolute inset-x-0 top-0 h-[420px] opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent)]"
+          className="absolute inset-x-0 top-0 h-105 opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent)]"
           style={{
             backgroundImage:
               'linear-gradient(to right, rgba(21,91,212,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(21,91,212,0.08) 1px, transparent 1px)',
@@ -46,14 +46,14 @@ export default function GrowthSolutions() {
       </h2>
 
       {/* Mobile: stacked (wheel card → map card). Desktop: side-by-side */}
-      <div className="relative z-10 flex w-full flex-col gap-[18px] lg:h-[90dvh] lg:flex-row">
+      <div className="relative z-10 flex w-full flex-col gap-4.5 lg:h-[90dvh] lg:flex-row">
         {/* Left info card */}
-        <div className="relative flex min-h-[420px] w-full flex-col overflow-hidden rounded-[16px] bg-(--color-primary) p-6 sm:min-h-[480px] sm:p-8 lg:w-1/3 lg:min-h-[540px] lg:col-span-3 bg-(--color-primary)">
+        <div className="relative flex min-h-105 w-full flex-col overflow-hidden rounded-2xl bg-(--color-primary) p-6 sm:min-h-[480px] sm:p-8 lg:w-1/3 lg:min-h-[540px] lg:col-span-3 bg-(--color-primary)">
           {/* card backdrop graphics */}
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/15 blur-[80px]" />
-            <div className="absolute -bottom-32 -right-32 h-[380px] w-[380px] rounded-full border-[2px] border-white/20" />
-            <div className="absolute -bottom-20 -right-20 h-[240px] w-[240px] rounded-full border-[2px] border-white/20" />
+            <div className="absolute -bottom-32 -right-32 h-95 w-95 rounded-full border-2 border-white/20" />
+            <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full border-2 border-white/20" />
           </div>
           <p className="relative font-inter-reg text-[1rem] leading-relaxed text-white/90 sm:text-[1.125rem] lg:text-[1.25rem]">
             Whether you're securing seed capital or expanding operations, we connect
@@ -68,12 +68,12 @@ export default function GrowthSolutions() {
           </Link>
 
               {/* <RupeeWheel /> */}
-              <img src={asset("/RupeesWheel.svg")} alt="" className="absolute -bottom-[40px] -left-[40px] h-[220px] w-[220px] object-contain sm:-bottom-[50px] sm:-left-[50px] sm:h-[280px] sm:w-[280px] lg:-bottom-[60px] lg:-left-[60px] lg:h-[340px] lg:w-[340px]" />
+              <img src={asset("/RupeesWheel.svg")} alt="" className="absolute -bottom-10 -left-10 h-55 w-55 object-contain sm:-bottom-[50px] sm:-left-[50px] sm:h-[280px] sm:w-[280px] lg:-bottom-[60px] lg:-left-[60px] lg:h-[340px] lg:w-[340px]" />
 
         </div>
 
         {/* Right map card — custom roundness preserved */}
-        <div className="relative min-h-[380px] w-full overflow-hidden rounded-[15px] rounded-bl-[60px] bg-[#9cc7ff] sm:min-h-[440px] sm:rounded-bl-[100px] lg:col-span-9 lg:w-2/3 lg:min-h-[560px] lg:rounded-bl-[205px]">
+        <div className="relative min-h-95 w-full overflow-hidden rounded-[15px] rounded-bl-[60px] bg-[#9cc7ff] sm:min-h-[440px] sm:rounded-bl-[100px] lg:col-span-9 lg:w-2/3 lg:min-h-[560px] lg:rounded-bl-[205px]">
           {/* card backdrop graphics */}
           <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
             <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-white/40 blur-[80px]" />

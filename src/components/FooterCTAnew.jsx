@@ -12,7 +12,7 @@ export default function FooterCTAnew() {
 	useLineReveal(rootRef);
 
 	return (
-		<section ref={rootRef} className="section mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+		<section ref={rootRef} className="section mx-auto w-full max-w-291.5 px-5 md:px-8 xl:px-0">
 			<div className="relative overflow-hidden rounded-[20px] bg-(--color-primary)">
 				{/* backdrop — waves photo dimmed for white-text contrast */}
 				<div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -29,16 +29,16 @@ export default function FooterCTAnew() {
 				{/* decorative rings + arrow, desktop only — breathing by default,
 				    bloom on arrow hover, dip when the arrow is pressed */}
 				<div className="group pointer-events-none absolute -right-20 top-1/2 hidden -translate-y-1/2 lg:block" aria-hidden="true">
-					<div className="relative grid h-[320px] w-[320px] place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.05] group-active:scale-[0.94] pulse-breathe">
-						<div className="grid h-[220px] w-[220px] place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.08] group-active:scale-[0.92] pulse-breathe [animation-delay:160ms]">
-							<Link to="/contact" aria-label="Go to contact page" className="pointer-events-auto relative z-[2] cursor-pointer grid h-20 w-20 place-items-center rounded-full bg-white text-(--color-primary) shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-transform duration-300 ease-out group-hover:scale-110 group-active:scale-90 pulse-breathe [animation-delay:320ms]">
+					<div className="relative grid h-80 w-80 place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.05] group-active:scale-[0.94] pulse-breathe">
+						<div className="grid h-55 w-55 place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.08] group-active:scale-[0.92] pulse-breathe [animation-delay:160ms]">
+							<Link to="/contact" aria-label="Go to contact page" className="pointer-events-auto relative z-2 cursor-pointer grid h-20 w-20 place-items-center rounded-full bg-white text-(--color-primary) shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-transform duration-300 ease-out group-hover:scale-110 group-active:scale-90 pulse-breathe [animation-delay:320ms]">
 								<ArrowUpRight size={32} />
 							</Link>
 						</div>
 					</div>
 				</div>
 
-				<div className="relative z-10 max-w-[800px] p-8 sm:p-12 lg:p-14">
+				<div className="relative z-10 max-w-200 p-8 sm:p-12 lg:p-14">
 					<p className="rv-fade font-inter-reg fs-body-sm text-white/70">
 						Let's talk
 					</p>
@@ -50,7 +50,7 @@ export default function FooterCTAnew() {
 							<span className="rv-line block">Growth Journey With Us?</span>
 						</span>
 					</h2>
-					<p className="rv-fade mt-3 font-inter-reg text-[1rem] leading-relaxed text-white/75 sm:text-[1.125rem]">
+					<p className="rv-fade mt-3 font-inter-reg text-[1rem] leading-relaxed text-white sm:text-[1.125rem]">
 						We map the capital route for your business journey — honest options, real
 						lender comparisons, and guidance till the money hits
 						your account.

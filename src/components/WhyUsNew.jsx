@@ -39,7 +39,7 @@ function FeatureCard({ item, index }) {
 	const num = String(index + 1).padStart(2, "0");
 
 	return (
-		<div className="whyusnew-card group flex gap-5 rounded-[16px] bg-white p-6 ring-1 ring-black/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(8,83,160,0.16)] hover:ring-(--color-primary)/25 sm:p-7">
+		<div className="whyusnew-card group flex gap-5 rounded-2xl bg-white p-6 ring-1 ring-black/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(8,83,160,0.16)] hover:ring-(--color-primary)/25 sm:p-7">
 			<div className="flex shrink-0 flex-col items-center gap-3">
 				<span className="grid h-12 w-12 place-items-center rounded-[14px] bg-(--color-primary)/10 text-(--color-primary) transition-colors duration-500 group-hover:bg-(--color-primary) group-hover:text-white">
 					<Icon size={22} />
@@ -49,7 +49,7 @@ function FeatureCard({ item, index }) {
 				</span>
 			</div>
 			<div>
-				<h3 className="font-heading text-[1.15rem] text-(--color-black) sm:text-[1.35rem]">
+				<h3 className="font-heading text-[1.15rem] text-black sm:text-[1.35rem]">
 					{item.title}
 				</h3>
 				<p className="mt-2 font-inter-reg text-[0.95rem] leading-relaxed text-[#344054]">
@@ -133,7 +133,7 @@ export default function WhyUsNew() {
 	}, [pathname]);
 
 	return (
-		<section ref={rootRef} className="section relative mx-auto grid w-full max-w-[1166px] grid-cols-1 items-start gap-8 px-5 sm:gap-10 md:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-14 xl:px-0">
+		<section ref={rootRef} className="section relative mx-auto grid w-full max-w-291.5 grid-cols-1 items-start gap-8 px-5 sm:gap-10 md:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-14 xl:px-0">
 			{/* backdrop graphics */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
 				<div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#9cc7ff]/40 blur-[110px]" />
@@ -151,7 +151,7 @@ export default function WhyUsNew() {
 				<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 					Why Us
 				</p>
-				<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.2rem] lg:leading-[114%]">
+				<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.2rem] lg:leading-[114%]">
 					<span className="block overflow-hidden pb-2">
 						<span className="rv-line block">
 							Where Business Ambition Meets the{" "}

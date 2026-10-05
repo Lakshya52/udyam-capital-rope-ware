@@ -91,8 +91,8 @@ export default function Hero() {
 			</div>
 
 			{/* content — text left, finance cards right */}
-			<div className="relative z-10 mx-auto grid w-full max-w-[1166px] grid-cols-1 items-center gap-10 px-5 pb-14 pt-[100px] md:px-8 lg:my-auto lg:grid-cols-[1fr_1fr] lg:gap-4 lg:pb-20 lg:pt-[140px] xl:px-0">
-				<div className="hero-content flex w-full max-w-[650px] flex-col items-start justify-center will-change-transform">
+			<div className="relative z-10 mx-auto grid w-full max-w-291.5 grid-cols-1 items-center gap-10 px-5 pb-14 pt-25 md:px-8 lg:my-auto lg:grid-cols-[1fr_1fr] lg:gap-4 lg:pb-20 lg:pt-35 xl:px-0">
+				<div className="hero-content flex w-full max-w-162.5 flex-col items-start justify-center will-change-transform">
 					<h1 className="font-heading text-[2.05rem] leading-[1.12] text-[#101828] sm:text-[2.75rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="hero-line block text-(--color-dark-blue)">
@@ -121,14 +121,14 @@ export default function Hero() {
 
 				{/* overlapping finance cards */}
 				<div
-					className="hero-cards mt-10 hero-fade relative mx-auto h-auto w-full max-w-[620px] will-change-transform lg:h-[500px] "
+					className="hero-cards mt-10 hero-fade relative mx-auto h-auto w-full max-w-155 will-change-transform lg:h-125 "
 					aria-hidden="true"
 				>
 					{/* Back card — Let's Plan your business journey */}
 					<div
 						className="
-							relative ml-auto z-20 hero-float-a lg:absolute lg:right-0 lg:top-[-60px]
-							flex h-auto min-h-[260px] w-[82%] max-w-[325px] lg:h-[380px]
+							relative ml-auto z-20 hero-float-a lg:absolute lg:right-0 lg:-top-15
+							flex h-auto min-h-65 w-[82%] max-w-81.25 lg:h-95
 							flex-col
 							rounded-2xl
 							justify-evenly pb-10
@@ -178,7 +178,7 @@ export default function Hero() {
 					<div
 						className="
 							relative mt-6 hero-float-b lg:absolute lg:bottom-0 lg:left-0 
-							flex items-start h-auto min-h-[240px] w-[82%] max-w-[325px] lg:mt-0 lg:h-[435px]
+							flex items-start h-auto min-h-60 w-[82%] max-w-81.25 lg:mt-0 lg:h-108.75
 							flex-col justify-evenly
 							rounded-2xl
 							p-5

@@ -67,7 +67,7 @@ const Intro = () => {
 	}, []);
 
 	return (
-		<div ref={rootRef} className="section mx-auto flex w-full max-w-[1166px] flex-col gap-6 px-5 sm:gap-8 sm:px-8 lg:gap-10 xl:px-0">
+		<div ref={rootRef} className="section mx-auto flex w-full max-w-291.5 flex-col gap-6 px-5 sm:gap-8 sm:px-8 lg:gap-10 xl:px-0">
 			{PARAS.map((segs, i) => {
 				const words = [];
 				segs.forEach((seg) => {

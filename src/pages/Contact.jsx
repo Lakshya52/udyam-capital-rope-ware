@@ -74,7 +74,7 @@ const steps = [
 ];
 
 const fieldInput =
-	"peer w-full rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-(--color-black) outline-none transition-all duration-300 placeholder-transparent focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20";
+	"peer w-full rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-black outline-none transition-all duration-300 placeholder-transparent focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20";
 const fieldLabel =
 	"pointer-events-none absolute left-3 top-0 -translate-y-1/2 bg-white px-1.5 font-inter-light text-[0.75rem] text-neutral-500 transition-all duration-300 peer-placeholder-shown:left-4 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-placeholder-shown:px-0 peer-placeholder-shown:text-[1.25rem] peer-placeholder-shown:text-neutral-400 peer-focus:left-3 peer-focus:top-0 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[0.75rem] peer-focus:text-(--color-primary)";
 
@@ -141,20 +141,20 @@ export default function Contact() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				{/* heading */}
 				<div className="">
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Contact Us
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Let&apos;s Talk About{" "}
@@ -171,19 +171,19 @@ export default function Contact() {
 					</p>
 				</div>
 
-				<div className="mt-10 grid grid-cols-1 items-start gap-[18px] lg:mt-14 lg:grid-cols-12">
+				<div className="mt-10 grid grid-cols-1 items-start gap-4.5 lg:mt-14 lg:grid-cols-12">
 					{/* info column */}
-					<div className="flex flex-col gap-[18px] lg:col-span-5">
+					<div className="flex flex-col gap-4.5 lg:col-span-5">
 						{infoCards.map((card) => (
 							<div
 								key={card.label}
-								className="rv-fade rounded-[16px] border border-black/5 bg-[#EAF1FC] p-5 sm:p-6"
+								className="rv-fade rounded-2xl border border-black/5 bg-[#EAF1FC] p-5 sm:p-6"
 							>
 								<div className="flex items-center gap-3 font-inter-reg fs-body">
 									<span className="grid place-items-center h-10 w-10  rounded-full bg-(--color-primary) text-white">
 										{card.icon}
 									</span>
-									<h2 className=" text-(--color-black)">
+									<h2 className=" text-black">
 										{card.label}
 									</h2>
 								</div>
@@ -209,8 +209,8 @@ export default function Contact() {
 					</div>
 
 					{/* form column */}
-					<div className="rv-fade rounded-[16px] border border-black/5 bg-white p-5 shadow-[0_24px_60px_rgba(12,31,51,0.12)] sm:p-8 lg:col-span-7">
-						{/* <h2 className="font-heading text-[1.25rem] text-(--color-black) sm:text-[1.5rem]">
+					<div className="rv-fade rounded-2xl border border-black/5 bg-white p-5 shadow-[0_24px_60px_rgba(12,31,51,0.12)] sm:p-8 lg:col-span-7">
+						{/* <h2 className="font-heading text-[1.25rem] text-black sm:text-[1.5rem]">
 							Request a Consultation
 						</h2> */}
 						{/* <p className="mt-1 font-inter-reg fs-body text-neutral-500">
@@ -260,7 +260,7 @@ export default function Contact() {
 								<select
 									value={form.service}
 									onChange={set("service")}
-									className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
+									className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pb-2.5 pt-4 font-inter-reg fs-body-sm text-black outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 								>
 									<option value="" hidden></option>
 									{services.map((m) => (
@@ -335,9 +335,9 @@ export default function Contact() {
 
 
 			{/* find us */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[15dvh] md:px-8 xl:px-0">
 				{/* <div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="block">
 								Find Us{" "}
@@ -350,21 +350,21 @@ export default function Contact() {
 						Pradesh - 201301
 					</p>
 				</div> */}
-				<div className="rv-fade mt-8 overflow-hidden rounded-[16px] border border-black/5 shadow-[0_24px_60px_rgba(12,31,51,0.12)]">
+				<div className="rv-fade mt-8 overflow-hidden rounded-2xl border border-black/5 shadow-[0_24px_60px_rgba(12,31,51,0.12)]">
 					<iframe
 						title="Udyam Capital office location map"
 						src={settings.map_embed}
 						loading="lazy"
 						referrerPolicy="no-referrer-when-downgrade"
-						className="h-[320px] w-full border-0 lg:h-[420px]"
+						className="h-80 w-full border-0 lg:h-105"
 					/>
 				</div>
 			</section>
 
 			{/* not sure where to start */}
-			{/* <section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
+			{/* <section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[15dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Not Sure{" "}
@@ -379,14 +379,14 @@ export default function Contact() {
 						fits.
 					</p>
 				</div>
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-3">
 					{services.map((s) => (
 						<Link
 							key={s.id}
 							to={`/services/${s.id}`}
-							className="group flex items-center justify-between gap-4 rounded-[16px] border border-black/5 bg-[#EAF1FC] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)]"
+							className="group flex items-center justify-between gap-4 rounded-2xl border border-black/5 bg-[#EAF1FC] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-(--color-primary) hover:shadow-[0_24px_60px_rgba(12,31,51,0.18)]"
 						>
-							<span className="font-heading text-[1.05rem] text-(--color-black) transition-colors duration-300 group-hover:text-(--color-white)">
+							<span className="font-heading text-[1.05rem] text-black transition-colors duration-300 group-hover:text-white">
 								{s.title}
 							</span>
 							<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-(--color-primary) text-white transition-transform duration-300 group-hover:-rotate-45 group-hover:bg-white group-hover:text-(--color-primary)">
@@ -398,9 +398,9 @@ export default function Contact() {
 			</section> */}
 
 			{/* what happens next */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[15dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[15dvh] md:px-8 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem]">
 						<span className="block overflow-hidden pb-2">
 							<span className="block">
 								What Happens{" "}
@@ -415,13 +415,13 @@ export default function Contact() {
 						right capital.
 					</p>
 				</div>
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-3">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-3">
 					{steps.map((step) => (
 						<div
 							key={step.n}
-							className={`rounded-[16px] p-6 sm:p-7 ${
+							className={`rounded-2xl p-6 sm:p-7 ${
 								step.dark
-									? "bg-(--color-primary) text-(--color-white)"
+									? "bg-(--color-primary) text-white"
 									: "border border-black/5 bg-[#9cc7ff]"
 							}`}
 						>
@@ -437,8 +437,8 @@ export default function Contact() {
 							<h3
 								className={`mt-4 font-heading text-[1.25rem] ${
 									step.dark
-										? "text-(--color-white)"
-										: "text-(--color-black)"
+										? "text-white"
+										: "text-black"
 								}`}
 							>
 								{step.title}

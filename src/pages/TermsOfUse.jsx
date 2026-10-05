@@ -56,18 +56,18 @@ export default function TermsOfUse() {
 	return (
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 					Legal
 				</p>
-				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+				<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 					<span className="block overflow-hidden pb-2">
 						<span className="rv-line block">Terms of Use</span>
 					</span>
@@ -75,7 +75,7 @@ export default function TermsOfUse() {
 				<div className="mt-8 flex flex-col gap-8">
 					{sections.map((s) => (
 						<div key={s.h} className="rv-fade">
-							<h2 className="font-heading text-[1.25rem] text-(--color-black)">
+							<h2 className="font-heading text-[1.25rem] text-black">
 								{s.h}
 							</h2>
 							<p className="mt-2 font-inter-reg fs-body leading-relaxed text-neutral-600">

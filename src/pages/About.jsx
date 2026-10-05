@@ -106,20 +106,20 @@ export default function About() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
 			{/* hero */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<div className="max-w-3xl">
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						About Us
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								We Are{" "}
@@ -183,17 +183,17 @@ export default function About() {
 				</div>
 
 				{/* vision + mission */}
-				<div id="vision-mission" className="mt-10 grid scroll-mt-24 grid-cols-1 gap-[18px] lg:mt-14 lg:grid-cols-2 lg:scroll-mt-36">
+				<div id="vision-mission" className="mt-10 grid scroll-mt-24 grid-cols-1 gap-4.5 lg:mt-14 lg:grid-cols-2 lg:scroll-mt-36">
 					
-					<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-8 text-(--color-white)">
+					<div className="rv-fade rounded-2xl bg-(--color-primary) p-6 sm:p-8 text-white">
 						<p className="font-heading text-[2rem] leading-none ">
 							Vision
 						</p>
-						<p className="mt-4 font-inter-reg fs-body text-(--color-white)">
+						<p className="mt-4 font-inter-reg fs-body text-white">
 							{remote?.vision || "To be the most trusted and reliable partner, empowering businesses to grow and create enduring value."}
 						</p>
 					</div>
-					<div className="rv-fade rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 sm:p-8">
+					<div className="rv-fade rounded-2xl border border-black/5 bg-[#EAF1FC] p-6 sm:p-8">
 						<p className="font-heading text-[2rem] leading-none text-(color-mix(in_oklab,var(--color-primary)_60%,transparent))">
 							Mission
 						</p>
@@ -205,7 +205,7 @@ export default function About() {
 			</section>
 
 			{/* what sets us apart */}
-			<section id="what-sets-us-apart" className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 pb-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
+			<section id="what-sets-us-apart" className="relative z-10 mx-auto w-full max-w-291.5 scroll-mt-24 px-5 pb-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
 				<div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
 					<div>
 						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-primary) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
@@ -238,7 +238,7 @@ export default function About() {
 									key={item.title}
 									className="rv-fade font-inter-reg fs-body leading-relaxed text-neutral-700"
 								>
-									<span className="font-heading text-(--color-black)">
+									<span className="font-heading text-black">
 										{i + 1}. {item.title}
 									</span>{" "}
 									{item.body}
@@ -266,9 +266,9 @@ export default function About() {
 			
 
 			{/* team */}
-			<section id="meet-the-team" className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-24 px-5 py-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
+			<section id="meet-the-team" className="relative z-10 mx-auto w-full max-w-291.5 scroll-mt-24 px-5 py-[10dvh] md:px-8 lg:scroll-mt-36 xl:px-0">
 				<div className="max-w-2xl">
-					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Meet The{" "}
@@ -282,7 +282,7 @@ export default function About() {
 						The people behind the outcomes.
 					</p>
 				</div>
-				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
+				<div className="mt-8 grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
 					{teamList.map((member, i) => {
 						const initials = member.name
 							.split(" ")
@@ -294,7 +294,7 @@ export default function About() {
 						return (
 							<div
 								key={`${member.name}-${i}`}
-								className="rv-fade overflow-hidden rounded-[16px] border border-black/5 bg-white shadow-[0_24px_60px_rgba(12,31,51,0.08)]"
+								className="rv-fade overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_24px_60px_rgba(12,31,51,0.08)]"
 							>
 								<div className="relative">
 									{member.photo ? (
@@ -309,8 +309,8 @@ export default function About() {
 										<div
 											className={`grid aspect-square w-full place-items-center font-heading text-[3rem] ${
 												i % 2 === 0
-													? "bg-(--color-primary) text-(--color-white)"
-													: "bg-[#9cc7ff] text-(--color-black)"
+													? "bg-(--color-primary) text-white"
+													: "bg-[#9cc7ff] text-black"
 											}`}
 											aria-hidden="true"
 										>
@@ -330,7 +330,7 @@ export default function About() {
 									)}
 								</div>
 								<div className="p-5">
-									<h3 className="font-heading text-[1.1rem] text-(--color-black)">
+									<h3 className="font-heading text-[1.1rem] text-black">
 										{member.name}
 									</h3>
 									<p className="mt-0.5 font-inter-reg fs-body-sm text-(--color-primary)">
@@ -347,12 +347,12 @@ export default function About() {
 			</section>
 
 			{/* capabilities */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
-				<div className="rv-fade rounded-[16px] bg-(--color-primary) p-6 sm:p-10">
-					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] md:px-8 xl:px-0">
+				<div className="rv-fade rounded-2xl bg-(--color-primary) p-6 sm:p-10">
+					<h2 className="font-heading text-[1.5rem] text-white sm:text-[2rem]">
 						Four practices, one mandate
 					</h2>
-					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-(--color-white)">
+					<p className="mt-2 max-w-2xl font-inter-reg fs-body text-white">
 						A deal structured, a rating repaired, a finance
 						function run, or funds disbursed — whatever your
 						capital need, it lives in one of our practices. Tap
@@ -363,7 +363,7 @@ export default function About() {
 							<Link
 								key={c.label}
 								to={c.to}
-								className="rounded-full border border-white/30 px-5 py-2.5 font-inter-reg fs-body text-(--color-white) transition-colors duration-300 hover:bg-white hover:text-(--color-primary)"
+								className="rounded-full border border-white/30 px-5 py-2.5 font-inter-reg fs-body text-white transition-colors duration-300 hover:bg-white hover:text-(--color-primary)"
 							>
 								{c.label}
 							</Link>

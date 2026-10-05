@@ -60,12 +60,12 @@ function useStackOnScroll(rootRef) {
 function ArrowRight() {
 	return (
 		<>
-			<div className="pointer-events-none absolute bottom-0 right-0 z-10 h-[55px] w-[55px] rounded-tl-[30px] bg-white">
-				<div className="absolute bottom-0 left-[-40px] z-50 h-[40px] w-[40px] rounded-br-[16px] bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
-				<div className="absolute right-0 top-[-40px] z-50 h-[40px] w-[40px] rounded-br-[16px] bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
+			<div className="pointer-events-none absolute bottom-0 right-0 z-10 h-13.75 w-13.75 rounded-tl-[30px] bg-white">
+				<div className="absolute bottom-0 -left-10 z-50 h-10 w-10 rounded-br-2xl bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
+				<div className="absolute right-0 -top-10 z-50 h-10 w-10 rounded-br-2xl bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
 			</div>
 			{/* Arrow overlapping the corner */}
-			<span className="reveal-arrow absolute bottom-[5px] right-[4px] z-20 grid h-10 w-10 place-items-center rounded-full bg-(--color-primary) text-(--color-white) transition-transform duration-300 lg:group-hover:-rotate-45">
+			<span className="reveal-arrow absolute bottom-1.25 right-1 z-20 grid h-10 w-10 place-items-center rounded-full bg-(--color-primary) text-white transition-transform duration-300 lg:group-hover:-rotate-45">
 				<Arrow size={16} />
 			</span>
 		</>
@@ -90,7 +90,7 @@ function Card({
 		<Link
 			to={`/services/${id}`}
 			style={style}
-			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-[16px] rounded-tl-[16px] rounded-tr-[16px] transition-colors duration-500 bg-[#a9ceff] ${className}`}
+			className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-bl-2xl rounded-tl-2xl rounded-tr-2xl transition-colors duration-500 bg-[#a9ceff] ${className}`}
 		>
 			{/* Card image — always visible on mobile/small, hover/scroll-revealed on lg+ */}
 			<div className="reveal-img absolute inset-0 opacity-100 blur-none transition-all duration-500 lg:opacity-5 lg:blur-2xl lg:group-hover:opacity-100 lg:group-hover:blur-none overflow-hidden">
@@ -117,12 +117,12 @@ function Card({
 			</div>
 
 			{/* Text — pinned 40px above the card bottom in every card */}
-			<div className="relative z-10 flex h-full flex-1 flex-col justify-end pb-[40px] pl-[14px] pr-16 pt-7">
-				{/* <span className={`${titleClass} mb-4 opacity-20 transition-colors duration-500 group-hover:text-(--color-white) [&>svg]:h-10 [&>svg]:w-10`}>
+			<div className="relative z-10 flex h-full flex-1 flex-col justify-end pb-10 pl-3.5 pr-16 pt-7">
+				{/* <span className={`${titleClass} mb-4 opacity-20 transition-colors duration-500 group-hover:text-white [&>svg]:h-10 [&>svg]:w-10`}>
           {icon}
         </span> */}
 				<h3
-					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 group-hover:text-(--color-white)`}
+					className={`card-title font-heading fs-body tracking-tight transition-colors duration-500 group-hover:text-white`}
 				>
 					{title}
 				</h3>
@@ -148,12 +148,12 @@ export default function ServicesGrid() {
 	const cards = services.map((service) => ({ ...service, icon: <Wallet size={16} /> }));
 
 	return (
-		<section ref={rootRef} className="section relative mx-auto max-w-[1166px] ">
+		<section ref={rootRef} className="section relative mx-auto max-w-291.5 ">
 			{/* backdrop graphics full-bleed across the viewport */}
 			<div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden" aria-hidden="true">
-				<div className="absolute left-[8%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[8%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
-				{/* <div className="absolute bottom-0 left-[12%] h-64 w-[420px] rounded-full bg-[#9cc7ff]/40 blur-[110px]" /> */}
+				{/* <div className="absolute bottom-0 left-[12%] h-64 w-105 rounded-full bg-[#9cc7ff]/40 blur-[110px]" /> */}
 				<div
 					className="absolute right-[2%] top-4 h-28 w-64 [mask-image:radial-gradient(closest-side,black,transparent)]"
 					style={{
@@ -168,7 +168,7 @@ export default function ServicesGrid() {
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Our Services
 					</p>
-					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h2 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Financial Solutions For{" "}
@@ -179,13 +179,13 @@ export default function ServicesGrid() {
 				</div>
 				{/* <Link
 					to="/services"
-					className="rv-fade font-inter-reg fs-body-sm text-(--color-black) transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
+					className="rv-fade font-inter-reg fs-body-sm text-black transition-colors hover:text-(--color-primary) hover:underline hover:underline-offset-4"
 				>
 					View all services
 				</Link> */}
 			</div>
 
-		<div className="services-reveal-grid relative z-10 grid grid-cols-1 items-stretch gap-[18px] px-5 md:px-8 lg:grid-cols-12 lg:auto-rows-[240px] xl:px-0">
+		<div className="services-reveal-grid relative z-10 grid grid-cols-1 items-stretch gap-4.5 px-5 md:px-8 lg:grid-cols-12 lg:auto-rows-[240px] xl:px-0">
 			{cards.map((card, i) => (
 				<Card
 					key={card.title}
@@ -200,7 +200,7 @@ export default function ServicesGrid() {
 					tall={card.tall}
 					image={card.image}
 					style={{ "--stack-top": `${88 + i * 14}px` }}
-					className={`${card.span} services-stack-card h-auto min-h-[220px] sm:min-h-[240px] lg:h-full lg:min-h-0`}
+					className={`${card.span} services-stack-card h-auto min-h-55 sm:min-h-60 lg:h-full lg:min-h-0`}
 				/>
 			))}
 			</div>

@@ -54,20 +54,20 @@ export default function Articles() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] pt-28 md:px-8 lg:pt-44 xl:px-0">
 				{/* heading */}
 				<div className="max-w-2xl">
 					<p className="rv-fade font-inter-reg fs-body-sm text-(--color-primary)">
 						Articles
 					</p>
-					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+					<h1 className="mt-2 font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 						<span className="block overflow-hidden pb-2">
 							<span className="rv-line block">
 								Insights for{" "}
@@ -91,7 +91,7 @@ export default function Articles() {
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							placeholder="Search articles…"
-							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-(--color-black) placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
+							className="w-full rounded-xl border border-black/10 bg-white py-3 pl-11 pr-4 font-inter-reg text-[0.95rem] text-black placeholder:text-neutral-400 outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						/>
 					</label>
 					<label className="relative block">
@@ -99,7 +99,7 @@ export default function Articles() {
 							value={topic}
 							onChange={(e) => setTopic(e.target.value)}
 							aria-label="Filter by topic"
-							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-(--color-black) outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
+							className="w-full appearance-none rounded-xl border border-black/10 bg-white px-4 py-3 pr-10 font-inter-reg text-[0.95rem] text-black outline-none transition-all duration-300 focus:border-(--color-primary) focus:ring-2 focus:ring-(--color-primary)/20"
 						>
 							{topics.map((t) => (
 								<option key={t} value={t}>
@@ -158,14 +158,14 @@ export default function Articles() {
 											{formatViews(getViews(a.slug))}
 										</span>
 									</p>
-									<h2 className="mt-2 font-heading text-[1.25rem] leading-snug text-(--color-black) transition-colors duration-300 group-hover:text-(--color-primary) sm:text-[1.6rem]">
+									<h2 className="mt-2 font-heading text-[1.25rem] leading-snug text-black transition-colors duration-300 group-hover:text-(--color-primary) sm:text-[1.6rem]">
 										{a.title}
 									</h2>
 									<p className="mt-2 hidden max-w-2xl font-inter-reg text-[0.95rem] leading-relaxed text-neutral-500 sm:block">
 										{a.excerpt}
 									</p>
 								</div>
-								<span className="grid h-11 w-11 shrink-0 place-items-center self-center rounded-full border border-black/15 text-(--color-black) transition-all duration-300 group-hover:border-(--color-primary) group-hover:bg-(--color-primary) group-hover:text-white">
+								<span className="grid h-11 w-11 shrink-0 place-items-center self-center rounded-full border border-black/15 text-black transition-all duration-300 group-hover:border-(--color-primary) group-hover:bg-(--color-primary) group-hover:text-white">
 									<ArrowUpRight size={16} />
 								</span>
 							</Link>

@@ -119,7 +119,7 @@ function FaqItem({ item, open, onToggle }) {
 				aria-expanded={open}
 				className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
 			>
-				<span className="font-heading text-[1.05rem] text-(--color-black) sm:text-[1.25rem]">
+				<span className="font-heading text-[1.05rem] text-black sm:text-[1.25rem]">
 					{item.q}
 				</span>
 				<span
@@ -169,14 +169,14 @@ export default function ServicesMain() {
 		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
-				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
+				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-105 overflow-hidden"
 				aria-hidden="true"
 			>
-				<div className="absolute left-[6%] top-0 h-72 w-[480px] rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
+				<div className="absolute left-[6%] top-0 h-72 w-120 rounded-full bg-[#9cc7ff]/50 blur-[110px]" />
 				<div className="absolute right-[4%] top-10 h-56 w-56 rounded-full bg-[#5495D8]/30 blur-[90px]" />
 			</div>
 
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pt-28 md:px-8 lg:pt-44 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pt-28 md:px-8 lg:pt-44 xl:px-0">
 				<nav
 					aria-label="Breadcrumb"
 					className="rv-fade flex flex-wrap items-center gap-2 font-inter-reg fs-body-sm text-neutral-500"
@@ -188,7 +188,7 @@ export default function ServicesMain() {
 						Home
 					</Link>
 					<span aria-hidden="true">/</span>
-					<span className="text-(--color-black)">Services</span>
+					<span className="text-black">Services</span>
 					<span aria-hidden="true">/</span>
 					<span className="text-(--color-primary)">
 						{service.title}
@@ -197,13 +197,13 @@ export default function ServicesMain() {
 			</section>
 
 			{/* ── split editorial hero ── */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pt-6 md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pt-6 md:px-8 xl:px-0">
 				{/* <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2"> */}
 				<div className="rv-fade">
 					{/* <p className="font-inter-reg text-[11px] uppercase tracking-[0.28em] text-(--color-primary)">
 							Practice · {service.title}
 						</p> */}
-					<h1 className="mt-4 font-heading text-[2.2rem] leading-[1.08] text-(--color-black) sm:text-[3.2rem]">
+					<h1 className="mt-4 font-heading text-[2.2rem] leading-[1.08] text-black sm:text-[3.2rem]">
 						{service.title} <br />
 						<span className="text-(--color-primary)">
 							{cfg.titlePrefix} {cfg.titleAccent}
@@ -222,14 +222,14 @@ export default function ServicesMain() {
 						</Link> */}
 						{/* <a
 								href="#tracks"
-								className="inline-flex items-center rounded-full px-6 py-3 font-heading text-[14px] text-(--color-black) ring-1 ring-black/15 transition-colors hover:border-(--color-primary) hover:text-(--color-primary)"
+								className="inline-flex items-center rounded-full px-6 py-3 font-heading text-[14px] text-black ring-1 ring-black/15 transition-colors hover:border-(--color-primary) hover:text-(--color-primary)"
 							>
 								{cfg.tracksCta}
 							</a> */}
 					{/* </div> */}
 				</div>
 				{/* <div className="rv-fade relative">
-						<div className="overflow-hidden rounded-[24px] shadow-[0_28px_70px_rgba(12,31,51,0.2)]">
+						<div className="overflow-hidden rounded-3xl shadow-[0_28px_70px_rgba(12,31,51,0.2)]">
 							<img
 								src={service.image}
 								alt=""
@@ -238,7 +238,7 @@ export default function ServicesMain() {
 								className="aspect-[4/3] w-full object-cover"
 							/>
 						</div>
-						<div className="absolute -bottom-6 -left-3 rounded-[16px] bg-[#0C1F33] px-6 py-5 text-white shadow-xl sm:-left-6">
+						<div className="absolute -bottom-6 -left-3 rounded-2xl bg-[#0C1F33] px-6 py-5 text-white shadow-xl sm:-left-6">
 							<p className="font-heading text-[1.7rem] leading-none">
 								{cfg.badgeTop}
 							</p>
@@ -253,17 +253,17 @@ export default function ServicesMain() {
 			{/* ── tracks: alternating editorial rows ── */}
 			<section
 				id="tracks"
-				className="relative z-10 mx-auto w-full max-w-[1166px] scroll-mt-32 px-5 py-[8dvh] md:px-8 xl:px-0"
+				className="relative z-10 mx-auto w-full max-w-291.5 scroll-mt-32 px-5 py-[8dvh] md:px-8 xl:px-0"
 			>
 			
 				<div className="mt-10 flex flex-col gap-[28px]">
 					{tracks.map((t, i) => (
 						<div
 							key={t.id}
-							className="rv-fade grid grid-cols-1 items-stretch gap-[18px] lg:grid-cols-2"
+							className="rv-fade grid grid-cols-1 items-stretch gap-4.5 lg:grid-cols-2"
 						>
 							<div
-								className={`relative min-h-[240px] overflow-hidden rounded-[20px] ${
+								className={`relative min-h-60 overflow-hidden rounded-[20px] ${
 									i % 2 === 1 ? "lg:order-2" : ""
 								}`}
 							>
@@ -285,18 +285,18 @@ export default function ServicesMain() {
 									i % 2 === 1 ? "lg:order-1" : ""
 								}`}
 							>
-								<h3 className="font-heading text-[1.6rem] text-(--color-black) sm:text-[2rem]">
+								<h3 className="font-heading text-[1.6rem] text-black sm:text-[2rem]">
 									{t.title}
 								</h3>
 								<p className="mt-3 font-inter-reg fs-body leading-relaxed text-neutral-600">
 									{t.desc}
 								</p>
 								{/* bottom-right corner notch + arrow, same as ServicesGrid cards */}
-								<div className="pointer-events-none absolute bottom-0 right-0 z-10 h-[55px] w-[55px] rounded-tl-[30px] bg-white">
-									<div className="absolute bottom-0 left-[-40px] z-50 h-[40px] w-[40px] rounded-br-[16px] bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
-									<div className="absolute right-0 top-[-40px] z-50 h-[40px] w-[40px] rounded-br-[16px] bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
+								<div className="pointer-events-none absolute bottom-0 right-0 z-10 h-13.75 w-13.75 rounded-tl-[30px] bg-white">
+									<div className="absolute bottom-0 -left-10 z-50 h-10 w-10 rounded-br-2xl bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
+									<div className="absolute right-0 -top-10 z-50 h-10 w-10 rounded-br-2xl bg-transparent shadow-[10px_10px_0_0_#FFFFFF]" />
 								</div>
-								<span className="absolute bottom-[5px] right-[4px] z-20 grid h-10 w-10 place-items-center rounded-full bg-(--color-primary) text-(--color-white)">
+								<span className="absolute bottom-1.25 right-1 z-20 grid h-10 w-10 place-items-center rounded-full bg-(--color-primary) text-white">
 									<ArrowRight size={16} />
 								</span>
 							</Link>
@@ -306,7 +306,7 @@ export default function ServicesMain() {
 			</section>
 
 			{/* ── rhythm strip ── */}
-			<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[8dvh] md:px-8 xl:px-0">
+			<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[8dvh] md:px-8 xl:px-0">
 				<div className="rv-fade rounded-[20px] bg-(--color-primary) p-8 text-white sm:p-10">
 					<p className="font-inter-reg fs-body uppercase  text-white/50">
 						{cfg.rhythmTitle}
@@ -330,8 +330,8 @@ export default function ServicesMain() {
 			</section>
 
 			{/* ── benefits + process ── */}
-			{/* <section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[8dvh] md:px-8 xl:px-0">
-				<div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+			{/* <section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[8dvh] md:px-8 xl:px-0">
+				<div className="grid grid-cols-1 gap-4.5 sm:grid-cols-2">
 					{benefits.map((b, i) => (
 						<div
 							key={b.title}
@@ -340,7 +340,7 @@ export default function ServicesMain() {
 							<p className="font-heading text-[2rem] leading-none text-(color-mix(in_oklab,var(--color-primary)_45%,transparent))">
 								0{i + 1}
 							</p>
-							<h3 className="mt-3 font-heading text-[1.2rem] text-(--color-black)">
+							<h3 className="mt-3 font-heading text-[1.2rem] text-black">
 								{b.title}
 							</h3>
 							<p className="mt-2 font-inter-reg fs-body-sm text-neutral-600">
@@ -349,13 +349,13 @@ export default function ServicesMain() {
 						</div>
 					))}
 				</div>
-				<div className="mt-[18px] grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
+				<div className="mt-[18px] grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
 					{process.map((s) => (
 						<div
 							key={s.title}
 							className="rv-fade rounded-[20px] bg-[#9cc7ff]/40 p-6"
 						>
-							<h3 className="font-heading text-[1.05rem] text-(--color-black)">
+							<h3 className="font-heading text-[1.05rem] text-black">
 								{s.title}
 							</h3>
 							<p className="mt-2 font-inter-reg text-[13.5px] leading-relaxed text-neutral-600">
@@ -368,9 +368,9 @@ export default function ServicesMain() {
 
 			{/* ── faqs ── */}
 			{faqs.length > 0 && (
-				<section className="relative z-10 mx-auto w-full max-w-[1166px] px-5 pb-[10dvh] md:px-8 xl:px-0">
+				<section className="relative z-10 mx-auto w-full max-w-291.5 px-5 pb-[10dvh] md:px-8 xl:px-0">
 					<div className="text-center">
-						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-(--color-black) sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
+						<h2 className="font-heading text-[1.9rem] leading-[1.15] text-black sm:text-[2.6rem] lg:text-[3.5rem] lg:leading-[114%]">
 							<span className="block overflow-hidden pb-2">
 								<span className="rv-line block">
 									Common{" "}
