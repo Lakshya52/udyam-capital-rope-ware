@@ -26,7 +26,8 @@ export default function FooterCTAnew() {
 					<div className="absolute inset-0 bg-linear-to-r from-(--color-primary)/85 via-(--color-primary)/60 to-(--color-dark-blue)/70" />
 				</div>
 
-				{/* decorative rings + arrow, desktop only — rings dip when the arrow is pressed */}
+				{/* decorative rings + arrow, desktop only — breathing by default,
+				    bloom on arrow hover, dip when the arrow is pressed */}
 				<div className="group pointer-events-none absolute -right-20 top-1/2 hidden -translate-y-1/2 lg:block" aria-hidden="true">
 					<div className="relative grid h-[320px] w-[320px] place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.05] group-active:scale-[0.94] pulse-breathe">
 						<div className="grid h-[220px] w-[220px] place-items-center rounded-full border border-white/15 transition-transform duration-300 ease-out group-hover:scale-[1.08] group-active:scale-[0.92] pulse-breathe [animation-delay:160ms]">
@@ -49,7 +50,7 @@ export default function FooterCTAnew() {
 							<span className="rv-line block">Growth Journey With Us?</span>
 						</span>
 					</h2>
-					<p className="rv-fade mt-3 font-inter-reg text-[1rem] leading-relaxed text-white sm:text-[1.125rem]">
+					<p className="rv-fade mt-3 font-inter-reg text-[1rem] leading-relaxed text-white/75 sm:text-[1.125rem]">
 						We map the capital route for your business journey — honest options, real
 						lender comparisons, and guidance till the money hits
 						your account.
