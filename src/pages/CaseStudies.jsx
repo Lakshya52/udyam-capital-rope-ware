@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown, Plus, Search } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import WhyUs from "../components/WhyUs.jsx";
+import { useCases } from "../lib/content.jsx";
+// import WhyUs from "../components/WhyUs.jsx";
+import WhyUsNew from "../components/WhyUsNew.jsx";
 
 // ─── CONTENT NOTE ────────────────────────────────────────────────────────────
 // Replace these placeholders with real, permissioned client stories.
@@ -213,6 +215,7 @@ export default function CaseStudies() {
 	const [query, setQuery] = useState("");
 	const [industry, setIndustry] = useState("All industries");
 	const [debouncedQuery, setDebouncedQuery] = useState("");
+	const list = useCases() ?? cases;
 
 	// debounce search so filtering runs 300ms after the user stops typing
 	useEffect(() => {
@@ -222,10 +225,10 @@ export default function CaseStudies() {
 
 	const industries = [
 		"All industries",
-		...new Set(cases.map((c) => c.industry)),
+		...new Set(list.map((c) => c.industry)),
 	];
 	const q = debouncedQuery.trim().toLowerCase();
-	const visible = cases.filter((c) => {
+	const visible = list.filter((c) => {
 		const inIndustry =
 			industry === "All industries" || c.industry === industry;
 		const inQuery =
@@ -243,7 +246,7 @@ export default function CaseStudies() {
 	}, [debouncedQuery, industry]);
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -469,7 +472,8 @@ export default function CaseStudies() {
 				)}
 
 
-				<WhyUs />
+				{/* <WhyUs /> */}
+				<WhyUsNew />
 				{/* cta */}
 				{/* <div className="rv-fade mt-[18px] flex flex-col items-start justify-between gap-5 rounded-[16px] bg-(--color-primary) p-6 sm:flex-row sm:items-center sm:p-10">
 					<h2 className="font-heading text-[1.5rem] text-(--color-white) sm:text-[2rem]">

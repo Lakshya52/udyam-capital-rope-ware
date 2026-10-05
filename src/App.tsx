@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
@@ -13,6 +14,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import TermsOfUse from './pages/TermsOfUse.jsx'
 import Error from './pages/Error.jsx'
 import Loader from './components/Loader.jsx'
+import { ContentProvider } from './lib/content.jsx'
 import { markSiteReady } from './lib/siteReady.js'
 
 // reset scroll through Lenis on every route change
@@ -25,6 +27,12 @@ const ScrollToTop = () => {
     } else {
       window.scrollTo(0, 0)
     }
+    // Recalculate every trigger's start/end for the new page. Without
+    // this, scroll-triggered sections built while the previous route was
+    // still scrolled keep stale offsets and their entrances never play.
+    // Done on the next frames so the new layout has been measured.
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh())
+    return () => cancelAnimationFrame(id)
   }, [pathname])
   return null
 }
@@ -50,6 +58,7 @@ const App = () => {
 
   return (
     <div className="relative min-h-screen bg-white font-sans antialiased">
+      <ContentProvider>
       <ScrollToTop />
       <Navbar />
       {/* content layer — opaque, scrolls over the pinned footer.
@@ -81,6 +90,7 @@ const App = () => {
       {showLoader && (
         <Loader onExitStart={markSiteReady} onExited={() => setShowLoader(false)} />
       )}
+      </ContentProvider>
     </div>
   )
 }

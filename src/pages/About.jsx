@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLineReveal } from "../lib/reveal.js";
-import WhyUs from "../components/WhyUs.jsx";
+import { useAbout, asset } from "../lib/content.jsx";
+// import WhyUs from "../components/WhyUs.jsx";
+import WhyUsNew from "../components/WhyUsNew.jsx";
 import StatsBelt from "../components/StatsBelt.jsx";
 
 function LinkedInIcon() {
@@ -96,9 +98,12 @@ const capabilities = [
 export default function About() {
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
+	const remote = useAbout();
+	const teamList = remote?.team?.length ? remote.team : team;
+	const caps = remote?.capabilities?.length ? remote.capabilities : capabilities;
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -133,6 +138,18 @@ export default function About() {
 
 				{/* intro */}
 				<div id="overview" className="rv-fade mt-10 w-full scroll-mt-24 lg:mt-14 lg:scroll-mt-36 sm:text-justify " >
+					{remote?.overview?.length ? (
+						remote.overview.map((para, i) => (
+							<p
+								key={i}
+								className="mt-5 font-inter-reg fs-body leading-relaxed text-neutral-600"
+								style={i === 0 ? { marginTop: 0 } : undefined}
+							>
+								{para}
+							</p>
+						))
+					) : (
+						<>
 					<p className="font-inter-reg fs-body leading-relaxed text-neutral-600">
 						Udyam Capital is a financial advisory firm focused on
 						one thing: getting the right capital into growing
@@ -161,6 +178,8 @@ export default function About() {
 						steadier cash flows and funded growth: that is what we
 						mean by a successful business journey.
 					</p>
+						</>
+					)}
 				</div>
 
 				{/* vision + mission */}
@@ -171,9 +190,7 @@ export default function About() {
 							Vision
 						</p>
 						<p className="mt-4 font-inter-reg fs-body text-(--color-white)">
-							To be the most trusted and reliable partner,
-							empowering businesses to grow and create enduring
-							value.
+							{remote?.vision || "To be the most trusted and reliable partner, empowering businesses to grow and create enduring value."}
 						</p>
 					</div>
 					<div className="rv-fade rounded-[16px] border border-black/5 bg-[#EAF1FC] p-6 sm:p-8">
@@ -181,9 +198,7 @@ export default function About() {
 							Mission
 						</p>
 						<p className="mt-4 font-inter-reg fs-body ">
-							To enable businesses to thrive and stay competitive
-							by delivering Innovative, Customized Solutions that
-							foster Transformation and Growth.
+							{remote?.mission || "To enable businesses to thrive and stay competitive by delivering Innovative, Customized Solutions that foster Transformation and Growth."}
 						</p>
 					</div>
 				</div>
@@ -233,7 +248,7 @@ export default function About() {
 					</div>
 					<div className="rv-fade">
 						<img
-							src="/AboutUsImage.svg"
+							src={asset("/AboutUsImage.svg")}
 							alt="Team collaborating on business growth"
 							loading="lazy"
 							decoding="async"
@@ -244,8 +259,9 @@ export default function About() {
 			</section>
 
 			<div id="why-us" className="scroll-mt-24 lg:scroll-mt-36">
-				<WhyUs />
-			</div>
+				{/* <WhyUs /> */}
+				<WhyUsNew />
+			</div>	
 			<StatsBelt />
 			
 
@@ -267,7 +283,7 @@ export default function About() {
 					</p>
 				</div>
 				<div className="mt-8 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
-					{team.map((member, i) => {
+					{teamList.map((member, i) => {
 						const initials = member.name
 							.split(" ")
 							.filter(Boolean)
@@ -343,7 +359,7 @@ export default function About() {
 						one to explore it.
 					</p>
 					<div className="mt-6 flex flex-wrap gap-3">
-						{capabilities.map((c) => (
+						{caps.map((c) => (
 							<Link
 								key={c.label}
 								to={c.to}

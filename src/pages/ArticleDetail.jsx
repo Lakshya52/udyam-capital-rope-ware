@@ -10,16 +10,13 @@ import {
 	Link2,
 } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import {
-	articles,
-	formatViews,
-	getArticle,
-	getViews,
-	trackView,
-} from "../data/articles.js";
+import { getViews, trackView } from "../data/articles.js";
+import { useArticles, fetchLiveArticle } from "../lib/content.jsx";
 import Error from "./Error.jsx";
-import WhyUs from "../components/WhyUs.jsx";
-import FooterCTA from "../components/FooterCTA.jsx";
+// import WhyUs from "../components/WhyUs.jsx";
+import WhyUsNew from "../components/WhyUsNew.jsx";
+import FooterCTAnew from "../components/FooterCTAnew.jsx";
+// import FooterCTA from "../components/FooterCTA.jsx";
 // import FooterCTA from "../components/FooterCTA.jsx";
 
 function ShareRow({ title }) {
@@ -103,8 +100,17 @@ export default function ArticleDetail() {
 	const { slug } = useParams();
 	const rootRef = useRef(null);
 	useLineReveal(rootRef);
+	const { articles, getArticle, formatViews } = useArticles();
+	const [liveArticle, setLiveArticle] = useState(null);
 
-	const article = getArticle(slug || "");
+	useEffect(() => {
+		setLiveArticle(null);
+		fetchLiveArticle(slug || "").then((a) => {
+			if (a) setLiveArticle(a);
+		});
+	}, [slug]);
+
+	const article = liveArticle ?? getArticle(slug || "");
 	const [views, setViews] = useState(0);
 
 	useEffect(() => {
@@ -112,9 +118,13 @@ export default function ArticleDetail() {
 	}, [slug]);
 
 	useEffect(() => {
+		if (liveArticle) {
+			setViews(liveArticle.views ?? 0);
+			return;
+		}
 		trackView(slug || "");
 		setViews(getViews(slug || ""));
-	}, [slug]);
+	}, [slug, liveArticle]);
 
 	if (!article) return <Error />;
 
@@ -138,7 +148,7 @@ export default function ArticleDetail() {
 		.toUpperCase();
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"
@@ -353,7 +363,8 @@ export default function ArticleDetail() {
 						/>
 					</Link>
 				</div> */}
-				<FooterCTA />
+				{/* <FooterCTA /> */}
+				<FooterCTAnew />
 
 				{/* related */}
 				{related.length > 0 && (
@@ -394,7 +405,8 @@ export default function ArticleDetail() {
 			</article>
 
 			
-			<WhyUs />
+			{/* <WhyUs /> */}
+			<WhyUsNew />
 			{/* <FooterCTA /> */}
 		</main>
 	);

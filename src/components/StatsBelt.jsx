@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { asset } from '../lib/content.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -42,7 +43,7 @@ function CountUp({ target, suffix }) {
 
 export default function StatsBelt() {
   return (
-    <section className="relative w-full overflow-hidden bg-[url('/NumberBg.png')] bg-cover bg-center bg-no-repeat my-[6dvh] sm:my-[8dvh] lg:my-[10dvh]">
+    <section className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat my-[6dvh] sm:my-[8dvh] lg:my-[10dvh]" style={{ backgroundImage: `url(${asset('/NumberBg.png')})` }}>
       {/* backdrop graphics — depth wash + strong glows + rings */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-linear-to-r from-[#0C1F33]/70 via-transparent to-[#0C1F33]/70" />

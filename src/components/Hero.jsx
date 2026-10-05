@@ -1,9 +1,10 @@
 import { useLayoutEffect, useRef } from "react";
-import { TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import { TrendingUp, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import HeroVideo from "./HeroVideo.jsx";
 import { onSiteReady } from "../lib/siteReady.js";
+import { asset } from "../lib/content.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +65,7 @@ export default function Hero() {
 				},
 			});
 			tl.to(".hero-bg", { yPercent: 12 }, 0);
-			tl.to(".hero-content", { y: -70, opacity: 0.2 }, 0);
+			tl.to(".hero-content", { y: -70 }, 0);
 			tl.to(".hero-cards", { y: -150 }, 0);
 		}, rootRef);
 		return () => ctx.revert();
@@ -81,7 +82,7 @@ export default function Hero() {
 				aria-hidden="true"
 			>
 				<img
-					src="/HeroBg.webp"
+					src={asset("/HeroBg.webp")}
 					alt=""
 					loading="eager"
 					decoding="async"
@@ -105,11 +106,22 @@ export default function Hero() {
 						Expertise, Groundbreaking Solutions and a Collaborative
 						Mindset
 					</p>
+					<div className="hero-fade mt-6 sm:mt-8">
+						<Link
+							to="/contact"
+							className="group inline-flex items-center gap-2 rounded-full bg-(--color-primary) py-2.5 pl-5 pr-2.5 font-heading text-[14px] text-white shadow-[0_16px_40px_rgba(8,83,160,0.35)] transition-all duration-300 hover:bg-[#0b4da2] hover:shadow-[0_16px_40px_rgba(8,83,160,0.5)] active:scale-[0.98]"
+						>
+							Schedule a Consultation
+							<span className="grid h-7 w-7 place-items-center rounded-full bg-white/20 transition-transform duration-300 group-hover:-rotate-45">
+								<ArrowRight size={15} />
+							</span>
+						</Link>
+					</div>
 				</div>
 
 				{/* overlapping finance cards */}
 				<div
-					className="hero-cards hero-fade relative mx-auto h-auto w-full max-w-[620px] will-change-transform lg:h-[500px] "
+					className="hero-cards mt-10 hero-fade relative mx-auto h-auto w-full max-w-[620px] will-change-transform lg:h-[500px] "
 					aria-hidden="true"
 				>
 					{/* Back card — Let's Plan your business journey */}
@@ -214,7 +226,7 @@ export default function Hero() {
 						</div> */}
 						<p className="font-heading fs-body text-neutral-800">Financial Clarity. <br /> Smarter Decisions.</p>
 						<p className="text-(--color-primary) fs-body-sm font-inter-reg"  >Right Perspective.</p>
-						<img src="/RupeesWheelWhite.webp" alt="" />
+						<img src={asset("/RupeesWheelWhite.webp")} alt="" />
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://udyamcapital.com/sitemap.xml
+Sitemap: https://udyamcapital.com/sitemap.php

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChevronDown, ArrowUpRight, ArrowRight, Phone } from 'lucide-react'
-import { services, getSubServices } from '../data/services.js'
+import { useServices, asset } from '../lib/content.jsx'
 
 const navLinks = [
   { label: 'Case Studies', to: '/case-studies' },
@@ -11,16 +11,6 @@ const navLinks = [
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]
-
-const serviceLinks = services.map((s) => ({
-  label: s.title,
-  to: `/services/${s.id}`,
-  desc: s.desc,
-  children: getSubServices(s.id).map((c) => ({
-    label: c.title,
-    to: `/services/${c.id}`,
-  })),
-}))
 
 const aboutLinks = [
   { label: 'Overview', hash: 'overview', desc: 'Who we are at a glance' },
@@ -34,7 +24,7 @@ function Logo({ onClick }) {
   return (
     <Link to="/" onClick={onClick} className="flex shrink-0 items-center outline-none">
       <img
-        src="/Logo.png"
+        src={asset("/Logo.png")}
         alt="Udyam Capital"
         className="h-11 w-auto object-contain "
       />
@@ -55,6 +45,17 @@ export default function Navbar() {
   const isActive = (to) => location.pathname === to
   const isServicesActive = location.pathname.startsWith('/services/')
   const isAboutActive = location.pathname === '/about'
+
+  const { services, getSubServices } = useServices()
+  const serviceLinks = services.map((s) => ({
+    label: s.title,
+    to: `/services/${s.id}`,
+    desc: s.desc,
+    children: getSubServices(s.id).map((c) => ({
+      label: c.title,
+      to: `/services/${c.id}`,
+    })),
+  }))
 
   const pendingHash = useRef(null)
 

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowUpRight, Eye, Search } from "lucide-react";
 import { useLineReveal } from "../lib/reveal.js";
-import { articles, formatViews, getViews } from "../data/articles.js";
+import { getViews } from "../data/articles.js";
+import { useArticles } from "../lib/content.jsx";
 
 
 export default function Articles() {
@@ -12,6 +13,7 @@ export default function Articles() {
 	const [query, setQuery] = useState("");
 	const [topic, setTopic] = useState("All topics");
 	const [debouncedQuery, setDebouncedQuery] = useState("");
+	const { articles, formatViews } = useArticles();
 
 	// debounce search so filtering runs 300ms after the user stops typing
 	useEffect(() => {
@@ -49,7 +51,7 @@ export default function Articles() {
 	});
 
 	return (
-		<main ref={rootRef} className="relative overflow-hidden bg-white">
+		<main ref={rootRef} className="relative overflow-clip bg-white">
 			{/* backdrop graphics */}
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[420px] overflow-hidden"

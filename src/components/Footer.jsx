@@ -1,4 +1,15 @@
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useSettings, asset } from "../lib/content.jsx";
+
+const FALLBACK_CONTACT = {
+	email1: "we.care@udyamcapital.com",
+	email2: "info@udyamcapital.com",
+	landline_label: "Landline : 0120 444 5816",
+	landline_href: "tel:01204445816",
+	mobile_label: "Mobile : +91 82875 98661",
+	mobile_href: "tel:+911234567890",
+};
 
 const exploreLinks = [
 	{ label: "Services", to: "/services" },
@@ -91,13 +102,66 @@ function SocialIcons() {
 	);
 }
 
+function GiantWatermark() {
+	const wrapRef = useRef(null);
+	const textRef = useRef(null);
+
+	useLayoutEffect(() => {
+		const wrap = wrapRef.current;
+		const text = textRef.current;
+		if (!wrap || !text) return;
+
+		const fit = () => {
+			// Measure natural width at 100px, then scale font-size so
+			// width == container width. No horizontal squeeze — glyphs
+			// keep natural proportions, only font-size (height) changes.
+			text.style.fontSize = "100px";
+			const natural = text.scrollWidth;
+			const avail = wrap.clientWidth;
+			if (natural > 0 && avail > 0) {
+				text.style.fontSize = `${(100 * avail) / natural}px`;
+			}
+		};
+
+		fit();
+		// Re-fit once webfont loads (Jakarta changes natural width)
+		let cancelled = false;
+		if (document.fonts?.ready) {
+			document.fonts.ready.then(() => {
+				if (!cancelled) fit();
+			});
+		}
+		const ro = new ResizeObserver(fit);
+		ro.observe(wrap);
+		return () => {
+			cancelled = true;
+			ro.disconnect();
+		};
+	}, []);
+
+	return (
+		<div className="relative z-10 mx-auto w-full max-w-[1166px] px-5 md:px-8 xl:px-0">
+			<div ref={wrapRef} className="w-full">
+				<div
+					ref={textRef}
+					aria-hidden="true"
+					className="w-max max-w-none origin-left translate-y-[18%] text-center font-heading leading-[0.8] tracking-[-0.04em] text-white/10"
+				>
+					UdyamCapital
+				</div>
+			</div>
+		</div>
+	);
+}
+
 export default function Footer() {
+	const ct = { ...FALLBACK_CONTACT, ...(useSettings() ?? {}) };
 	return (
 		<footer className="relative flex h-fit w-full flex-col justify-end overflow-hidden bg-(--color-primary) pt-12">
 			{/* Cloth-waves backdrop image */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
 				<img
-					src="/bgClotheWaves.png"
+					src={asset("/bgClotheWaves.png")}
 					alt=""
 					loading="lazy"
 					decoding="async"
@@ -153,63 +217,58 @@ export default function Footer() {
 						</h4>
 						<div className="mt-4 min-w-0 space-y-2.5 break-words font-inter-reg text-[0.85rem] leading-snug text-white sm:text-[1rem]">
 							<a
-								href="mailto:we.care@udyamcapital.com"
+								href={`mailto:${ct.email1}`}
 								className="block w-fit max-w-full whitespace-nowrap transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4 lg:text-[0.85rem] xl:text-[1rem]"
 							>
-								we.care@udyamcapital.com
+								{ct.email1}
 							</a>
 							<a
-								href="mailto:info@udyamcapital.com"
+								href={`mailto:${ct.email2}`}
 								className="block w-fit max-w-full whitespace-nowrap transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4 lg:text-[0.85rem] xl:text-[1rem]"
 							>
-								info@udyamcapital.com
+								{ct.email2}
 							</a>
 							{/* <p className="pt-1 font-inter-reg text-[#144fd7]">Phone</p> */}
 							<a
-								href="tel: 01204445816"
+								href={ct.landline_href}
 								className="block w-fit max-w-full transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4"
 							>
-								Landline : 0120 444 5816
+								{ct.landline_label}
 							</a>
 							<a
-								href="tel:+911234567890"
+								href={ct.mobile_href}
 								className="block w-fit max-w-full transition-all duration-300 hover:text-white hover:underline hover:underline-offset-4"
 							>
-								Mobile : +91 82875 98661
+								{ct.mobile_label}
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			{/* Giant watermark — always spans the full viewport */}
-			<div className="pointer-events-none relative z-10 left-1/2 w-screen -translate-x-1/2 overflow-hidden">
-				<div
-					aria-hidden="true"
-					className="select-none whitespace-nowrap text-center font-heading text-[14vw] leading-[0.8] tracking-[-0.04em] text-white/10 translate-y-[18%]
-					"
-				>
-					UdyamCapital
-				</div>
-			</div>
+			{/* Giant watermark — locked to the same container width as navbar, no squeeze */}
+			<GiantWatermark />
 
 			{/* legal bar */}
-			<div className="relative z-10 border-t border-white/15">
+			<div className="relative z-10 ">
 				<div className="mx-auto flex w-full max-w-[1166px] flex-col items-start justify-between gap-2 px-5 py-5 sm:flex-row sm:items-center md:px-8 xl:px-0">
-					<p className="font-inter-reg text-[0.8rem] text-white/70">
+					<p>
+						{/* empty to create space */}
+					</p>
+					<p className="font-inter-reg text-[0.8rem] text-white/40">
 						© {new Date().getFullYear()} Udyam Capital. All rights
 						reserved.
 					</p>
 					<div className="flex items-center gap-5">
 						<Link
 							to="/privacy-policy"
-							className="font-inter-reg text-[0.8rem] text-white/70 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
+							className="font-inter-reg text-[0.8rem] text-white/40 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
 						>
 							Privacy Policy
 						</Link>
 						<Link
 							to="/terms-of-use"
-							className="font-inter-reg text-[0.8rem] text-white/70 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
+							className="font-inter-reg text-[0.8rem] text-white/40 transition-colors duration-300 hover:text-white hover:underline hover:underline-offset-4"
 						>
 							Terms of Use
 						</Link>

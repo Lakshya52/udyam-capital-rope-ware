@@ -188,3 +188,19 @@
     animation: hero-float 8.5s ease-in-out -4s infinite;
   }
 }
+
+/* Gentle ring breathing for FooterCTA decorative motif */
+@keyframes pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-breathe {
+    animation: pulse-ring 3.2s ease-in-out infinite;
+  }
+}

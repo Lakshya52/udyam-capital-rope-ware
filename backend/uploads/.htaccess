@@ -1,0 +1,6 @@
+# Uploads are images only: never execute scripts from here.
+php_flag engine off
+RemoveHandler .php .phtml .phar
+<FilesMatch "\.(php|phtml|phar|cgi|pl)$">
+  Require all denied
+</FilesMatch>
